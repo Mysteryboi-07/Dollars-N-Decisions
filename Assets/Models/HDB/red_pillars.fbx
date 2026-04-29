@@ -1,0 +1,2932 @@
+; FBX 6.1.0 project file
+; ----------------------------------------------------
+
+FBXHeaderExtension:  {
+	FBXHeaderVersion: 1003
+	FBXVersion: 6100
+	CurrentCameraResolution:  {
+		CameraName: "Producer Perspective"
+		CameraResolutionMode: "Fixed Resolution"
+		CameraResolutionW: 960
+		CameraResolutionH: 540
+	}
+	CreationTimeStamp:  {
+		Version: 1000
+		Year: 2025
+		Month: 7
+		Day: 30
+		Hour: 20
+		Minute: 54
+		Second: 32
+		Millisecond: 976
+	}
+	Creator: "FBX SDK/FBX Plugins version 2020.3.6"
+}
+
+; Document Description
+;------------------------------------------------------------------
+
+Document:  {
+	Name: ""
+}
+
+; Document References
+;------------------------------------------------------------------
+
+References:  {
+}
+
+; Object definitions
+;------------------------------------------------------------------
+
+Definitions:  {
+	Version: 100
+	Count: 34
+	ObjectType: "Model" {
+		Count: 15
+	}
+	ObjectType: "Material" {
+		Count: 1
+	}
+	ObjectType: "Texture" {
+		Count: 7
+	}
+	ObjectType: "Video" {
+		Count: 7
+	}
+	ObjectType: "SceneInfo" {
+		Count: 1
+	}
+	ObjectType: "GlobalSettings" {
+		Count: 1
+	}
+	ObjectType: "Implementation" {
+		Count: 1
+	}
+	ObjectType: "BindingTable" {
+		Count: 1
+	}
+}
+
+; Object properties
+;------------------------------------------------------------------
+
+Objects:  {
+	Model: "Model::redPillars_GRP", "Null" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-33.5713861572759,1.0520247676736,12.6362133789817
+			Property: "ScalingOffset", "Vector3D", "",3323.56722957031,-104.150451999687,-1250.98512451919
+			Property: "ScalingPivot", "Vector3D", "",-3357.13861572759,105.20247676736,1263.62133789817
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",0.01,0.01,0.01
+			Property: "Visibility", "Visibility", "A",1
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "Size", "double", "N",100
+			Property: "Look", "enum", "N",0
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: Y
+		Culling: "CullingOff"
+		TypeFlags: "Null"
+		NodeAttributeName: "NodeAttribute::redPillars_GRP_ncl1_1"
+	}
+	Model: "Model::pillar11", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-4811.7265385837,-107.474418374241,1371.91107279301
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-4811.7265385837,-107.474418374243,1371.91107279301
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -4847.69482421875,-107.474418640137,1464.64526367188,-4775.7578125,-107.474418640137,1464.64526367188,-4847.69482421875
+        ,267.628570556641,1464.64526367188,-4775.7578125,267.628570556641,1464.64526367188,-4847.69482421875,267.628570556641
+        ,1279.17687988281,-4775.7578125,267.628570556641,1279.17687988281,-4847.69482421875,-107.474418640137,1279.17687988281
+        ,-4775.7578125,-107.474418640137,1279.17687988281,-4775.7578125,14.8900604248047,1464.64526367188,-4847.69482421875
+        ,14.8900604248047,1464.64526367188,-4847.69482421875,14.8900604248047,1279.17687988281,-4775.7578125,14.8900604248047
+        ,1279.17687988281
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,0.999999940395355,0,0,0.999999940395355,0,0,-1,0,0,-1,0,0,-0.999999940395355,0,0,-0.999999940395355,0
+             ,0,0,0,1,0,0,1,0,0,1,0,0,1,-0.999999940395355,0,0,-0.999999940395355,0,0,-1,0,0,-1,0,0,0,0,-1,0,0,-1,0,0,-1,0
+             ,0,-1,0.999999940395355,0,0,0.999999940395355,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar11_ncl1_1"
+	}
+	Model: "Model::pillar12", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-5006.19498624611,-107.474418374241,1867.85595540587
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-5006.19498624611,-107.474418374243,1867.85595540587
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -5042.16357421875,-107.474418640137,1960.59008789062,-4970.2265625,-107.474418640137,1960.59008789062,-5042.16357421875
+        ,267.628570556641,1960.59008789062,-4970.2265625,267.628570556641,1960.59008789062,-5042.16357421875,267.628570556641
+        ,1775.12182617188,-4970.2265625,267.628570556641,1775.12182617188,-5042.16357421875,-107.474418640137,1775.12182617188
+        ,-4970.2265625,-107.474418640137,1775.12182617188,-4970.2265625,14.8900604248047,1960.59008789062,-5042.16357421875
+        ,14.8900604248047,1960.59008789062,-5042.16357421875,14.8900604248047,1775.12182617188,-4970.2265625,14.8900604248047
+        ,1775.12182617188
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar12_ncl1_1"
+	}
+	Model: "Model::pillar13", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-4253.15409799556,-107.474418374241,1867.85595540587
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-4253.15409799556,-107.474418374243,1867.85595540587
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -4289.12255859375,-107.474418640137,1960.59008789062,-4217.185546875,-107.474418640137,1960.59008789062,-4289.12255859375
+        ,267.628570556641,1960.59008789062,-4217.185546875,267.628570556641,1960.59008789062,-4289.12255859375,267.628570556641
+        ,1775.12182617188,-4217.185546875,267.628570556641,1775.12182617188,-4289.12255859375,-107.474418640137,1775.12182617188
+        ,-4217.185546875,-107.474418640137,1775.12182617188,-4217.185546875,14.8900604248047,1960.59008789062,-4289.12255859375
+        ,14.8900604248047,1960.59008789062,-4289.12255859375,14.8900604248047,1775.12182617188,-4217.185546875,14.8900604248047
+        ,1775.12182617188
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar13_ncl1_1"
+	}
+	Model: "Model::pillar14", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-3438.02946388585,-107.474418374241,1867.85595540587
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-3438.02946388585,-107.474418374243,1867.85595540587
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -3473.998046875,-107.474418640137,1960.59008789062,-3402.06103515625,-107.474418640137,1960.59008789062,-3473.998046875
+        ,267.628570556641,1960.59008789062,-3402.06103515625,267.628570556641,1960.59008789062,-3473.998046875,267.628570556641
+        ,1775.12182617188,-3402.06103515625,267.628570556641,1775.12182617188,-3473.998046875,-107.474418640137,1775.12182617188
+        ,-3402.06103515625,-107.474418640137,1775.12182617188,-3402.06103515625,14.8900604248047,1960.59008789062,-3473.998046875
+        ,14.8900604248047,1960.59008789062,-3473.998046875,14.8900604248047,1775.12182617188,-3402.06103515625,14.8900604248047
+        ,1775.12182617188
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar14_ncl1_1"
+	}
+	Model: "Model::pillar15", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-2718.34198673725,-107.474418374241,1867.85595540587
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-2718.34198673725,-107.474418374243,1867.85595540587
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -2754.310546875,-107.474418640137,1960.59008789062,-2682.37353515625,-107.474418640137,1960.59008789062,-2754.310546875
+        ,267.628570556641,1960.59008789062,-2682.37353515625,267.628570556641,1960.59008789062,-2754.310546875,267.628570556641
+        ,1775.12182617188,-2682.37353515625,267.628570556641,1775.12182617188,-2754.310546875,-107.474418640137,1775.12182617188
+        ,-2682.37353515625,-107.474418640137,1775.12182617188,-2682.37353515625,14.8900604248047,1960.59008789062,-2754.310546875
+        ,14.8900604248047,1960.59008789062,-2754.310546875,14.8900604248047,1775.12182617188,-2682.37353515625,14.8900604248047
+        ,1775.12182617188
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar15_ncl1_1"
+	}
+	Model: "Model::pillar16", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-2058.90901235506,-107.474418374241,1867.85595540587
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-2058.90901235506,-107.474418374243,1867.85595540587
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -2094.87744140625,-107.474418640137,1960.59008789062,-2022.94055175781,-107.474418640137,1960.59008789062,-2094.87744140625
+        ,267.628570556641,1960.59008789062,-2022.94055175781,267.628570556641,1960.59008789062,-2094.87744140625,267.628570556641
+        ,1775.12182617188,-2022.94055175781,267.628570556641,1775.12182617188,-2094.87744140625,-107.474418640137,1775.12182617188
+        ,-2022.94055175781,-107.474418640137,1775.12182617188,-2022.94055175781,14.8900604248047,1960.59008789062,-2094.87744140625
+        ,14.8900604248047,1960.59008789062,-2094.87744140625,14.8900604248047,1775.12182617188,-2022.94055175781,14.8900604248047
+        ,1775.12182617188
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar16_ncl1_1"
+	}
+	Model: "Model::pillar17", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-1689.91408913069,-107.474418374241,1867.85595540587
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-1689.91408913069,-107.474418374243,1867.85595540587
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -1725.88256835938,-107.474418640137,1960.59008789062,-1653.94567871094,-107.474418640137,1960.59008789062,-1725.88256835938
+        ,267.628570556641,1960.59008789062,-1653.94555664062,267.628570556641,1960.59008789062,-1725.88256835938,267.628570556641
+        ,1775.12182617188,-1653.94555664062,267.628570556641,1775.12182617188,-1725.88256835938,-107.474418640137,1775.12182617188
+        ,-1653.94567871094,-107.474418640137,1775.12182617188,-1653.94567871094,14.8900604248047,1960.59008789062,-1725.88256835938
+        ,14.8900604248047,1960.59008789062,-1725.88256835938,14.8900604248047,1775.12182617188,-1653.94567871094,14.8900604248047
+        ,1775.12182617188
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,-4.4918991193299e-07,0,1,-4.4918991193299e-07,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1
+             ,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,1,-4.4918991193299e-07,0,1,-4.4918991193299e-07,0,1
+             ,-6.66667176574265e-07,0,1,-6.66667176574265e-07,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar17_ncl1_1"
+	}
+	Model: "Model::pillar18", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-1689.91408913069,-107.474418374241,860.216877839186
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-1689.91408913069,-107.474418374243,860.216877839186
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -1725.88256835938,-107.474418640137,952.951049804688,-1653.94567871094,-107.474418640137,952.951049804688,-1725.88256835938
+        ,267.628570556641,952.951049804688,-1653.94555664062,267.628570556641,952.951049804688,-1725.88256835938,267.628570556641
+        ,767.482666015625,-1653.94555664062,267.628570556641,767.482666015625,-1725.88256835938,-107.474418640137,767.482666015625
+        ,-1653.94567871094,-107.474418640137,767.482666015625,-1653.94567871094,14.8900604248047,952.951049804688,-1725.88256835938
+        ,14.8900604248047,952.951049804688,-1725.88256835938,14.8900604248047,767.482666015625,-1653.94567871094,14.8900604248047
+        ,767.482666015625
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,-4.49189514029058e-07,0,1,-4.49189514029058e-07,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0
+             ,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,1,-4.49189514029058e-07,0,1,-4.49189514029058e-07
+             ,0,1,-6.66666664983495e-07,0,1,-6.66666664983495e-07,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar18_ncl1_1"
+	}
+	Model: "Model::pillar19", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-2058.90901235506,-107.474418374241,818.475748046597
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-2058.90901235506,-107.474418374243,818.475748046597
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -2094.87744140625,-107.474418640137,911.2099609375,-2022.94055175781,-107.474418640137,911.2099609375,-2094.87744140625
+        ,267.628570556641,911.2099609375,-2022.94055175781,267.628570556641,911.2099609375,-2094.87744140625,267.628570556641
+        ,725.741577148438,-2022.94055175781,267.628570556641,725.741577148438,-2094.87744140625,-107.474418640137,725.741577148438
+        ,-2022.94055175781,-107.474418640137,725.741577148438,-2022.94055175781,14.8900604248047,911.2099609375,-2094.87744140625
+        ,14.8900604248047,911.2099609375,-2094.87744140625,14.8900604248047,725.741577148438,-2022.94055175781,14.8900604248047
+        ,725.741577148438
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar19_ncl1_1"
+	}
+	Model: "Model::pillar20", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-2718.34198673725,-107.474418374241,818.475748046597
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-2718.34198673725,-107.474418374243,818.475748046597
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -2754.310546875,-107.474418640137,911.2099609375,-2682.37353515625,-107.474418640137,911.2099609375,-2754.310546875
+        ,267.628570556641,911.2099609375,-2682.37353515625,267.628570556641,911.2099609375,-2754.310546875,267.628570556641
+        ,725.741577148438,-2682.37353515625,267.628570556641,725.741577148438,-2754.310546875,-107.474418640137,725.741577148438
+        ,-2682.37353515625,-107.474418640137,725.741577148438,-2682.37353515625,14.8900604248047,911.2099609375,-2754.310546875
+        ,14.8900604248047,911.2099609375,-2754.310546875,14.8900604248047,725.741577148438,-2682.37353515625,14.8900604248047
+        ,725.741577148438
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar20_ncl1_1"
+	}
+	Model: "Model::pillar21", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-3438.02946388585,-107.474418374241,818.475748046597
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-3438.02946388585,-107.474418374243,818.475748046597
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -3473.998046875,-107.474418640137,911.2099609375,-3402.06103515625,-107.474418640137,911.2099609375,-3473.998046875
+        ,267.628570556641,911.2099609375,-3402.06103515625,267.628570556641,911.2099609375,-3473.998046875,267.628570556641
+        ,725.741577148438,-3402.06103515625,267.628570556641,725.741577148438,-3473.998046875,-107.474418640137,725.741577148438
+        ,-3402.06103515625,-107.474418640137,725.741577148438,-3402.06103515625,14.8900604248047,911.2099609375,-3473.998046875
+        ,14.8900604248047,911.2099609375,-3473.998046875,14.8900604248047,725.741577148438,-3402.06103515625,14.8900604248047
+        ,725.741577148438
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar21_ncl1_1"
+	}
+	Model: "Model::pillar22", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-4253.15409799556,-107.474418374241,818.475748046597
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-4253.15409799556,-107.474418374243,818.475748046597
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -4289.12255859375,-107.474418640137,911.2099609375,-4217.185546875,-107.474418640137,911.2099609375,-4289.12255859375
+        ,267.628570556641,911.2099609375,-4217.185546875,267.628570556641,911.2099609375,-4289.12255859375,267.628570556641
+        ,725.741577148438,-4217.185546875,267.628570556641,725.741577148438,-4289.12255859375,-107.474418640137,725.741577148438
+        ,-4217.185546875,-107.474418640137,725.741577148438,-4217.185546875,14.8900604248047,911.2099609375,-4289.12255859375
+        ,14.8900604248047,911.2099609375,-4289.12255859375,14.8900604248047,725.741577148438,-4217.185546875,14.8900604248047
+        ,725.741577148438
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar22_ncl1_1"
+	}
+	Model: "Model::pillar23", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-1893.88571704214,-107.474418374241,1346.55148503622
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-1893.88571704214,-107.474418374243,1346.55148503622
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -1929.85412597656,-107.474418640137,1439.28564453125,-1857.91723632812,-107.474418640137,1439.28564453125,-1929.85412597656
+        ,267.628570556641,1439.28564453125,-1857.91723632812,267.628570556641,1439.28564453125,-1929.85412597656,267.628570556641
+        ,1253.81726074219,-1857.91723632812,267.628570556641,1253.81726074219,-1929.85412597656,-107.474418640137,1253.81726074219
+        ,-1857.91723632812,-107.474418640137,1253.81726074219,-1857.91723632812,14.8900604248047,1439.28564453125,-1929.85412597656
+        ,14.8900604248047,1439.28564453125,-1929.85412597656,14.8900604248047,1253.81726074219,-1857.91723632812,14.8900604248047
+        ,1253.81726074219
+		PolygonVertexIndex: 0,1,8,-10,2,3,5,-5,10,11,7,-7,6,7,1,-1,1,7,11,-9,6,0,9,-11,9,8,3,-3,10,9,2,-5,4,5,11,-11,8,11,5,-4
+		Edges: 0,4,6,10,3,1,7,5,31,33,15,13,25,27,2,11,22,9,8,18
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0
+             ,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,0,0,-1,0,0
+             ,-1,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.441069066524506,0.684093952178955,0.52808940410614,0.684093952178955,0.856731534004211,0.860089480876923,0.769711136817932
+             ,0.860089480876923,0.5298752784729,0.684093952178955,0.616895914077759,0.684093952178955,0.945537984371185,0.860089480876923
+             ,0.858517408370972,0.860089480876923,0.942966401576996,0.861205339431763,0.976718544960022,0.861205339431763
+             ,0.976718544960022,0.948225736618042,0.942966401576996,0.948225736618042,0.578856825828552,0.861205339431763
+             ,0.612608909606934,0.861205339431763,0.612608909606934,0.948225736618042,0.578856825828552,0.948225736618042
+             ,0.369642555713654,0.684093952178955,0.403394639492035,0.684093952178955,0.732036709785461,0.860089480876923
+             ,0.69828462600708,0.860089480876923,0.733752846717834,0.684093952178955,0.767504811286926,0.684093952178955,0.4388627409935
+             ,0.860089480876923,0.405110776424408,0.860089480876923,0.403394639492035,0.741506457328796,0.441069066524506
+             ,0.741506457328796,0.945537984371185,0.741506457328796,0.69828462600708,0.741506457328796,0.858517408370972,0.741506457328796
+             ,0.733752846717834,0.802676975727081,0.767504811286926,0.802676975727081,0.856731534004211,0.741506457328796
+             ,0.4388627409935,0.802676975727081,0.52808940410614,0.741506457328796,0.732036709785461,0.741506457328796,0.769711136817932
+             ,0.741506457328796,0.5298752784729,0.741506457328796,0.405110776424408,0.802676975727081,0.369642555713654,0.741506457328796
+             ,0.616895914077759,0.741506457328796
+			UVIndex: 16,17,24,38,8,9,10,11,37,32,22,23,12,13,14,15,0,1,33,25,4,5,39,36,27,34,18,19,28,26,6,7,20,21,30,29,35,31,2,3
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::pillar23_ncl1_1"
+	}
+	Model: "Model::lift2", "Mesh" {
+		Version: 232
+		Properties60:  {
+			Property: "QuaternionInterpolate", "enum", "",0
+			Property: "RotationOffset", "Vector3D", "",0,0,0
+			Property: "RotationPivot", "Vector3D", "",-5060.33163805213,-107.474418374241,1002.2408473827
+			Property: "ScalingOffset", "Vector3D", "",0,0,0
+			Property: "ScalingPivot", "Vector3D", "",-5060.33163805213,-107.474418374241,1002.2408473827
+			Property: "TranslationActive", "bool", "",0
+			Property: "TranslationMin", "Vector3D", "",0,0,0
+			Property: "TranslationMax", "Vector3D", "",0,0,0
+			Property: "TranslationMinX", "bool", "",0
+			Property: "TranslationMinY", "bool", "",0
+			Property: "TranslationMinZ", "bool", "",0
+			Property: "TranslationMaxX", "bool", "",0
+			Property: "TranslationMaxY", "bool", "",0
+			Property: "TranslationMaxZ", "bool", "",0
+			Property: "RotationOrder", "enum", "",0
+			Property: "RotationSpaceForLimitOnly", "bool", "",0
+			Property: "RotationStiffnessX", "double", "",0
+			Property: "RotationStiffnessY", "double", "",0
+			Property: "RotationStiffnessZ", "double", "",0
+			Property: "AxisLen", "double", "",10
+			Property: "PreRotation", "Vector3D", "",0,0,0
+			Property: "PostRotation", "Vector3D", "",0,0,0
+			Property: "RotationActive", "bool", "",1
+			Property: "RotationMin", "Vector3D", "",0,0,0
+			Property: "RotationMax", "Vector3D", "",0,0,0
+			Property: "RotationMinX", "bool", "",0
+			Property: "RotationMinY", "bool", "",0
+			Property: "RotationMinZ", "bool", "",0
+			Property: "RotationMaxX", "bool", "",0
+			Property: "RotationMaxY", "bool", "",0
+			Property: "RotationMaxZ", "bool", "",0
+			Property: "InheritType", "enum", "",1
+			Property: "ScalingActive", "bool", "",0
+			Property: "ScalingMin", "Vector3D", "",0,0,0
+			Property: "ScalingMax", "Vector3D", "",0,0,0
+			Property: "ScalingMinX", "bool", "",0
+			Property: "ScalingMinY", "bool", "",0
+			Property: "ScalingMinZ", "bool", "",0
+			Property: "ScalingMaxX", "bool", "",0
+			Property: "ScalingMaxY", "bool", "",0
+			Property: "ScalingMaxZ", "bool", "",0
+			Property: "GeometricTranslation", "Vector3D", "",0,0,0
+			Property: "GeometricRotation", "Vector3D", "",0,0,0
+			Property: "GeometricScaling", "Vector3D", "",1,1,1
+			Property: "MinDampRangeX", "double", "",0
+			Property: "MinDampRangeY", "double", "",0
+			Property: "MinDampRangeZ", "double", "",0
+			Property: "MaxDampRangeX", "double", "",0
+			Property: "MaxDampRangeY", "double", "",0
+			Property: "MaxDampRangeZ", "double", "",0
+			Property: "MinDampStrengthX", "double", "",0
+			Property: "MinDampStrengthY", "double", "",0
+			Property: "MinDampStrengthZ", "double", "",0
+			Property: "MaxDampStrengthX", "double", "",0
+			Property: "MaxDampStrengthY", "double", "",0
+			Property: "MaxDampStrengthZ", "double", "",0
+			Property: "PreferedAngleX", "double", "",0
+			Property: "PreferedAngleY", "double", "",0
+			Property: "PreferedAngleZ", "double", "",0
+			Property: "LookAtProperty", "object", ""
+			Property: "UpVectorProperty", "object", ""
+			Property: "Show", "bool", "",1
+			Property: "NegativePercentShapeSupport", "bool", "",1
+			Property: "DefaultAttributeIndex", "int", "",0
+			Property: "Freeze", "bool", "",0
+			Property: "LODBox", "bool", "",0
+			Property: "Lcl Translation", "Lcl Translation", "A",0,0,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A",0,0,0
+			Property: "Lcl Scaling", "Lcl Scaling", "A",1,1,1
+			Property: "Visibility", "Visibility", "A",1
+			Property: "currentUVSet", "KString", "U", "map1"
+			Property: "Color", "ColorRGB", "N",0.8,0.8,0.8
+			Property: "BBoxMin", "Vector3D", "N",0,0,0
+			Property: "BBoxMax", "Vector3D", "N",0,0,0
+			Property: "Primary Visibility", "bool", "N",1
+			Property: "Casts Shadows", "bool", "N",1
+			Property: "Receive Shadows", "bool", "N",1
+		}
+		MultiLayer: 0
+		MultiTake: 0
+		Shading: T
+		Culling: "CullingOff"
+		Vertices: -5060.33154296875,-107.474418640137,1002.24084472656,-4735.044921875,-107.474418640137,1002.24084472656,-5060.33154296875
+        ,317.879364013672,1002.24084472656,-4735.044921875,317.879364013672,1002.24084472656,-5060.33154296875,317.879364013672
+        ,566.652526855469,-4735.044921875,317.879364013672,566.652526855469,-5060.33154296875,-107.474418640137,566.652526855469
+        ,-4735.044921875,-107.474418640137,566.652526855469,-5060.33154296875,-44.4385681152344,1002.24084472656,-5060.33154296875
+        ,-44.4385681152344,566.652526855469,-4735.044921875,-44.4385681152344,566.652526855469,-4735.044921875,-44.4385681152344
+        ,1002.24084472656
+		PolygonVertexIndex: 0,1,11,-9,2,3,5,-5,9,10,7,-7,6,7,1,-1,1,7,10,-12,6,0,8,-10,9,8,2,-5,4,5,10,-10,11,10,5,-4,8,11,3,-3
+		Edges: 0,4,6,10,3,1,7,5,27,29,15,13,25,11,22,9,8,35,18,2
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: 0,0,0.999999940395355,0,0,0.999999940395355,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,0,-1,0,0,-1,0,0,-0.999999940395355
+             ,0,0,-0.999999940395355,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0
+             ,0,-1,0,0,-1,0,0,-1,0,0,0,0,-0.999999940395355,0,0,-0.999999940395355,0,0,-1,0,0,-1,1,0,0,1,0,0,1,0,0,1,0,0,0
+             ,0,1,0,0,1,0,0,0.999999940395355,0,0,0.999999940395355
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "map1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: 0.577648639678955,0.820227921009064,0.577648639678955,0.709889531135559,0.968351483345032,0.709889531135559,0.968351483345032
+             ,0.820227921009064,0.584921777248383,0.931704342365265,0.584921777248383,0.82136607170105,0.975624740123749,0.82136607170105
+             ,0.975624740123749,0.931704342365265,0.691594243049622,0.709889531135559,0.77399218082428,0.709889531135559,0.77399218082428
+             ,0.820227921009064,0.691594243049622,0.820227921009064,0.776127696037292,0.709889531135559,0.858525574207306
+             ,0.709889531135559,0.858525574207306,0.820227921009064,0.776127696037292,0.820227921009064,0.500774383544922
+             ,0.82136607170105,0.583172261714935,0.82136607170105,0.866129338741302,0.929111778736115,0.783731460571289,0.929111778736115
+             ,0.699584007263184,0.82136607170105,0.781981825828552,0.82136607170105,0.499024778604507,0.929111778736115,0.416626960039139
+             ,0.929111778736115,0.600889325141907,0.82136607170105,0.500774383544922,0.837333559989929,0.883846402168274,0.931704342365265
+             ,0.699584007263184,0.913144290447235,0.781981825828552,0.913144290447235,0.876573204994202,0.709889531135559
+             ,0.866129279136658,0.837333559989929,0.876573204994202,0.820227921009064,0.593616127967834,0.820227921009064
+             ,0.583172202110291,0.837333559989929,0.883846402168274,0.82136607170105,0.783731460571289,0.837333559989929,0.499024778604507
+             ,0.913144290447235,0.593616127967834,0.709889531135559,0.600889325141907,0.931704342365265,0.416626960039139
+             ,0.913144290447235
+			UVIndex: 16,17,33,25,8,9,10,11,39,36,22,23,12,13,14,15,0,1,37,32,4,5,24,38,26,34,6,7,20,21,28,27,31,29,2,3,35,30,18,19
+             
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: ""
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: 0
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		NodeAttributeName: "Geometry::lift2_ncl1_1"
+	}
+	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
+		Type: "UserData"
+		Version: 100
+		MetaData:  {
+			Version: 100
+			Title: ""
+			Subject: ""
+			Author: ""
+			Keywords: ""
+			Revision: ""
+			Comment: ""
+		}
+		Properties60:  {
+			Property: "DocumentUrl", "KString", "", "C:\Users\MingHui\Documents\NP Y2 Sem 1\IP\FBX\red_pillars.fbx"
+			Property: "SrcDocumentUrl", "KString", "", "C:\Users\MingHui\Documents\NP Y2 Sem 1\IP\FBX\red_pillars.fbx"
+			Property: "Original", "Compound", ""
+			Property: "Original|ApplicationVendor", "KString", "", "Autodesk"
+			Property: "Original|ApplicationName", "KString", "", "Maya"
+			Property: "Original|ApplicationVersion", "KString", "", "2025"
+			Property: "Original|DateTime_GMT", "DateTime", "", "30/07/2025 12:54:32.976"
+			Property: "Original|FileName", "KString", "", "C:\Users\MingHui\Documents\NP Y2 Sem 1\IP\FBX\red_pillars.fbx"
+			Property: "LastSaved", "Compound", ""
+			Property: "LastSaved|ApplicationVendor", "KString", "", "Autodesk"
+			Property: "LastSaved|ApplicationName", "KString", "", "Maya"
+			Property: "LastSaved|ApplicationVersion", "KString", "", "2025"
+			Property: "LastSaved|DateTime_GMT", "DateTime", "", "30/07/2025 12:54:32.976"
+			Property: "Original|ApplicationActiveProject", "KString", "", "C:\Users\MingHui\Documents\NP Y2 Sem 1\IP\FBX"
+			Property: "Original|ApplicationNativeFile", "KString", "", "C:\Users\MingHui\Documents\NP Y2 Sem 1\IP\antique_shop.ma"
+             
+		}
+	}
+	Material: "Material::HDB_MAT", "" {
+		Version: 102
+		ShadingModel: "unknown"
+		MultiLayer: 0
+		Properties60:  {
+			Property: "ShadingModel", "KString", "", "Unknown"
+			Property: "MultiLayer", "bool", "",0
+			Property: "Maya", "Compound", ""
+			Property: "Maya|TypeId", "int", "",1166017
+			Property: "Maya|TEX_global_diffuse_cube", "Vector3D", "",0,0,0
+			Property: "Maya|TEX_global_specular_cube", "Vector3D", "",0,0,0
+			Property: "Maya|TEX_brdf_lut", "Vector3D", "",0,0,0
+			Property: "Maya|use_normal_map", "float", "",1
+			Property: "Maya|uv_offset", "Vector2D", "",0,0
+			Property: "Maya|uv_scale", "Vector2D", "",1,1
+			Property: "Maya|TEX_normal_map", "Vector3D", "",0,0,0
+			Property: "Maya|use_color_map", "float", "",1
+			Property: "Maya|TEX_color_map", "Vector3D", "",0,0,0
+			Property: "Maya|base_color", "Vector3D", "",0.5,0.5,0.5
+			Property: "Maya|use_metallic_map", "float", "",1
+			Property: "Maya|TEX_metallic_map", "Vector3D", "",0,0,0
+			Property: "Maya|metallic", "float", "",0
+			Property: "Maya|use_roughness_map", "float", "",1
+			Property: "Maya|TEX_roughness_map", "Vector3D", "",0,0,0
+			Property: "Maya|roughness", "float", "",0.33
+			Property: "Maya|use_emissive_map", "float", "",0
+			Property: "Maya|TEX_emissive_map", "Vector3D", "",0,0,0
+			Property: "Maya|emissive", "Vector3D", "",0,0,0
+			Property: "Maya|emissive_intensity", "float", "",0
+			Property: "Maya|use_ao_map", "float", "",0
+			Property: "Maya|TEX_ao_map", "Vector3D", "",0,0,0
+		}
+	}
+	Video: "Video::file2", "Clip" {
+		Type: "Clip"
+		Properties60:  {
+			Property: "Path", "KString", "", "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/midday/specular_cube.dds"
+             
+			Property: "RelPath", "KString", "", "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\midday\specular_cube.dds"
+             
+			Property: "Color", "ColorRGB", "",0.8,0.8,0.8
+			Property: "ClipIn", "KTime", "",0
+			Property: "ClipOut", "KTime", "",0
+			Property: "Offset", "KTime", "",0
+			Property: "PlaySpeed", "double", "",0
+			Property: "FreeRunning", "bool", "",0
+			Property: "Loop", "bool", "",0
+			Property: "Mute", "bool", "",0
+			Property: "AccessMode", "enum", "",0
+			Property: "ImageSequence", "bool", "",0
+			Property: "ImageSequenceOffset", "int", "",0
+			Property: "FrameRate", "double", "",0
+			Property: "LastFrame", "int", "",0
+			Property: "Width", "int", "",0
+			Property: "Height", "int", "",0
+			Property: "StartFrame", "int", "",0
+			Property: "StopFrame", "int", "",0
+			Property: "InterlaceMode", "enum", "",0
+		}
+		UseMipMap: 0
+		Filename: "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/midday/specular_cube.dds"
+		RelativeFilename: "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\midday\specular_cube.dds"
+	}
+	Video: "Video::file1", "Clip" {
+		Type: "Clip"
+		Properties60:  {
+			Property: "Path", "KString", "", "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/midday/diffuse_cube.dds"
+             
+			Property: "RelPath", "KString", "", "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\midday\diffuse_cube.dds"
+             
+			Property: "Color", "ColorRGB", "",0.8,0.8,0.8
+			Property: "ClipIn", "KTime", "",0
+			Property: "ClipOut", "KTime", "",0
+			Property: "Offset", "KTime", "",0
+			Property: "PlaySpeed", "double", "",0
+			Property: "FreeRunning", "bool", "",0
+			Property: "Loop", "bool", "",0
+			Property: "Mute", "bool", "",0
+			Property: "AccessMode", "enum", "",0
+			Property: "ImageSequence", "bool", "",0
+			Property: "ImageSequenceOffset", "int", "",0
+			Property: "FrameRate", "double", "",0
+			Property: "LastFrame", "int", "",0
+			Property: "Width", "int", "",0
+			Property: "Height", "int", "",0
+			Property: "StartFrame", "int", "",0
+			Property: "StopFrame", "int", "",0
+			Property: "InterlaceMode", "enum", "",0
+		}
+		UseMipMap: 0
+		Filename: "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/midday/diffuse_cube.dds"
+		RelativeFilename: "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\midday\diffuse_cube.dds"
+	}
+	Video: "Video::file7", "Clip" {
+		Type: "Clip"
+		Properties60:  {
+			Property: "Path", "KString", "", "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Roughness.1001.png"
+			Property: "RelPath", "KString", "", "..\HDB_TextureAtlas\HDB_Roughness.1001.png"
+			Property: "Color", "ColorRGB", "",0.8,0.8,0.8
+			Property: "ClipIn", "KTime", "",0
+			Property: "ClipOut", "KTime", "",0
+			Property: "Offset", "KTime", "",0
+			Property: "PlaySpeed", "double", "",0
+			Property: "FreeRunning", "bool", "",0
+			Property: "Loop", "bool", "",0
+			Property: "Mute", "bool", "",0
+			Property: "AccessMode", "enum", "",0
+			Property: "ImageSequence", "bool", "",0
+			Property: "ImageSequenceOffset", "int", "",0
+			Property: "FrameRate", "double", "",0
+			Property: "LastFrame", "int", "",0
+			Property: "Width", "int", "",0
+			Property: "Height", "int", "",0
+			Property: "StartFrame", "int", "",0
+			Property: "StopFrame", "int", "",0
+			Property: "InterlaceMode", "enum", "",0
+		}
+		UseMipMap: 0
+		Filename: "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Roughness.1001.png"
+		RelativeFilename: "..\HDB_TextureAtlas\HDB_Roughness.1001.png"
+	}
+	Video: "Video::file3", "Clip" {
+		Type: "Clip"
+		Properties60:  {
+			Property: "Path", "KString", "", "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/ibl_brdf_lut.png"
+			Property: "RelPath", "KString", "", "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\ibl_brdf_lut.png"
+             
+			Property: "Color", "ColorRGB", "",0.8,0.8,0.8
+			Property: "ClipIn", "KTime", "",0
+			Property: "ClipOut", "KTime", "",0
+			Property: "Offset", "KTime", "",0
+			Property: "PlaySpeed", "double", "",0
+			Property: "FreeRunning", "bool", "",0
+			Property: "Loop", "bool", "",0
+			Property: "Mute", "bool", "",0
+			Property: "AccessMode", "enum", "",0
+			Property: "ImageSequence", "bool", "",0
+			Property: "ImageSequenceOffset", "int", "",0
+			Property: "FrameRate", "double", "",0
+			Property: "LastFrame", "int", "",0
+			Property: "Width", "int", "",0
+			Property: "Height", "int", "",0
+			Property: "StartFrame", "int", "",0
+			Property: "StopFrame", "int", "",0
+			Property: "InterlaceMode", "enum", "",0
+		}
+		UseMipMap: 0
+		Filename: "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/ibl_brdf_lut.png"
+		RelativeFilename: "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\ibl_brdf_lut.png"
+	}
+	Video: "Video::file4", "Clip" {
+		Type: "Clip"
+		Properties60:  {
+			Property: "Path", "KString", "", "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_AlbedoTransparency.1001.png"
+             
+			Property: "RelPath", "KString", "", "..\HDB_TextureAtlas\HDB_AlbedoTransparency.1001.png"
+			Property: "Color", "ColorRGB", "",0.8,0.8,0.8
+			Property: "ClipIn", "KTime", "",0
+			Property: "ClipOut", "KTime", "",0
+			Property: "Offset", "KTime", "",0
+			Property: "PlaySpeed", "double", "",0
+			Property: "FreeRunning", "bool", "",0
+			Property: "Loop", "bool", "",0
+			Property: "Mute", "bool", "",0
+			Property: "AccessMode", "enum", "",0
+			Property: "ImageSequence", "bool", "",0
+			Property: "ImageSequenceOffset", "int", "",0
+			Property: "FrameRate", "double", "",0
+			Property: "LastFrame", "int", "",0
+			Property: "Width", "int", "",0
+			Property: "Height", "int", "",0
+			Property: "StartFrame", "int", "",0
+			Property: "StopFrame", "int", "",0
+			Property: "InterlaceMode", "enum", "",0
+		}
+		UseMipMap: 0
+		Filename: "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_AlbedoTransparency.1001.png"
+		RelativeFilename: "..\HDB_TextureAtlas\HDB_AlbedoTransparency.1001.png"
+	}
+	Video: "Video::file5", "Clip" {
+		Type: "Clip"
+		Properties60:  {
+			Property: "Path", "KString", "", "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Normal.1001.png"
+			Property: "RelPath", "KString", "", "..\HDB_TextureAtlas\HDB_Normal.1001.png"
+			Property: "Color", "ColorRGB", "",0.8,0.8,0.8
+			Property: "ClipIn", "KTime", "",0
+			Property: "ClipOut", "KTime", "",0
+			Property: "Offset", "KTime", "",0
+			Property: "PlaySpeed", "double", "",0
+			Property: "FreeRunning", "bool", "",0
+			Property: "Loop", "bool", "",0
+			Property: "Mute", "bool", "",0
+			Property: "AccessMode", "enum", "",0
+			Property: "ImageSequence", "bool", "",0
+			Property: "ImageSequenceOffset", "int", "",0
+			Property: "FrameRate", "double", "",0
+			Property: "LastFrame", "int", "",0
+			Property: "Width", "int", "",0
+			Property: "Height", "int", "",0
+			Property: "StartFrame", "int", "",0
+			Property: "StopFrame", "int", "",0
+			Property: "InterlaceMode", "enum", "",0
+		}
+		UseMipMap: 0
+		Filename: "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Normal.1001.png"
+		RelativeFilename: "..\HDB_TextureAtlas\HDB_Normal.1001.png"
+	}
+	Video: "Video::file6", "Clip" {
+		Type: "Clip"
+		Properties60:  {
+			Property: "Path", "KString", "", "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Metal.1001.png"
+			Property: "RelPath", "KString", "", "..\HDB_TextureAtlas\HDB_Metal.1001.png"
+			Property: "Color", "ColorRGB", "",0.8,0.8,0.8
+			Property: "ClipIn", "KTime", "",0
+			Property: "ClipOut", "KTime", "",0
+			Property: "Offset", "KTime", "",0
+			Property: "PlaySpeed", "double", "",0
+			Property: "FreeRunning", "bool", "",0
+			Property: "Loop", "bool", "",0
+			Property: "Mute", "bool", "",0
+			Property: "AccessMode", "enum", "",0
+			Property: "ImageSequence", "bool", "",0
+			Property: "ImageSequenceOffset", "int", "",0
+			Property: "FrameRate", "double", "",0
+			Property: "LastFrame", "int", "",0
+			Property: "Width", "int", "",0
+			Property: "Height", "int", "",0
+			Property: "StartFrame", "int", "",0
+			Property: "StopFrame", "int", "",0
+			Property: "InterlaceMode", "enum", "",0
+		}
+		UseMipMap: 0
+		Filename: "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Metal.1001.png"
+		RelativeFilename: "..\HDB_TextureAtlas\HDB_Metal.1001.png"
+	}
+	Texture: "Texture::file2", "" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::file2"
+		Properties60:  {
+			Property: "TextureTypeUse", "enum", "",0
+			Property: "Texture alpha", "Number", "A",1
+			Property: "CurrentMappingType", "enum", "",0
+			Property: "WrapModeU", "enum", "",0
+			Property: "WrapModeV", "enum", "",0
+			Property: "UVSwap", "bool", "",0
+			Property: "PremultiplyAlpha", "bool", "",1
+			Property: "Translation", "Vector", "A",0,0,0
+			Property: "Rotation", "Vector", "A",0,0,0
+			Property: "Scaling", "Vector", "A",1,1,1
+			Property: "TextureRotationPivot", "Vector3D", "",0,0,0
+			Property: "TextureScalingPivot", "Vector3D", "",0,0,0
+			Property: "CurrentTextureBlendMode", "enum", "",1
+			Property: "UVSet", "KString", "", "default"
+			Property: "UseMaterial", "bool", "",1
+			Property: "UseMipMap", "bool", "",0
+		}
+		Media: "Video::file2"
+		FileName: "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/midday/specular_cube.dds"
+		RelativeFilename: "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\midday\specular_cube.dds"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Texture: "Texture::file1", "" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::file1"
+		Properties60:  {
+			Property: "TextureTypeUse", "enum", "",0
+			Property: "Texture alpha", "Number", "A",1
+			Property: "CurrentMappingType", "enum", "",0
+			Property: "WrapModeU", "enum", "",0
+			Property: "WrapModeV", "enum", "",0
+			Property: "UVSwap", "bool", "",0
+			Property: "PremultiplyAlpha", "bool", "",1
+			Property: "Translation", "Vector", "A",0,0,0
+			Property: "Rotation", "Vector", "A",0,0,0
+			Property: "Scaling", "Vector", "A",1,1,1
+			Property: "TextureRotationPivot", "Vector3D", "",0,0,0
+			Property: "TextureScalingPivot", "Vector3D", "",0,0,0
+			Property: "CurrentTextureBlendMode", "enum", "",1
+			Property: "UVSet", "KString", "", "default"
+			Property: "UseMaterial", "bool", "",1
+			Property: "UseMipMap", "bool", "",0
+		}
+		Media: "Video::file1"
+		FileName: "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/midday/diffuse_cube.dds"
+		RelativeFilename: "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\midday\diffuse_cube.dds"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Texture: "Texture::file7", "" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::file7"
+		Properties60:  {
+			Property: "TextureTypeUse", "enum", "",0
+			Property: "Texture alpha", "Number", "A",1
+			Property: "CurrentMappingType", "enum", "",0
+			Property: "WrapModeU", "enum", "",0
+			Property: "WrapModeV", "enum", "",0
+			Property: "UVSwap", "bool", "",0
+			Property: "PremultiplyAlpha", "bool", "",1
+			Property: "Translation", "Vector", "A",0,0,0
+			Property: "Rotation", "Vector", "A",0,0,0
+			Property: "Scaling", "Vector", "A",1,1,1
+			Property: "TextureRotationPivot", "Vector3D", "",0,0,0
+			Property: "TextureScalingPivot", "Vector3D", "",0,0,0
+			Property: "CurrentTextureBlendMode", "enum", "",1
+			Property: "UVSet", "KString", "", "default"
+			Property: "UseMaterial", "bool", "",1
+			Property: "UseMipMap", "bool", "",0
+		}
+		Media: "Video::file7"
+		FileName: "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Roughness.1001.png"
+		RelativeFilename: "..\HDB_TextureAtlas\HDB_Roughness.1001.png"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Texture: "Texture::file3", "" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::file3"
+		Properties60:  {
+			Property: "TextureTypeUse", "enum", "",0
+			Property: "Texture alpha", "Number", "A",1
+			Property: "CurrentMappingType", "enum", "",0
+			Property: "WrapModeU", "enum", "",0
+			Property: "WrapModeV", "enum", "",0
+			Property: "UVSwap", "bool", "",0
+			Property: "PremultiplyAlpha", "bool", "",1
+			Property: "Translation", "Vector", "A",0,0,0
+			Property: "Rotation", "Vector", "A",0,0,0
+			Property: "Scaling", "Vector", "A",1,1,1
+			Property: "TextureRotationPivot", "Vector3D", "",0,0,0
+			Property: "TextureScalingPivot", "Vector3D", "",0,0,0
+			Property: "CurrentTextureBlendMode", "enum", "",1
+			Property: "UVSet", "KString", "", "default"
+			Property: "UseMaterial", "bool", "",1
+			Property: "UseMipMap", "bool", "",0
+		}
+		Media: "Video::file3"
+		FileName: "C:/Program Files/Autodesk/Maya2025/presets/ShaderFX/Images/PBS/ibl_brdf_lut.png"
+		RelativeFilename: "..\..\..\..\..\..\Program Files\Autodesk\Maya2025\presets\ShaderFX\Images\PBS\ibl_brdf_lut.png"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Texture: "Texture::file4", "" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::file4"
+		Properties60:  {
+			Property: "TextureTypeUse", "enum", "",0
+			Property: "Texture alpha", "Number", "A",1
+			Property: "CurrentMappingType", "enum", "",0
+			Property: "WrapModeU", "enum", "",0
+			Property: "WrapModeV", "enum", "",0
+			Property: "UVSwap", "bool", "",0
+			Property: "PremultiplyAlpha", "bool", "",1
+			Property: "Translation", "Vector", "A",0,0,0
+			Property: "Rotation", "Vector", "A",0,0,0
+			Property: "Scaling", "Vector", "A",1,1,1
+			Property: "TextureRotationPivot", "Vector3D", "",0,0,0
+			Property: "TextureScalingPivot", "Vector3D", "",0,0,0
+			Property: "CurrentTextureBlendMode", "enum", "",1
+			Property: "UVSet", "KString", "", "default"
+			Property: "UseMaterial", "bool", "",1
+			Property: "UseMipMap", "bool", "",0
+		}
+		Media: "Video::file4"
+		FileName: "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_AlbedoTransparency.1001.png"
+		RelativeFilename: "..\HDB_TextureAtlas\HDB_AlbedoTransparency.1001.png"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Texture: "Texture::file5", "" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::file5"
+		Properties60:  {
+			Property: "TextureTypeUse", "enum", "",0
+			Property: "Texture alpha", "Number", "A",1
+			Property: "CurrentMappingType", "enum", "",0
+			Property: "WrapModeU", "enum", "",0
+			Property: "WrapModeV", "enum", "",0
+			Property: "UVSwap", "bool", "",0
+			Property: "PremultiplyAlpha", "bool", "",1
+			Property: "Translation", "Vector", "A",0,0,0
+			Property: "Rotation", "Vector", "A",0,0,0
+			Property: "Scaling", "Vector", "A",1,1,1
+			Property: "TextureRotationPivot", "Vector3D", "",0,0,0
+			Property: "TextureScalingPivot", "Vector3D", "",0,0,0
+			Property: "CurrentTextureBlendMode", "enum", "",1
+			Property: "UVSet", "KString", "", "default"
+			Property: "UseMaterial", "bool", "",1
+			Property: "UseMipMap", "bool", "",0
+		}
+		Media: "Video::file5"
+		FileName: "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Normal.1001.png"
+		RelativeFilename: "..\HDB_TextureAtlas\HDB_Normal.1001.png"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Texture: "Texture::file6", "" {
+		Type: "TextureVideoClip"
+		Version: 202
+		TextureName: "Texture::file6"
+		Properties60:  {
+			Property: "TextureTypeUse", "enum", "",0
+			Property: "Texture alpha", "Number", "A",1
+			Property: "CurrentMappingType", "enum", "",0
+			Property: "WrapModeU", "enum", "",0
+			Property: "WrapModeV", "enum", "",0
+			Property: "UVSwap", "bool", "",0
+			Property: "PremultiplyAlpha", "bool", "",1
+			Property: "Translation", "Vector", "A",0,0,0
+			Property: "Rotation", "Vector", "A",0,0,0
+			Property: "Scaling", "Vector", "A",1,1,1
+			Property: "TextureRotationPivot", "Vector3D", "",0,0,0
+			Property: "TextureScalingPivot", "Vector3D", "",0,0,0
+			Property: "CurrentTextureBlendMode", "enum", "",1
+			Property: "UVSet", "KString", "", "default"
+			Property: "UseMaterial", "bool", "",1
+			Property: "UseMipMap", "bool", "",0
+		}
+		Media: "Video::file6"
+		FileName: "C:/Users/MingHui/Documents/NP Y2 Sem 1/IP/HDB_TextureAtlas/HDB_Metal.1001.png"
+		RelativeFilename: "..\HDB_TextureAtlas\HDB_Metal.1001.png"
+		ModelUVTranslation: 0,0
+		ModelUVScaling: 1,1
+		Texture_Alpha_Source: "None"
+		Cropping: 0,0,0,0
+	}
+	Implementation: "Implementation::HDB_MAT_Implementation", "" {
+		Version: 100
+		Properties60:  {
+			Property: "ShaderLanguage", "KString", "", "SFX"
+			Property: "ShaderLanguageVersion", "KString", "", "28"
+			Property: "RenderAPI", "KString", "", "SFX_PBS_SHADER"
+			Property: "RenderAPIVersion", "KString", "", ""
+			Property: "RootBindingName", "KString", "", "root"
+			Property: "Constants", "Compound", ""
+			Property: "ShaderGraph", "Blob", "",32758 {
+				BinaryData: "U0ZCX1dJTiA9IHsgcGFyZW50X21hdGVyaWFsID0gImNvcmUvc3RpbmdyYXlfcmVuZGVyZXIvc2hhZGVyX2ltcG9ydC9zdGFuZGFyZCIgLyoKVmVyc2lvbj0yOApHcm91cFZlcnNpb249LTEuMDAwMDAwCkFkdmFuY2VkPTAKSGVscElEPTAKUGFyZW50TWF0ZXJpYWw9cHJlc2V0cy9TdGFuZGFyZApOdW1iZXJPZk5vZGVzPTMyCiNOVD0yMDE4OSAwCglQQz0zCgluYW1lPTEgdj01MDAwIE1ldGFsbGljX01hcF9Td2l0Y2gKCXBvc3g9MSB2PTIwMDMgMTAyMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgMjQwLjAwMDAwMAoJZ3JvdXA9LTEKCUlTQz00CgkJU1ZUPTUwMjIgMjAwMyAxIDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDIgMSAwIAoJCVNEVj0xLjAwMDAwMAoJCVNWVD01MDIyIDIwMDMgMyAwIDEgCgkJU0NTPXIKCQlTVlQ9NTAyMiAyMDAzIDQgMCAwIAoJT1NDPTEKCQlTVlQ9NTAyMiAyMDAzIDUgCgkJQ0M9MQoJCQlDPTAgMCA1IDUgNSA2IDAKCQkJQ1BDPTAKI05UPTIwMTg5IDAKCVBDPTMKCW5hbWU9MSB2PTUwMDAgRW1pc3NpdmVfTWFwX1N3aXRjaAoJcG9zeD0xIHY9MjAwMyA3NDAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDc4MC4wMDAwMDAKCWdyb3VwPS0xCglJU0M9NAoJCVNWVD01MDIyIDIwMDMgMSAwIDAgCgkJU1ZUPTUwMjIgMjAwMyAyIDEgMCAKCQlTRFY9MS4wMDAwMDAKCQlTVlQ9NTAyMiAzMDAyIDMgMCAxIAoJCVNDUz1yZ2IKCQlTVlQ9NTAyMiAzMDAyIDQgMCAwIAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAyIDUgCgkJQ0M9MQoJCQlDPTEg",
+ "MCA1IDEwIDAgMSAwCgkJCUNQQz0wCiNOVD0yMDE4OSAwCglQQz0zCgluYW1lPTEgdj01MDAwIENvbG9yX01hcF9Td2l0Y2gKCXBvc3g9MSB2PTIwMDMgMTAyMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgLTM0MC4wMDAwMDAKCWdyb3VwPS0xCglJU0M9NAoJCVNWVD01MDIyIDIwMDMgMSAwIDAgCgkJU1ZUPTUwMjIgMjAwMyAyIDEgMCAKCQlTRFY9MS4wMDAwMDAKCQlTVlQ9NTAyMiAzMDAyIDMgMCAxIAoJCVNDUz1yZ2IKCQlTVlQ9NTAyMiAzMDAyIDQgMCAwIAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAyIDUgCgkJQ0M9MQoJCQlDPTIgMCA1IDUgMSAyIDAKCQkJQ1BDPTAKI05UPTIwMTg5IDAKCVBDPTMKCW5hbWU9MSB2PTUwMDAgTm9ybWFsX01hcF9Td2l0Y2gKCXBvc3g9MSB2PTIwMDMgMTAyMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgLTYwLjAwMDAwMAoJZ3JvdXA9LTEKCUlTQz00CgkJU1ZUPTUwMjIgMjAwMyAxIDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDIgMSAwIAoJCVNEVj0xLjAwMDAwMAoJCVNWVD01MDIyIDMwMDIgMyAwIDAgCgkJU1ZUPTUwMjIgMzAwMiA0IDAgMCAKCU9TQz0xCgkJU1ZUPTUwMjIgMzAwMiA1IAoJCUNDPTEKCQkJQz0zIDAgNSA1IDQgNSAwCgkJCUNQQz0wCiNOVD0yMDE4OSAwCglQQz0zCgluYW1lPTEgdj01MDAwIFJvdWdobmVzc19NYXBfU3dpdGNoCglwb3N4PTEgdj0yMDAzIDEwMjAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDU0MC4wMDAwMDAKCWdyb3VwPS0xCglJU0M9NAoJCVNWVD01MDIyIDIwMDMgMSAwIDAgCgkJU1ZU",
+ "PTUwMjIgMjAwMyAyIDEgMCAKCQlTRFY9MS4wMDAwMDAKCQlTVlQ9NTAyMiAyMDAzIDMgMCAxIAoJCVNDUz1yCgkJU1ZUPTUwMjIgMjAwMyA0IDAgMCAKCU9TQz0xCgkJU1ZUPTUwMjIgMjAwMyA1IAoJCUNDPTEKCQkJQz00IDAgNSA1IDYgNyAwCgkJCUNQQz0wCiNOVD0yMDE3NiAwCglQQz01Cglwb3N4PTEgdj0yMDAzIDEzNjAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDI2MC4wMDAwMDAKCXNoYWRlcnJlc291cmNlPTEgdj01MDAwIGNvcmUvc3RpbmdyYXlfcmVuZGVyZXIvc2hhZGVyX2ltcG9ydC9zdGFuZGFyZAoJcHJlc2V0X3BhdGg9MSB2PTUwMDAgcHJlc2V0cy9TdGFuZGFyZAoJbm9ybWFsc3BhY2U9MiBlPTAgdj01MDEyIDEKCWdyb3VwPS0xCglJU0M9MTMKCQlTVlQ9NTAyMiAzMDAyIDEgMCAwIAoJCVNWVD01MDIyIDMwMDIgMiAwIDAgCgkJU1ZUPTUwMjIgMjAwMyAzIDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDQgMCAwIAoJCVNWVD01MDIyIDMwMDIgNSAwIDAgCgkJU1ZUPTUwMjIgMjAwMyA2IDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDcgMCAwIAoJCVNWVD01MDIyIDMwMDIgOCAwIDAgCgkJU1ZUPTUwMjIgMjAwMyA5IDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDEwIDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDExIDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDE0IDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDE1IDAgMCAKCU9TQz0wCiNOVD0yMDE4OSAwCglQQz0zCgluYW1lPTEgdj01MDAwIEFvX01hcF9Td3RpY2gKCXBvc3g9MSB2PTIwMDMgMTAyMC4wMDAwMDAKCXBv",
+ "c3k9MSB2PTIwMDMgMTEwMC4wMDAwMDAKCWdyb3VwPS0xCglJU0M9NAoJCVNWVD01MDIyIDIwMDMgMSAwIDAgCgkJU1ZUPTUwMjIgMjAwMyAyIDEgMCAKCQlTRFY9MS4wMDAwMDAKCQlTVlQ9NTAyMiAyMDAzIDMgMCAxIAoJCVNDUz1yCgkJU1ZUPTUwMjIgMjAwMyA0IDEgMCAKCQlTRFY9MS4wMDAwMDAKCU9TQz0xCgkJU1ZUPTUwMjIgMjAwMyA1IAoJCUNDPTEKCQkJQz02IDAgNSA1IDggOSAwCgkJCUNQQz0wCiNOVD0yMDE3OCAwCglQQz0yCglwb3N4PTEgdj0yMDAzIC0yNjAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDQyMC4wMDAwMDAKCWdyb3VwPS0xCglJU0M9MAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAxIDEgCgkJQ0M9MQoJCQlDPTcgMCAxIDI4IDEgMiAwCgkJCUNQQz0wCiNOVD0yMDE3NyAwCglQQz02CgluYW1lPTEgdj01MDAwIHJvdWdobmVzc19tYXAKCXBvc3g9MSB2PTIwMDMgNzAwLjAwMDAwMAoJcG9zeT0xIHY9MjAwMyA1NDAuMDAwMDAwCgl0ZXh0dXJlcGF0aD0yIGU9MSB2PTUwMDAgQzovVXNlcnMvTWluZ0h1aS9Eb2N1bWVudHMvTlAgWTIgU2VtIDEvSVAvSERCX1RleHR1cmVBdGxhcy9IREJfUm91Z2huZXNzLjEwMDEucG5nCgllbmNvZGluZz0yIGU9MCB2PTUwMTIgMAoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgNAoJZ3JvdXA9LTEKCUlTQz0yCgkJU1ZUPTUwMjIgMzAwMSAxIDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDIgMCAwIAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAzIDMgCgkJQ0M9MQoJCQlDPTggMCAzIDQgMiAzIDAKCQkJQ1BDPTAK",
+ "I05UPTIwMTc3IDAKCVBDPTQKCW5hbWU9MSB2PTUwMDAgZW1pc3NpdmVfbWFwCglwb3N4PTEgdj0yMDAzIDQyMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgNzgwLjAwMDAwMAoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgNQoJZ3JvdXA9LTEKCUlTQz0yCgkJU1ZUPTUwMjIgMzAwMSAxIDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDIgMCAwIAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAzIDMgCgkJQ0M9MQoJCQlDPTkgMCAzIDEgMiAzIDAKCQkJQ1BDPTAKI05UPTIwMTg2IDAKCVBDPTIKCXBvc3g9MSB2PTIwMDMgMTAyMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgODQwLjAwMDAwMAoJZ3JvdXA9LTEKCUlTQz0yCgkJU1ZUPTUwMjIgMzAwMiAxIDAgMCAKCQlTVlQ9NTAyMiAyMDAzIDIgMCAwIAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAyIDMgCgkJQ0M9MQoJCQlDPTEwIDAgMyA1IDcgOCAwCgkJCUNQQz0wCiNOVD0yMDE4NSAwCglQQz03CgluYW1lPTEgdj01MDAwIHVzZV9jb2xvcl9tYXAKCXBvc3g9MSB2PTIwMDMgNzAwLjAwMDAwMAoJcG9zeT0xIHY9MjAwMyAtNDAwLjAwMDAwMAoJdHlwZT0yIGU9MCB2PTUwMTIgMAoJZGVmYXVsdHNjYWxhcj0yIGU9MCB2PTIwMDMgMS4wMDAwMDAKCXVpdHlwZT0yIGU9MCB2PTUwMTIgMQoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgMTAKCWdyb3VwPS0xCglJU0M9MAoJT1NDPTEKCQlTVlQ9NTAyMiAyMDAzIDEgCgkJQ0M9MQoJCQlDPTExIDAgMSAyIDAgMSAwCgkJCUNQQz0wCiNOVD0yMDE3NyAwCglQQz01CgluYW1lPTEgdj01MDAwIGNv",
+ "bG9yX21hcAoJcG9zeD0xIHY9MjAwMyA3MDAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIC0zNDAuMDAwMDAwCgl0ZXh0dXJlcGF0aD0yIGU9MSB2PTUwMDAgQzovVXNlcnMvTWluZ0h1aS9Eb2N1bWVudHMvTlAgWTIgU2VtIDEvSVAvSERCX1RleHR1cmVBdGxhcy9IREJfQWxiZWRvVHJhbnNwYXJlbmN5LjEwMDEucG5nCgl1aW9yZGVyPTIgZT0wIHY9MjAwMiAxCglncm91cD0tMQoJSVNDPTIKCQlTVlQ9NTAyMiAzMDAxIDEgMCAwIAoJCVNWVD01MDIyIDIwMDMgMiAwIDAgCglPU0M9MQoJCVNWVD01MDIyIDMwMDMgMyAKCQlDQz0xCgkJCUM9MTIgMCAzIDIgMiAzIDAKCQkJQ1BDPTAKI05UPTIwMTg1IDAKCVBDPTcKCW5hbWU9MSB2PTUwMDAgYmFzZV9jb2xvcgoJcG9zeD0xIHY9MjAwMyA3MDAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIC0yNDAuMDAwMDAwCgl0eXBlPTIgZT0wIHY9NTAxMiAyCglkZWZhdWx0dmVjdGhyZWU9MiBlPTAgdj0zMDAyIDAuNTAwMDAwLDAuNTAwMDAwLDAuNTAwMDAwCglkZWZhdWx0dmVjdG9yPTIgZT0wIHY9MzAwMyAwLjUwMDAwMCwwLjUwMDAwMCwwLjUwMDAwMCwwLjAwMDAwMAoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgMjAKCWdyb3VwPS0xCglJU0M9MAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAyIDEgCgkJQ0M9MQoJCQlDPTEzIDAgMSAyIDMgNCAwCgkJCUNQQz0wCiNOVD0yMDE4NSAwCglQQz03CgluYW1lPTEgdj01MDAwIHVzZV9ub3JtYWxfbWFwCglwb3N4PTEgdj0yMDAzIDcwMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgLTEy",
+ "MC4wMDAwMDAKCXR5cGU9MiBlPTAgdj01MDEyIDAKCWRlZmF1bHRzY2FsYXI9MiBlPTAgdj0yMDAzIDEuMDAwMDAwCgl1aXR5cGU9MiBlPTAgdj01MDEyIDEKCXVpb3JkZXI9MiBlPTAgdj0yMDAyIDExCglncm91cD0tMQoJSVNDPTAKCU9TQz0xCgkJU1ZUPTUwMjIgMjAwMyAxIAoJCUNDPTEKCQkJQz0xNCAwIDEgMyAwIDEgMAoJCQlDUEM9MAojTlQ9MjAxOTQgMAoJUEM9MgoJcG9zeD0xIHY9MjAwMyA2ODAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDYwLjAwMDAwMAoJZ3JvdXA9LTEKCUlTQz0wCglPU0M9MQoJCVNWVD01MDIyIDMwMDIgMSAKCQlDQz0xCgkJCUM9MTUgMCAxIDMgMyA0IDAKCQkJQ1BDPTAKI05UPTIwMTk1IDAKCVBDPTIKCXBvc3g9MSB2PTIwMDMgNzQwLjAwMDAwMAoJcG9zeT0xIHY9MjAwMyAtNjAuMDAwMDAwCglncm91cD0tMQoJSVNDPTEKCQlTVlQ9NTAyMiAzMDAyIDEgMCAxIAoJCVNDUz1yZ2IKCU9TQz0xCgkJU1ZUPTUwMjIgMzAwMiAyIAoJCUNDPTEKCQkJQz0xNiAwIDIgMyAyIDMgMAoJCQlDUEM9MAojTlQ9MjAxNzcgMAoJUEM9NgoJbmFtZT0xIHY9NTAwMCBub3JtYWxfbWFwCglwb3N4PTEgdj0yMDAzIDQ0MC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgLTYwLjAwMDAwMAoJdGV4dHVyZXBhdGg9MiBlPTEgdj01MDAwIEM6L1VzZXJzL01pbmdIdWkvRG9jdW1lbnRzL05QIFkyIFNlbSAxL0lQL0hEQl9UZXh0dXJlQXRsYXMvSERCX05vcm1hbC4xMDAxLnBuZwoJZW5jb2Rpbmc9MiBlPTAgdj01MDEyIDIKCXVpb3JkZXI9MiBl",
+ "PTAgdj0yMDAyIDIKCWdyb3VwPS0xCglJU0M9MgoJCVNWVD01MDIyIDMwMDEgMSAwIDAgCgkJU1ZUPTUwMjIgMjAwMyAyIDAgMCAKCU9TQz0xCgkJU1ZUPTUwMjIgMzAwMyAzIAoJCUNDPTEKCQkJQz0xNyAwIDMgMTYgMCAxIDAKCQkJQ1BDPTAKI05UPTIwMTc3IDAKCVBDPTcKCW5hbWU9MSB2PTUwMDAgbWV0YWxsaWNfbWFwCglwb3N4PTEgdj0yMDAzIDcwMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgMjQwLjAwMDAwMAoJdGV4dHVyZXBhdGg9MiBlPTEgdj01MDAwIEM6L1VzZXJzL01pbmdIdWkvRG9jdW1lbnRzL05QIFkyIFNlbSAxL0lQL0hEQl9UZXh0dXJlQXRsYXMvSERCX01ldGFsLjEwMDEucG5nCgllbmNvZGluZz0yIGU9MCB2PTUwMTIgMAoJZmlsdGVyPTIgZT0wIHY9NTAxMiAxCgl1aW9yZGVyPTIgZT0wIHY9MjAwMiAzCglncm91cD0tMQoJSVNDPTIKCQlTVlQ9NTAyMiAzMDAxIDEgMCAwIAoJCVNWVD01MDIyIDIwMDMgMiAwIDAgCglPU0M9MQoJCVNWVD01MDIyIDMwMDMgMyAKCQlDQz0xCgkJCUM9MTggMCAzIDAgMiAzIDAKCQkJQ1BDPTAKI05UPTIwMTg1IDAKCVBDPTcKCW5hbWU9MSB2PTUwMDAgdXNlX21ldGFsbGljX21hcAoJcG9zeD0xIHY9MjAwMyA3MDAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDE4MC4wMDAwMDAKCXR5cGU9MiBlPTAgdj01MDEyIDAKCWRlZmF1bHRzY2FsYXI9MiBlPTAgdj0yMDAzIDEuMDAwMDAwCgl1aXR5cGU9MiBlPTAgdj01MDEyIDEKCXVpb3JkZXI9MiBlPTAgdj0yMDAyIDEyCglncm91cD0tMQoJSVNDPTAK",
+ "CU9TQz0xCgkJU1ZUPTUwMjIgMjAwMyAxIAoJCUNDPTEKCQkJQz0xOSAwIDEgMCAwIDEgMAoJCQlDUEM9MAojTlQ9MjAxODUgMAoJUEM9NQoJbmFtZT0xIHY9NTAwMCBtZXRhbGxpYwoJcG9zeD0xIHY9MjAwMyA3MDAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDM0MC4wMDAwMDAKCXR5cGU9MiBlPTAgdj01MDEyIDAKCXVpb3JkZXI9MiBlPTAgdj0yMDAyIDIxCglncm91cD0tMQoJSVNDPTAKCU9TQz0xCgkJU1ZUPTUwMjIgMjAwMyAxIAoJCUNDPTEKCQkJQz0yMCAwIDEgMCAzIDQgMAoJCQlDUEM9MAojTlQ9MjAxODUgMAoJUEM9NwoJbmFtZT0xIHY9NTAwMCB1c2Vfcm91Z2huZXNzX21hcAoJcG9zeD0xIHY9MjAwMyA3MDAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDQ4MC4wMDAwMDAKCXR5cGU9MiBlPTAgdj01MDEyIDAKCWRlZmF1bHRzY2FsYXI9MiBlPTAgdj0yMDAzIDEuMDAwMDAwCgl1aXR5cGU9MiBlPTAgdj01MDEyIDEKCXVpb3JkZXI9MiBlPTAgdj0yMDAyIDEzCglncm91cD0tMQoJSVNDPTAKCU9TQz0xCgkJU1ZUPTUwMjIgMjAwMyAxIAoJCUNDPTEKCQkJQz0yMSAwIDEgNCAwIDEgMAoJCQlDUEM9MAojTlQ9MjAxODUgMAoJUEM9NgoJbmFtZT0xIHY9NTAwMCByb3VnaG5lc3MKCXBvc3g9MSB2PTIwMDMgNzAwLjAwMDAwMAoJcG9zeT0xIHY9MjAwMyA2NDAuMDAwMDAwCgl0eXBlPTIgZT0wIHY9NTAxMiAwCglkZWZhdWx0c2NhbGFyPTIgZT0wIHY9MjAwMyAwLjMzMDAwMAoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgMjIKCWdyb3VwPS0xCglJU0M9",
+ "MAoJT1NDPTEKCQlTVlQ9NTAyMiAyMDAzIDEgCgkJQ0M9MQoJCQlDPTIyIDAgMSA0IDMgNCAwCgkJCUNQQz0wCiNOVD0yMDE4NSAwCglQQz01CgluYW1lPTEgdj01MDAwIGVtaXNzaXZlCglwb3N4PTEgdj0yMDAzIDQyMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgODgwLjAwMDAwMAoJdHlwZT0yIGU9MCB2PTUwMTIgMgoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgMjMKCWdyb3VwPS0xCglJU0M9MAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAyIDEgCgkJQ0M9MQoJCQlDPTIzIDAgMSAxIDMgNCAwCgkJCUNQQz0wCiNOVD0yMDE4NSAwCglQQz02CgluYW1lPTEgdj01MDAwIHVzZV9lbWlzc2l2ZV9tYXAKCXBvc3g9MSB2PTIwMDMgNDIwLjAwMDAwMAoJcG9zeT0xIHY9MjAwMyA3MjAuMDAwMDAwCgl0eXBlPTIgZT0wIHY9NTAxMiAwCgl1aXR5cGU9MiBlPTAgdj01MDEyIDEKCXVpb3JkZXI9MiBlPTAgdj0yMDAyIDE0Cglncm91cD0tMQoJSVNDPTAKCU9TQz0xCgkJU1ZUPTUwMjIgMjAwMyAxIAoJCUNDPTEKCQkJQz0yNCAwIDEgMSAwIDEgMAoJCQlDUEM9MAojTlQ9MjAxODUgMAoJUEM9NgoJbmFtZT0xIHY9NTAwMCB1c2VfYW9fbWFwCglwb3N4PTEgdj0yMDAzIDcwMC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgMTEwMC4wMDAwMDAKCXR5cGU9MiBlPTAgdj01MDEyIDAKCXVpdHlwZT0yIGU9MCB2PTUwMTIgMQoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgMTUKCWdyb3VwPS0xCglJU0M9MAoJT1NDPTEKCQlTVlQ9NTAyMiAyMDAzIDEgCgkJQ0M9MQoJCQlDPTI1IDAgMSA2",
+ "IDAgMSAwCgkJCUNQQz0wCiNOVD0yMDE3NyAwCglQQz02CgluYW1lPTEgdj01MDAwIGFvX21hcAoJcG9zeD0xIHY9MjAwMyA3MDAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDExNjAuMDAwMDAwCgllbmNvZGluZz0yIGU9MCB2PTUwMTIgMAoJZmlsdGVyPTIgZT0wIHY9NTAxMiAxCgl1aW9yZGVyPTIgZT0wIHY9MjAwMiA2Cglncm91cD0tMQoJSVNDPTIKCQlTVlQ9NTAyMiAzMDAxIDEgMCAwIAoJCVNWVD01MDIyIDIwMDMgMiAwIDAgCglPU0M9MQoJCVNWVD01MDIyIDMwMDMgMyAKCQlDQz0xCgkJCUM9MjYgMCAzIDYgMiAzIDAKCQkJQ1BDPTAKI05UPTIwMTg1IDAKCVBDPTYKCW5hbWU9MSB2PTUwMDAgZW1pc3NpdmVfaW50ZW5zaXR5Cglwb3N4PTEgdj0yMDAzIDc0MC4wMDAwMDAKCXBvc3k9MSB2PTIwMDMgOTIwLjAwMDAwMAoJdHlwZT0yIGU9MCB2PTUwMTIgMAoJbWF4cmFuZ2U9MiBlPTAgdj0yMDAzIDEwLjAwMDAwMAoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgNTMKCWdyb3VwPS0xCglJU0M9MAoJT1NDPTEKCQlTVlQ9NTAyMiAyMDAzIDEgCgkJQ0M9MQoJCQlDPTI3IDAgMSAxMCAxIDIgMAoJCQlDUEM9MAojTlQ9MjAxODYgMAoJUEM9MgoJcG9zeD0xIHY9MjAwMyAtNjAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDQwMC4wMDAwMDAKCWdyb3VwPS0xCglJU0M9MgoJCVNWVD01MDIyIDMwMDEgMSAwIDAgCgkJU1ZUPTUwMjIgMzAwMSAyIDAgMCAKCU9TQz0xCgkJU1ZUPTUwMjIgMzAwMSAzIAoJCUNDPTEKCQkJQz0yOCAwIDMgMjkgMSAyIDAKCQkJQ1BD",
+ "PTAKI05UPTIwMTg3IDAKCVBDPTIKCXBvc3g9MSB2PTIwMDMgMTIwLjAwMDAwMAoJcG9zeT0xIHY9MjAwMyA0MDAuMDAwMDAwCglncm91cD0tMQoJSVNDPTIKCQlTVlQ9NTAyMiAzMDAxIDEgMCAwIAoJCVNWVD01MDIyIDMwMDEgMiAwIDAgCglPU0M9MQoJCVNWVD01MDIyIDMwMDEgMyAKCQlDQz02CgkJCUM9MjkgMCAzIDEyIDAgMSAwCgkJCUNQQz0wCgkJCUM9MjkgMCAzIDE3IDAgMSAwCgkJCUNQQz0wCgkJCUM9MjkgMCAzIDE4IDAgMSAwCgkJCUNQQz0wCgkJCUM9MjkgMCAzIDggMCAxIDAKCQkJQ1BDPTAKCQkJQz0yOSAwIDMgOSAwIDEgMAoJCQlDUEM9MAoJCQlDPTI5IDAgMyAyNiAwIDEgMAoJCQlDUEM9MAojTlQ9MjAxODUgMAoJUEM9NwoJbmFtZT0xIHY9NTAwMCB1dl9vZmZzZXQKCXBvc3g9MSB2PTIwMDMgLTYwLjAwMDAwMAoJcG9zeT0xIHY9MjAwMyAzNDAuMDAwMDAwCgl0eXBlPTIgZT0wIHY9NTAxMiAxCgltaW5yYW5nZT0yIGU9MCB2PTIwMDMgLTEwMDAwMS4wMDAwMDAKCW1heHJhbmdlPTIgZT0wIHY9MjAwMyAxMDAwMDEuMDAwMDAwCgl1aW9yZGVyPTIgZT0wIHY9MjAwMiA2MAoJZ3JvdXA9LTEKCUlTQz0wCglPU0M9MQoJCVNWVD01MDIyIDMwMDEgMSAKCQlDQz0xCgkJCUM9MzAgMCAxIDI5IDAgMSAwCgkJCUNQQz0wCiNOVD0yMDE4NSAwCglQQz05CgluYW1lPTEgdj01MDAwIHV2X3NjYWxlCglwb3N4PTEgdj0yMDAzIC0yNDAuMDAwMDAwCglwb3N5PTEgdj0yMDAzIDM0MC4wMDAwMDAKCXR5cGU9MiBlPTAgdj01MDEyIDEKCWRl",
+ "ZmF1bHR2ZWN0d289MiBlPTAgdj0zMDAxIDEuMDAwMDAwLDEuMDAwMDAwCglkZWZhdWx0dmVjdG9yPTIgZT0wIHY9MzAwMyAxLjAwMDAwMCwxLjAwMDAwMCwwLjAwMDAwMCwwLjAwMDAwMAoJbWlucmFuZ2U9MiBlPTAgdj0yMDAzIC0xMDAwMDEuMDAwMDAwCgltYXhyYW5nZT0yIGU9MCB2PTIwMDMgMTAwMDAxLjAwMDAwMAoJdWlvcmRlcj0yIGU9MCB2PTIwMDIgNjEKCWdyb3VwPS0xCglJU0M9MAoJT1NDPTEKCQlTVlQ9NTAyMiAzMDAxIDEgCgkJQ0M9MQoJCQlDPTMxIDAgMSAyOCAwIDEgMAoJCQlDUEM9MAoKICovIH0gCmNvbm5lY3Rpb25zID0gWwoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICJhY2E2OTBjYi02MzA1LTRhMmYtYmYzZC02OTE4M2E0OTNkYjMiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjYiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIzIiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiQ0VEN0JCRjMtMEI0OC00MzM1LUI5MzMtMDk1QTQxQ0EwMjk0IiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIzIiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIxMiIgCgkJfSAKCX0gCgl7IAoJ",
+ "CWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gIjRDQkI0NDgwLTc5RTgtNENFNy1BQzBGLThCMDlCQUYxMjM5MCIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiMyIgCgkJfSAKCQlzZWxlY3QgPSBbIAoJCQkicmdiIiAKCQkJXSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTMiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICIxZWU5YWYxZi02NWYyLTQ3MzktYWQyOC01ZWE2YTBlNjhmYzMiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTMiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjMwIiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiMWVlOWFmMWYtNjVmMi00NzM5LWFkMjgtNWVhNmEwZTY4ZmMzIiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjE4IiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIzMCIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gIjFlZTlhZjFmLTY1ZjItNDczOS1hZDI4LTVl",
+ "YTZhMGU2OGZjMyIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIxOSIgCgkJfSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMzAiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICIxZWU5YWYxZi02NWYyLTQ3MzktYWQyOC01ZWE2YTBlNjhmYzMiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjkiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjMwIiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiMWVlOWFmMWYtNjVmMi00NzM5LWFkMjgtNWVhNmEwZTY4ZmMzIiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjEwIiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIzMCIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gIjFlZTlhZjFmLTY1ZjItNDczOS1hZDI4LTVlYTZhMGU2OGZjMyIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyNyIgCgkJfSAKCQlzb3VyY2UgPSB7IAoJCQlp",
+ "bnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMzAiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICJmNzI1OTdjNC03NDg3LTQxOWEtYWZmYi1kZjY5MGU2NTgyZTEiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMzAiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjMxIiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiMDgwNmRiMGQtMmM0YS00M2NhLTk5Y2MtZjVhMmYwMzZhOGU4IiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjMwIiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyOSIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gImM1ODIzYzc1LTRhZTUtNGM3MS1iMDcwLTMxNWZhNGQwM2U4ZSIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyOSIgCgkJfSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMzIiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5l",
+ "Y3Rvcl9pZCA9ICIyNDJkMTY0OC1hNjI2LTQ0NWItOTUzNC1iY2NlYzA5NDExMmYiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMjkiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI4IiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiRjJGNzRFNTgtNDAyRC00NzJCLTg3REQtMzMxRTAwREI0MTZDIiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIzIiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIxNCIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gImIxYzg2NDA4LWFhY2ItNDQ2Ni1iNzU0LWRkY2YzN2EzYTJjOCIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiNiIgCgkJfSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjQiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICJDRUQ3QkJGMy0wQjQ4LTQzMzUtQjkzMy0wOTVBNDFDQTAyOTQiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1h",
+ "YmJhYWJiYWFiYjQiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjE1IiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiNENCQjQ0ODAtNzlFOC00Q0U3LUFDMEYtOEIwOUJBRjEyMzkwIiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI0IiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIxNyIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gImY3MjU5N2M0LTc0ODctNDE5YS1hZmZiLWRmNjkwZTY1ODJlMSIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIxNyIgCgkJfSAKCQlzZWxlY3QgPSBbIAoJCQkicmdiIiAKCQkJXSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTgiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICJGMkY3NEU1OC00MDJELTQ3MkItODdERC0zMzFFMDBEQjQxNkMiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjQiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJi",
+ "YS1hYmJhLWFiYmEtYWJiYWFiYmFhYjE2IiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiYWQ1ZTA1MmYtZDMxNi00YTBmLThiNzktNTNjMzgyMDRkNjFiIiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI2IiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiMSIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gIkNFRDdCQkYzLTBCNDgtNDMzNS1COTMzLTA5NUE0MUNBMDI5NCIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiMSIgCgkJfSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMjAiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICI0Q0JCNDQ4MC03OUU4LTRDRTctQUMwRi04QjA5QkFGMTIzOTAiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjEiIAoJCX0gCgkJc2VsZWN0ID0gWyAKCQkJInIiIAoJCQldIAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIxOSIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29u",
+ "bmVjdG9yX2lkID0gIkYyRjc0RTU4LTQwMkQtNDcyQi04N0RELTMzMUUwMERCNDE2QyIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiMSIgCgkJfSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMjEiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICIzNmJhNDZkMi1mNmVhLTRlNjAtYTQyOC1mZGMxN2M3NWJjNjIiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjYiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI1IiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiQ0VEN0JCRjMtMEI0OC00MzM1LUI5MzMtMDk1QTQxQ0EwMjk0IiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI1IiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyMiIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gIjRDQkI0NDgwLTc5RTgtNENFNy1BQzBGLThCMDlCQUYxMjM5MCIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJh",
+ "LWFiYmFhYmJhYWJiNSIgCgkJfSAKCQlzZWxlY3QgPSBbIAoJCQkiciIgCgkJCV0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI5IiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiRjJGNzRFNTgtNDAyRC00NzJCLTg3REQtMzMxRTAwREI0MTZDIiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI1IiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyMyIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gIjExNjRhNWVmLTQ1NjMtNDc5NS1iM2I1LTQyODI1ZDZkZjAzNyIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiNiIgCgkJfSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTEiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICJjNTgyM2M3NS00YWU1LTRjNzEtYjA3MC0zMTVmYTRkMDNlOGUiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTEiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJi",
+ "YS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIyIiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiQ0VEN0JCRjMtMEI0OC00MzM1LUI5MzMtMDk1QTQxQ0EwMjk0IiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIyIiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyNSIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gIjRDQkI0NDgwLTc5RTgtNENFNy1BQzBGLThCMDlCQUYxMjM5MCIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiMiIgCgkJfSAKCQlzZWxlY3QgPSBbIAoJCQkicmdiIiAKCQkJXSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTAiIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICJGMkY3NEU1OC00MDJELTQ3MkItODdERC0zMzFFMDBEQjQxNkMiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjIiIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjI0IiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQlj",
+ "b25uZWN0b3JfaWQgPSAiMjQyZDE2NDgtYTYyNi00NDViLTk1MzQtYmNjZWMwOTQxMTJmIiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjExIiAKCQl9IAoJCXNvdXJjZSA9IHsgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyOCIgCgkJfSAKCX0gCgl7IAoJCWRlc3RpbmF0aW9uID0geyAKCQkJY29ubmVjdG9yX2lkID0gIjU5ZmQxY2Y0LWY3MzYtNDcwZC04NTEwLTFkZDdjMDE2NjM5ZSIgCgkJCWluc3RhbmNlX2lkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiNiIgCgkJfSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjciIAoJCX0gCgl9IAoJeyAKCQlkZXN0aW5hdGlvbiA9IHsgCgkJCWNvbm5lY3Rvcl9pZCA9ICJDRUQ3QkJGMy0wQjQ4LTQzMzUtQjkzMy0wOTVBNDFDQTAyOTQiIAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjciIAoJCX0gCgkJc291cmNlID0geyAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjI2IiAKCQl9IAoJfSAKCXsgCgkJZGVzdGluYXRpb24gPSB7IAoJCQljb25uZWN0b3JfaWQgPSAiNENCQjQ0ODAtNzlFOC00Q0U3LUFDMEYtOEIwOUJBRjEyMzkwIiAKCQkJaW5zdGFuY2VfaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFi",
+ "YmEtYWJiYWFiYmFhYmI3IiAKCQl9IAoJCXNlbGVjdCA9IFsgCgkJCSJyIiAKCQkJXSAKCQlzb3VyY2UgPSB7IAoJCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMjciIAoJCX0gCgl9IApdCmNvbnN0YW50cyA9IFsKCXsgCgkJY29ubmVjdG9yX2lkID0gIjM5QkM3NjE5LTI3NjgtNDgwQi1BQ0ZELTYzRkE2NkVGNjkwNSIgCgkJaWQgPSAiMWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIzIiAKCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjMiIAoJCXZhbHVlID0gWyAKCQkJMS4wMDAwMDAKCQldIAoJfSAKCXsgCgkJY29ubmVjdG9yX2lkID0gIjM5QkM3NjE5LTI3NjgtNDgwQi1BQ0ZELTYzRkE2NkVGNjkwNSIgCgkJaWQgPSAiMWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI0IiAKCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjQiIAoJCXZhbHVlID0gWyAKCQkJMS4wMDAwMDAKCQldIAoJfSAKCXsgCgkJY29ubmVjdG9yX2lkID0gIjM5QkM3NjE5LTI3NjgtNDgwQi1BQ0ZELTYzRkE2NkVGNjkwNSIgCgkJaWQgPSAiMWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIxIiAKCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjEiIAoJCXZhbHVlID0gWyAKCQkJMS4wMDAwMDAKCQldIAoJfSAKCXsgCgkJY29ubmVjdG9yX2lkID0g",
+ "IjM5QkM3NjE5LTI3NjgtNDgwQi1BQ0ZELTYzRkE2NkVGNjkwNSIgCgkJaWQgPSAiMWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI1IiAKCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjUiIAoJCXZhbHVlID0gWyAKCQkJMS4wMDAwMDAKCQldIAoJfSAKCXsgCgkJY29ubmVjdG9yX2lkID0gIjM5QkM3NjE5LTI3NjgtNDgwQi1BQ0ZELTYzRkE2NkVGNjkwNSIgCgkJaWQgPSAiMWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIyIiAKCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjIiIAoJCXZhbHVlID0gWyAKCQkJMS4wMDAwMDAKCQldIAoJfSAKCXsgCgkJY29ubmVjdG9yX2lkID0gIjM5QkM3NjE5LTI3NjgtNDgwQi1BQ0ZELTYzRkE2NkVGNjkwNSIgCgkJaWQgPSAiMWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI3IiAKCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjciIAoJCXZhbHVlID0gWyAKCQkJMS4wMDAwMDAKCQldIAoJfSAKCXsgCgkJY29ubmVjdG9yX2lkID0gIkYyRjc0RTU4LTQwMkQtNDcyQi04N0RELTMzMUUwMERCNDE2QyIgCgkJaWQgPSAiM2JiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI3IiAKCQlpbnN0YW5jZV9pZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjciIAoJCXZhbHVlID0gWyAKCQkJMS4wMDAwMDAK",
+ "CQldIAoJfSAKXQpub2RlcyA9IFsKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiNiIgCgkJb3B0aW9ucyA9IFsgCgkJCSIyYjEzNjQ0Ny02NzZlLTQ5NDMtOTk3Yi0wNGEyOGFlNjg0OTciCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTEzNjAgCgkJCTI2MCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIlN0YW5kYXJkIEJhc2UiIAoJCXR5cGUgPSAiY29yZS9zdGluZ3JheV9yZW5kZXJlci9vdXRwdXRfbm9kZXMvc3RhbmRhcmRfYmFzZSIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCX0gCgkJaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmIzIiAKCQlvcHRpb25zID0gWyAKCQkJIjlBODQyODJCLUYxQTItNDZENC05RkM0LTVBNzZGQzlCMzBERCIKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJMTAyMCAKCQkJLTM0MCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIkNvbG9yIE1hcCBTd2l0Y2giIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvaWYiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQkJbWF0ZXJpYWxfdmFyaWFibGUgPSB7IAoJCQkJZGlzcGxheV9uYW1lID0gIlVzZSBDb2xvciBNYXAiIAoJ",
+ "CQkJbmFtZSA9ICJ1c2VfY29sb3JfbWFwIiAKCQkJCXVpID0geyAKCQkJCQltYXggPSAxIAoJCQkJCW1pbiA9IDAuMDAwMDAwIAoJCQkJCXN0ZXAgPSAxIAoJCQkJCW9yZGVyID0gMTAgCgkJCQkJdWlfdHlwZSA9ICJjaGVja2JveCIgCgkJCQl9IAoJCQkJdHlwZSA9ICJmbG9hdCIgCgkJCQl2YWx1ZSA9IDEuMDAwMDAwIAoJCQl9IAoJCX0gCgkJaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjEyIiAKCQlvcHRpb25zID0gWyAKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJNzAwIAoJCQktNDAwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCX0gCgkJdGl0bGUgPSAiVXNlIENvbG9yIE1hcCIgCgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy9tYXRlcmlhbF92YXJpYWJsZSIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCX0gCgkJaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjEzIiAKCQlvcHRpb25zID0gWyAKCQkJIjFlMDY3NDY0LTEyZDgtNDgyNi05YjcyLWNmZDU3NjUwMDNlMyIKCQkJImZiM2Y3MDliLWE1NGEtNGU5My1hYzlmLWU5ZmM3NmZiOGJjZCIKCQkJIjVkZDU5YjNkLTE3NjItNGExNC05OTMwLTc1MDAyMzBlZjNkYiIKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJNzAwIAoJCQktMzQwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCQl0ZXh0dXJlX21hcCA9IHsgCgkJCQlkaXNwbGF5X25hbWUgPSAiQ29sb3IgTWFwIiAKCQkJ",
+ "CXNsb3RfbmFtZSA9ICJjb2xvcl9tYXAiIAoJCQkJdWkgPSB7IAoJCQkJCW9yZGVyID0gMSAKCQkJCX0gCgkJCX0gCgkJfSAKCQl0aXRsZSA9ICJDb2xvciBNYXAiIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvc2FtcGxlX3RleHR1cmUiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIzMCIgCgkJb3B0aW9ucyA9IFsgCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTEyMCAKCQkJNDAwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCX0gCgkJdGl0bGUgPSAiQWRkIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL2FkZCIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCQltYXRlcmlhbF92YXJpYWJsZSA9IHsgCgkJCQlkaXNwbGF5X25hbWUgPSAiVXYgT2Zmc2V0IiAKCQkJCW5hbWUgPSAidXZfb2Zmc2V0IiAKCQkJCXVpID0geyAKCQkJCQltYXggPSBbIDEwMDAwMS4wMDAwMDAgMTAwMDAxLjAwMDAwMCBdIAoJCQkJCW1pbiA9IFsgLTEwMDAwMS4wMDAwMDAgLTEwMDAwMS4wMDAwMDAgXSAKCQkJCQlzdGVwID0gWyAwLjAxIDAuMDEgXSAKCQkJCQlvcmRlciA9IDYwIAoJCQkJfSAKCQkJCXR5cGUgPSAiZmxvYXQyIiAKCQkJCXZhbHVlID0gWzAuMDAwMDAwIDAuMDAwMDAwXSAKCQkJfSAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFi",
+ "YmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIzMSIgCgkJb3B0aW9ucyA9IFsgCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCS02MCAKCQkJMzQwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCX0gCgkJdGl0bGUgPSAiVXYgT2Zmc2V0IiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL21hdGVyaWFsX3ZhcmlhYmxlIiAKCX0gCgl7IAoJCWNvbnRlbnRfc2l6ZSA9IFsgCgkJCTE2MCAKCQkJMCAKCQldIAoJCWV4cG9ydCA9IHsgCgkJfSAKCQlpZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMjkiIAoJCW9wdGlvbnMgPSBbIAoJCV0gCgkJcG9zaXRpb24gPSBbIAoJCQktNjAgCgkJCTQwMCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIk11bHRpcGx5IiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL211bCIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCQltYXRlcmlhbF92YXJpYWJsZSA9IHsgCgkJCQlkaXNwbGF5X25hbWUgPSAiVXYgU2NhbGUiIAoJCQkJbmFtZSA9ICJ1dl9zY2FsZSIgCgkJCQl1aSA9IHsgCgkJCQkJbWF4ID0gWyAxMDAwMDEuMDAwMDAwIDEwMDAwMS4wMDAwMDAgXSAKCQkJCQltaW4gPSBbIC0xMDAwMDEuMDAwMDAwIC0xMDAwMDEuMDAwMDAwIF0gCgkJCQkJc3RlcCA9IFsgMC4wMSAwLjAxIF0gCgkJCQkJb3JkZXIgPSA2MSAKCQkJCX0gCgkJCQl0eXBlID0gImZsb2F0MiIgCgkJCQl2YWx1ZSA9IFsxLjAwMDAwMCAx",
+ "LjAwMDAwMF0gCgkJCX0gCgkJfSAKCQlpZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMzIiIAoJCW9wdGlvbnMgPSBbIAoJCV0gCgkJcG9zaXRpb24gPSBbIAoJCQktMjQwIAoJCQkzNDAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJfSAKCQl0aXRsZSA9ICJVdiBTY2FsZSIgCgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy9tYXRlcmlhbF92YXJpYWJsZSIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCX0gCgkJaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI4IiAKCQlvcHRpb25zID0gWyAKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJLTI2MCAKCQkJNDIwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCX0gCgkJdGl0bGUgPSAiVGV4Y29vcmQwIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL3RleHR1cmVfY29vcmRpbmF0ZTAiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQkJbWF0ZXJpYWxfdmFyaWFibGUgPSB7IAoJCQkJZGlzcGxheV9uYW1lID0gIkJhc2UgQ29sb3IiIAoJCQkJbmFtZSA9ICJiYXNlX2NvbG9yIiAKCQkJCXVpID0geyAKCQkJCQltYXggPSBbIDEuMDAwMDAwIDEuMDAwMDAwIDEuMDAwMDAwIF0gCgkJCQkJbWluID0gWyAwLjAwMDAwMCAwLjAwMDAwMCAwLjAwMDAwMCBdIAoJCQkJCXN0ZXAgPSBbIDAuMDEgMC4wMSAwLjAxIF0gCgkJCQkJ",
+ "b3JkZXIgPSAyMCAKCQkJCQl1aV90eXBlID0gImNvbG9yIiAKCQkJCX0gCgkJCQl0eXBlID0gImZsb2F0MyIgCgkJCQl2YWx1ZSA9IFswLjUwMDAwMCAwLjUwMDAwMCAwLjUwMDAwMF0gCgkJCX0gCgkJfSAKCQlpZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTQiIAoJCW9wdGlvbnMgPSBbIAoJCV0gCgkJcG9zaXRpb24gPSBbIAoJCQk3MDAgCgkJCS0yNDAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJfSAKCQl0aXRsZSA9ICJCYXNlIENvbG9yIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL21hdGVyaWFsX3ZhcmlhYmxlIiAKCX0gCgl7IAoJCWNvbnRlbnRfc2l6ZSA9IFsgCgkJCTE2MCAKCQkJMCAKCQldIAoJCWV4cG9ydCA9IHsgCgkJfSAKCQlpZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiYjQiIAoJCW9wdGlvbnMgPSBbIAoJCQkiOUE4NDI4MkItRjFBMi00NkQ0LTlGQzQtNUE3NkZDOUIzMEREIgoJCV0gCgkJcG9zaXRpb24gPSBbIAoJCQkxMDIwIAoJCQktNjAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJfSAKCQl0aXRsZSA9ICJOb3JtYWwgTWFwIFN3aXRjaCIgCgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy9pZiIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCQltYXRlcmlhbF92YXJpYWJsZSA9IHsgCgkJCQlkaXNwbGF5X25hbWUgPSAiVXNlIE5vcm1hbCBNYXAiIAoJCQkJbmFtZSA9ICJ1c2Vfbm9ybWFsX21h",
+ "cCIgCgkJCQl1aSA9IHsgCgkJCQkJbWF4ID0gMSAKCQkJCQltaW4gPSAwLjAwMDAwMCAKCQkJCQlzdGVwID0gMSAKCQkJCQlvcmRlciA9IDExIAoJCQkJCXVpX3R5cGUgPSAiY2hlY2tib3giIAoJCQkJfSAKCQkJCXR5cGUgPSAiZmxvYXQiIAoJCQkJdmFsdWUgPSAxLjAwMDAwMCAKCQkJfSAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIxNSIgCgkJb3B0aW9ucyA9IFsgCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTcwMCAKCQkJLTEyMCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIlVzZSBOb3JtYWwgTWFwIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL21hdGVyaWFsX3ZhcmlhYmxlIiAKCX0gCgl7IAoJCWNvbnRlbnRfc2l6ZSA9IFsgCgkJCTE2MCAKCQkJMCAKCQldIAoJCWV4cG9ydCA9IHsgCgkJfSAKCQlpZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTciIAoJCW9wdGlvbnMgPSBbIAoJCQkiMGEwZmI1YWQtMTQ1ZC00MjI5LWFiZDQtNWIzNjU2MjYwN2IzIgoJCV0gCgkJcG9zaXRpb24gPSBbIAoJCQk3NDAgCgkJCS02MCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIlRhbmdlbnQgVG8gV29ybGQiIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvdGFuZ2VudF90b193b3JsZCIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCX0gCgkJaWQgPSAiYWJiYWFi",
+ "YmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjE4IiAKCQlvcHRpb25zID0gWyAKCQkJIjFlMDY3NDY0LTEyZDgtNDgyNi05YjcyLWNmZDU3NjUwMDNlMyIKCQkJIjkwZTIwODI2LTg2ODktNDJmYS04ZTI0LWY0ODRlYzY0YzVjMyIKCQkJIjVkZDU5YjNkLTE3NjItNGExNC05OTMwLTc1MDAyMzBlZjNkYiIKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJNDQwIAoJCQktNjAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJCXRleHR1cmVfbWFwID0geyAKCQkJCWRpc3BsYXlfbmFtZSA9ICJOb3JtYWwgTWFwIiAKCQkJCXNsb3RfbmFtZSA9ICJub3JtYWxfbWFwIiAKCQkJCXVpID0geyAKCQkJCQlvcmRlciA9IDIgCgkJCQl9IAoJCQl9IAoJCX0gCgkJdGl0bGUgPSAiTm9ybWFsIE1hcCIgCgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy9zYW1wbGVfdGV4dHVyZSIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCX0gCgkJaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjE2IiAKCQlvcHRpb25zID0gWyAKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJNjgwIAoJCQk2MCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIldvcmxkIE5vcm1hbCIgCgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy93b3JsZF9zcGFjZV9ub3JtYWwiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQl9IAoJ",
+ "CWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiMSIgCgkJb3B0aW9ucyA9IFsgCgkJCSI5QTg0MjgyQi1GMUEyLTQ2RDQtOUZDNC01QTc2RkM5QjMwREQiCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTEwMjAgCgkJCTI0MCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIk1ldGFsbGljIE1hcCBTd2l0Y2giIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvaWYiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQkJbWF0ZXJpYWxfdmFyaWFibGUgPSB7IAoJCQkJZGlzcGxheV9uYW1lID0gIlVzZSBNZXRhbGxpYyBNYXAiIAoJCQkJbmFtZSA9ICJ1c2VfbWV0YWxsaWNfbWFwIiAKCQkJCXVpID0geyAKCQkJCQltYXggPSAxIAoJCQkJCW1pbiA9IDAuMDAwMDAwIAoJCQkJCXN0ZXAgPSAxIAoJCQkJCW9yZGVyID0gMTIgCgkJCQkJdWlfdHlwZSA9ICJjaGVja2JveCIgCgkJCQl9IAoJCQkJdHlwZSA9ICJmbG9hdCIgCgkJCQl2YWx1ZSA9IDEuMDAwMDAwIAoJCQl9IAoJCX0gCgkJaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjIwIiAKCQlvcHRpb25zID0gWyAKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJNzAwIAoJCQkxODAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJfSAKCQl0aXRsZSA9ICJVc2UgTWV0YWxsaWMgTWFwIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL21hdGVyaWFsX3ZhcmlhYmxlIiAKCX0g",
+ "Cgl7IAoJCWNvbnRlbnRfc2l6ZSA9IFsgCgkJCTE2MCAKCQkJMCAKCQldIAoJCWV4cG9ydCA9IHsgCgkJfSAKCQlpZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTkiIAoJCW9wdGlvbnMgPSBbIAoJCQkiZjY2OWEzYTYtMDM3Ni00MTg3LTg0MGUtODAwMDBlMjkzOWQ1IgoJCQkiZTk0ZTUzZTYtNDliNi00MTk0LWE3NDctOGYwNjRhNTkzMmUwIgoJCQkiNWRkNTliM2QtMTc2Mi00YTE0LTk5MzAtNzUwMDIzMGVmM2RiIgoJCV0gCgkJcG9zaXRpb24gPSBbIAoJCQk3MDAgCgkJCTI0MCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQkJdGV4dHVyZV9tYXAgPSB7IAoJCQkJZGlzcGxheV9uYW1lID0gIk1ldGFsbGljIE1hcCIgCgkJCQlzbG90X25hbWUgPSAibWV0YWxsaWNfbWFwIiAKCQkJCXVpID0geyAKCQkJCQlvcmRlciA9IDMgCgkJCQl9IAoJCQl9IAoJCX0gCgkJdGl0bGUgPSAiTWV0YWxsaWMgTWFwIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL3NhbXBsZV90ZXh0dXJlIiAKCX0gCgl7IAoJCWNvbnRlbnRfc2l6ZSA9IFsgCgkJCTE2MCAKCQkJMCAKCQldIAoJCWV4cG9ydCA9IHsgCgkJCW1hdGVyaWFsX3ZhcmlhYmxlID0geyAKCQkJCWRpc3BsYXlfbmFtZSA9ICJNZXRhbGxpYyIgCgkJCQluYW1lID0gIm1ldGFsbGljIiAKCQkJCXVpID0geyAKCQkJCQltYXggPSAxLjAwMDAwMCAKCQkJCQltaW4gPSAwLjAwMDAwMCAKCQkJCQlzdGVwID0gMC4wMSAKCQkJCQlvcmRlciA9IDIxIAoJCQkJfSAKCQkJCXR5cGUgPSAi",
+ "ZmxvYXQiIAoJCQkJdmFsdWUgPSAwLjAwMDAwMCAKCQkJfSAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyMSIgCgkJb3B0aW9ucyA9IFsgCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTcwMCAKCQkJMzQwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCX0gCgkJdGl0bGUgPSAiTWV0YWxsaWMiIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvbWF0ZXJpYWxfdmFyaWFibGUiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiNSIgCgkJb3B0aW9ucyA9IFsgCgkJCSI5QTg0MjgyQi1GMUEyLTQ2RDQtOUZDNC01QTc2RkM5QjMwREQiCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTEwMjAgCgkJCTU0MCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIlJvdWdobmVzcyBNYXAgU3dpdGNoIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL2lmIiAKCX0gCgl7IAoJCWNvbnRlbnRfc2l6ZSA9IFsgCgkJCTE2MCAKCQkJMCAKCQldIAoJCWV4cG9ydCA9IHsgCgkJCW1hdGVyaWFsX3ZhcmlhYmxlID0geyAKCQkJCWRpc3BsYXlfbmFtZSA9ICJVc2UgUm91Z2huZXNzIE1hcCIgCgkJCQluYW1lID0gInVzZV9yb3VnaG5lc3NfbWFwIiAKCQkJCXVpID0geyAKCQkJCQltYXggPSAxIAoJCQkJCW1pbiA9IDAuMDAwMDAwIAoJCQkJCXN0ZXAgPSAxIAoJCQkJ",
+ "CW9yZGVyID0gMTMgCgkJCQkJdWlfdHlwZSA9ICJjaGVja2JveCIgCgkJCQl9IAoJCQkJdHlwZSA9ICJmbG9hdCIgCgkJCQl2YWx1ZSA9IDEuMDAwMDAwIAoJCQl9IAoJCX0gCgkJaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjIyIiAKCQlvcHRpb25zID0gWyAKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJNzAwIAoJCQk0ODAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJfSAKCQl0aXRsZSA9ICJVc2UgUm91Z2huZXNzIE1hcCIgCgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy9tYXRlcmlhbF92YXJpYWJsZSIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCX0gCgkJaWQgPSAiYWJiYWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYmI5IiAKCQlvcHRpb25zID0gWyAKCQkJIjFlMDY3NDY0LTEyZDgtNDgyNi05YjcyLWNmZDU3NjUwMDNlMyIKCQkJImU5NGU1M2U2LTQ5YjYtNDE5NC1hNzQ3LThmMDY0YTU5MzJlMCIKCQkJIjVkZDU5YjNkLTE3NjItNGExNC05OTMwLTc1MDAyMzBlZjNkYiIKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJNzAwIAoJCQk1NDAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJCXRleHR1cmVfbWFwID0geyAKCQkJCWRpc3BsYXlfbmFtZSA9ICJSb3VnaG5lc3MgTWFwIiAKCQkJCXNsb3RfbmFtZSA9ICJyb3VnaG5lc3NfbWFwIiAKCQkJCXVpID0geyAKCQkJCQlvcmRlciA9IDQgCgkJCQl9IAoJCQl9IAoJCX0gCgkJdGl0bGUgPSAi",
+ "Um91Z2huZXNzIE1hcCIgCgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy9zYW1wbGVfdGV4dHVyZSIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCQltYXRlcmlhbF92YXJpYWJsZSA9IHsgCgkJCQlkaXNwbGF5X25hbWUgPSAiUm91Z2huZXNzIiAKCQkJCW5hbWUgPSAicm91Z2huZXNzIiAKCQkJCXVpID0geyAKCQkJCQltYXggPSAxLjAwMDAwMCAKCQkJCQltaW4gPSAwLjAwMDAwMCAKCQkJCQlzdGVwID0gMC4wMSAKCQkJCQlvcmRlciA9IDIyIAoJCQkJfSAKCQkJCXR5cGUgPSAiZmxvYXQiIAoJCQkJdmFsdWUgPSAwLjMzMDAwMCAKCQkJfSAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyMyIgCgkJb3B0aW9ucyA9IFsgCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTcwMCAKCQkJNjQwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCX0gCgkJdGl0bGUgPSAiUm91Z2huZXNzIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL21hdGVyaWFsX3ZhcmlhYmxlIiAKCX0gCgl7IAoJCWNvbnRlbnRfc2l6ZSA9IFsgCgkJCTE2MCAKCQkJMCAKCQldIAoJCWV4cG9ydCA9IHsgCgkJfSAKCQlpZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMTEiIAoJCW9wdGlvbnMgPSBbIAoJCV0gCgkJcG9zaXRpb24gPSBbIAoJCQkxMDIwIAoJCQk4NDAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJfSAKCQl0aXRsZSA9ICJNdWx0aXBseSIg",
+ "CgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy9tdWwiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiMiIgCgkJb3B0aW9ucyA9IFsgCgkJCSI5QTg0MjgyQi1GMUEyLTQ2RDQtOUZDNC01QTc2RkM5QjMwREQiCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTc0MCAKCQkJNzgwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCX0gCgkJdGl0bGUgPSAiRW1pc3NpdmUgTWFwIFN3aXRjaCIgCgkJdHlwZSA9ICJjb3JlL3NoYWRlcl9ub2Rlcy9pZiIgCgl9IAoJeyAKCQljb250ZW50X3NpemUgPSBbIAoJCQkxNjAgCgkJCTAgCgkJXSAKCQlleHBvcnQgPSB7IAoJCQltYXRlcmlhbF92YXJpYWJsZSA9IHsgCgkJCQlkaXNwbGF5X25hbWUgPSAiVXNlIEVtaXNzaXZlIE1hcCIgCgkJCQluYW1lID0gInVzZV9lbWlzc2l2ZV9tYXAiIAoJCQkJdWkgPSB7IAoJCQkJCW1heCA9IDEgCgkJCQkJbWluID0gMC4wMDAwMDAgCgkJCQkJc3RlcCA9IDEgCgkJCQkJb3JkZXIgPSAxNCAKCQkJCQl1aV90eXBlID0gImNoZWNrYm94IiAKCQkJCX0gCgkJCQl0eXBlID0gImZsb2F0IiAKCQkJCXZhbHVlID0gMC4wMDAwMDAgCgkJCX0gCgkJfSAKCQlpZCA9ICJhYmJhYWJiYS1hYmJhLWFiYmEtYWJiYS1hYmJhYWJiYWFiMjUiIAoJCW9wdGlvbnMgPSBbIAoJCV0gCgkJcG9zaXRpb24gPSBbIAoJCQk0MjAgCgkJCTcyMCAKCQldIAoJ",
+ "CXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIlVzZSBFbWlzc2l2ZSBNYXAiIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvbWF0ZXJpYWxfdmFyaWFibGUiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIxMCIgCgkJb3B0aW9ucyA9IFsgCgkJCSIxZTA2NzQ2NC0xMmQ4LTQ4MjYtOWI3Mi1jZmQ1NzY1MDAzZTMiCgkJCSJmYjNmNzA5Yi1hNTRhLTRlOTMtYWM5Zi1lOWZjNzZmYjhiY2QiCgkJCSI1ZGQ1OWIzZC0xNzYyLTRhMTQtOTkzMC03NTAwMjMwZWYzZGIiCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTQyMCAKCQkJNzgwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCQl0ZXh0dXJlX21hcCA9IHsgCgkJCQlkaXNwbGF5X25hbWUgPSAiRW1pc3NpdmUgTWFwIiAKCQkJCXNsb3RfbmFtZSA9ICJlbWlzc2l2ZV9tYXAiIAoJCQkJdWkgPSB7IAoJCQkJCW9yZGVyID0gNSAKCQkJCX0gCgkJCX0gCgkJfSAKCQl0aXRsZSA9ICJFbWlzc2l2ZSBNYXAiIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvc2FtcGxlX3RleHR1cmUiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQkJbWF0ZXJpYWxfdmFyaWFibGUgPSB7IAoJCQkJZGlzcGxheV9uYW1lID0gIkVtaXNzaXZlIiAKCQkJCW5hbWUgPSAiZW1pc3NpdmUiIAoJCQkJdWkg",
+ "PSB7IAoJCQkJCW1heCA9IFsgMS4wMDAwMDAgMS4wMDAwMDAgMS4wMDAwMDAgXSAKCQkJCQltaW4gPSBbIDAuMDAwMDAwIDAuMDAwMDAwIDAuMDAwMDAwIF0gCgkJCQkJc3RlcCA9IFsgMC4wMSAwLjAxIDAuMDEgXSAKCQkJCQlvcmRlciA9IDIzIAoJCQkJCXVpX3R5cGUgPSAiY29sb3IiIAoJCQkJfSAKCQkJCXR5cGUgPSAiZmxvYXQzIiAKCQkJCXZhbHVlID0gWzAuMDAwMDAwIDAuMDAwMDAwIDAuMDAwMDAwXSAKCQkJfSAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyNCIgCgkJb3B0aW9ucyA9IFsgCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTQyMCAKCQkJODgwIAoJCV0gCgkJc2FtcGxlcnMgPSB7IAoJCX0gCgkJdGl0bGUgPSAiRW1pc3NpdmUiIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvbWF0ZXJpYWxfdmFyaWFibGUiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQkJbWF0ZXJpYWxfdmFyaWFibGUgPSB7IAoJCQkJZGlzcGxheV9uYW1lID0gIkVtaXNzaXZlIEludGVuc2l0eSIgCgkJCQluYW1lID0gImVtaXNzaXZlX2ludGVuc2l0eSIgCgkJCQl1aSA9IHsgCgkJCQkJbWF4ID0gMTAuMDAwMDAwIAoJCQkJCW1pbiA9IDAuMDAwMDAwIAoJCQkJCXN0ZXAgPSAwLjAxIAoJCQkJCW9yZGVyID0gNTMgCgkJCQl9IAoJCQkJdHlwZSA9ICJmbG9hdCIgCgkJCQl2YWx1ZSA9IDAuMDAwMDAwIAoJCQl9IAoJCX0gCgkJaWQgPSAiYWJi",
+ "YWFiYmEtYWJiYS1hYmJhLWFiYmEtYWJiYWFiYmFhYjI4IiAKCQlvcHRpb25zID0gWyAKCQldIAoJCXBvc2l0aW9uID0gWyAKCQkJNzQwIAoJCQk5MjAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJfSAKCQl0aXRsZSA9ICJFbWlzc2l2ZSBJbnRlbnNpdHkiIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvbWF0ZXJpYWxfdmFyaWFibGUiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWJiNyIgCgkJb3B0aW9ucyA9IFsgCgkJCSI5QTg0MjgyQi1GMUEyLTQ2RDQtOUZDNC01QTc2RkM5QjMwREQiCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTEwMjAgCgkJCTExMDAgCgkJXSAKCQlzYW1wbGVycyA9IHsgCgkJfSAKCQl0aXRsZSA9ICJBbyBNYXAgU3d0aWNoIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL2lmIiAKCX0gCgl7IAoJCWNvbnRlbnRfc2l6ZSA9IFsgCgkJCTE2MCAKCQkJMCAKCQldIAoJCWV4cG9ydCA9IHsgCgkJCW1hdGVyaWFsX3ZhcmlhYmxlID0geyAKCQkJCWRpc3BsYXlfbmFtZSA9ICJVc2UgQW8gTWFwIiAKCQkJCW5hbWUgPSAidXNlX2FvX21hcCIgCgkJCQl1aSA9IHsgCgkJCQkJbWF4ID0gMSAKCQkJCQltaW4gPSAwLjAwMDAwMCAKCQkJCQlzdGVwID0gMSAKCQkJCQlvcmRlciA9IDE1IAoJCQkJCXVpX3R5cGUgPSAiY2hlY2tib3giIAoJCQkJfSAKCQkJCXR5cGUgPSAiZmxv",
+ "YXQiIAoJCQkJdmFsdWUgPSAwLjAwMDAwMCAKCQkJfSAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyNiIgCgkJb3B0aW9ucyA9IFsgCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTcwMCAKCQkJMTEwMCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQl9IAoJCXRpdGxlID0gIlVzZSBBbyBNYXAiIAoJCXR5cGUgPSAiY29yZS9zaGFkZXJfbm9kZXMvbWF0ZXJpYWxfdmFyaWFibGUiIAoJfSAKCXsgCgkJY29udGVudF9zaXplID0gWyAKCQkJMTYwIAoJCQkwIAoJCV0gCgkJZXhwb3J0ID0geyAKCQl9IAoJCWlkID0gImFiYmFhYmJhLWFiYmEtYWJiYS1hYmJhLWFiYmFhYmJhYWIyNyIgCgkJb3B0aW9ucyA9IFsgCgkJCSJmNjY5YTNhNi0wMzc2LTQxODctODQwZS04MDAwMGUyOTM5ZDUiCgkJCSJlOTRlNTNlNi00OWI2LTQxOTQtYTc0Ny04ZjA2NGE1OTMyZTAiCgkJCSI1ZGQ1OWIzZC0xNzYyLTRhMTQtOTkzMC03NTAwMjMwZWYzZGIiCgkJXSAKCQlwb3NpdGlvbiA9IFsgCgkJCTcwMCAKCQkJMTE2MCAKCQldIAoJCXNhbXBsZXJzID0geyAKCQkJdGV4dHVyZV9tYXAgPSB7IAoJCQkJZGlzcGxheV9uYW1lID0gIkFvIE1hcCIgCgkJCQlzbG90X25hbWUgPSAiYW9fbWFwIiAKCQkJCXVpID0geyAKCQkJCQlvcmRlciA9IDYgCgkJCQl9IAoJCQl9IAoJCX0gCgkJdGl0bGUgPSAiQW8gTWFwIiAKCQl0eXBlID0gImNvcmUvc2hhZGVyX25vZGVzL3NhbXBsZV90ZXh0dXJlIiAKCX0gCl0KdmVyc2lvbiA9IDMKAA=="
+			}
+		}
+	}
+	BindingTable: "BindingTable::root 5", "" {
+		Version: 100
+		Properties60:  {
+			Property: "TargetName", "KString", "", "root"
+			Property: "TargetType", "KString", "", "shader"
+			Property: "CodeAbsoluteURL", "KString", "", ""
+			Property: "CodeRelativeURL", "KString", "", ""
+			Property: "CodeTAG", "KString", "", "shader"
+			Property: "DescAbsoluteURL", "KString", "", ""
+			Property: "DescRelativeURL", "KString", "", ""
+			Property: "DescTAG", "KString", "", "shader"
+		}
+		Entry: "Maya|use_metallic_map", "FbxPropertyEntry", "use_metallic_map", "FbxSemanticEntry"
+		Entry: "Maya|base_color", "FbxPropertyEntry", "base_color", "FbxSemanticEntry"
+		Entry: "Maya|use_ao_map", "FbxPropertyEntry", "use_ao_map", "FbxSemanticEntry"
+		Entry: "Maya|TEX_emissive_map", "FbxPropertyEntry", "TEX_emissive_map", "FbxSemanticEntry"
+		Entry: "Maya|TEX_metallic_map", "FbxPropertyEntry", "TEX_metallic_map", "FbxSemanticEntry"
+		Entry: "Maya|TEX_ao_map", "FbxPropertyEntry", "TEX_ao_map", "FbxSemanticEntry"
+		Entry: "Maya|uv_offset", "FbxPropertyEntry", "uv_offset", "FbxSemanticEntry"
+		Entry: "Maya|emissive_intensity", "FbxPropertyEntry", "emissive_intensity", "FbxSemanticEntry"
+		Entry: "Maya|metallic", "FbxPropertyEntry", "metallic", "FbxSemanticEntry"
+		Entry: "Maya|TEX_global_specular_cube", "FbxPropertyEntry", "TEX_global_specular_cube", "FbxSemanticEntry"
+		Entry: "Maya|use_roughness_map", "FbxPropertyEntry", "use_roughness_map", "FbxSemanticEntry"
+		Entry: "Maya|use_normal_map", "FbxPropertyEntry", "use_normal_map", "FbxSemanticEntry"
+		Entry: "Maya|use_color_map", "FbxPropertyEntry", "use_color_map", "FbxSemanticEntry"
+		Entry: "Maya|emissive", "FbxPropertyEntry", "emissive", "FbxSemanticEntry"
+		Entry: "Maya|use_emissive_map", "FbxPropertyEntry", "use_emissive_map", "FbxSemanticEntry"
+		Entry: "Maya|uv_scale", "FbxPropertyEntry", "uv_scale", "FbxSemanticEntry"
+		Entry: "Maya|TEX_global_diffuse_cube", "FbxPropertyEntry", "TEX_global_diffuse_cube", "FbxSemanticEntry"
+		Entry: "Maya|TEX_roughness_map", "FbxPropertyEntry", "TEX_roughness_map", "FbxSemanticEntry"
+		Entry: "Maya|roughness", "FbxPropertyEntry", "roughness", "FbxSemanticEntry"
+		Entry: "Maya|TEX_brdf_lut", "FbxPropertyEntry", "TEX_brdf_lut", "FbxSemanticEntry"
+		Entry: "Maya|TEX_color_map", "FbxPropertyEntry", "TEX_color_map", "FbxSemanticEntry"
+		Entry: "Maya|TEX_normal_map", "FbxPropertyEntry", "TEX_normal_map", "FbxSemanticEntry"
+	}
+	GlobalSettings:  {
+		Version: 1000
+		Properties60:  {
+			Property: "UpAxis", "int", "",1
+			Property: "UpAxisSign", "int", "",1
+			Property: "FrontAxis", "int", "",2
+			Property: "FrontAxisSign", "int", "",1
+			Property: "CoordAxis", "int", "",0
+			Property: "CoordAxisSign", "int", "",1
+			Property: "OriginalUpAxis", "int", "",1
+			Property: "OriginalUpAxisSign", "int", "",1
+			Property: "UnitScaleFactor", "double", "",100
+			Property: "OriginalUnitScaleFactor", "double", "",1
+			Property: "AmbientColor", "ColorRGB", "",0,0,0
+			Property: "DefaultCamera", "KString", "", "Producer Perspective"
+			Property: "TimeMode", "enum", "",11
+			Property: "TimeProtocol", "enum", "",2
+			Property: "SnapOnFrameMode", "enum", "",0
+			Property: "TimeSpanStart", "KTime", "",1924423250
+			Property: "TimeSpanStop", "KTime", "",384884650000
+			Property: "CustomFrameRate", "double", "",-1
+		}
+	}
+}
+
+; Object connections
+;------------------------------------------------------------------
+
+Connections:  {
+	Connect: "OO", "Model::redPillars_GRP", "Model::Scene"
+	Connect: "OO", "Model::pillar11", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar12", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar13", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar14", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar15", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar16", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar17", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar18", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar19", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar20", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar21", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar22", "Model::redPillars_GRP"
+	Connect: "OO", "Model::pillar23", "Model::redPillars_GRP"
+	Connect: "OO", "Model::lift2", "Model::redPillars_GRP"
+	Connect: "OP", "Texture::file1", "Material::HDB_MAT", "Maya|TEX_global_diffuse_cube"
+	Connect: "OP", "Texture::file2", "Material::HDB_MAT", "Maya|TEX_global_specular_cube"
+	Connect: "OP", "Texture::file3", "Material::HDB_MAT", "Maya|TEX_brdf_lut"
+	Connect: "OP", "Texture::file5", "Material::HDB_MAT", "Maya|TEX_normal_map"
+	Connect: "OP", "Texture::file4", "Material::HDB_MAT", "Maya|TEX_color_map"
+	Connect: "OP", "Texture::file6", "Material::HDB_MAT", "Maya|TEX_metallic_map"
+	Connect: "OP", "Texture::file7", "Material::HDB_MAT", "Maya|TEX_roughness_map"
+	Connect: "OO", "Material::HDB_MAT", "Implementation::HDB_MAT_Implementation"
+	Connect: "OO", "BindingTable::root 5", "Implementation::HDB_MAT_Implementation"
+	Connect: "OO", "Video::file6", "Texture::file6"
+	Connect: "OO", "Video::file2", "Texture::file2"
+	Connect: "OO", "Video::file1", "Texture::file1"
+	Connect: "OO", "Video::file7", "Texture::file7"
+	Connect: "OO", "Video::file3", "Texture::file3"
+	Connect: "OO", "Video::file4", "Texture::file4"
+	Connect: "OO", "Video::file5", "Texture::file5"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar11"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar12"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar13"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar14"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar15"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar16"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar17"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar18"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar19"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar20"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar21"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar22"
+	Connect: "OO", "Material::HDB_MAT", "Model::pillar23"
+	Connect: "OO", "Material::HDB_MAT", "Model::lift2"
+}
+;Takes and animation section
+;----------------------------------------------------
+
+Takes:  {
+	Current: "Take 001"
+	Take: "Take 001" {
+		FileName: "Take_001.tak"
+		LocalTime: 1924423250,230930790000
+		ReferenceTime: 1924423250,230930790000
+		
+		;Models animation
+		;----------------------------------------------------
+		
+		;Generic nodes animation
+		;----------------------------------------------------
+		
+		;Textures animation
+		;----------------------------------------------------
+		
+		;Materials animation
+		;----------------------------------------------------
+		
+		
+		;Constraints animation
+		;----------------------------------------------------
+	}
+}
+;Version 5 settings
+;------------------------------------------------------------------
+
+Version5:  {
+	AmbientRenderSettings:  {
+		Version: 101
+		AmbientLightColor: 0,0,0,1
+	}
+	FogOptions:  {
+		FlogEnable: 0
+		FogMode: 0
+		FogDensity: 0.002
+		FogStart: 0.3
+		FogEnd: 1000
+		FogColor: 1,1,1,1
+	}
+	Settings:  {
+		FrameRate: "24"
+		TimeFormat: 1
+		SnapOnFrames: 0
+		ReferenceTimeIndex: -1
+		TimeLineStartTime: 5880000
+		TimeLineStopTime: 1176000000
+	}
+	RendererSetting:  {
+		DefaultCamera: "Producer Perspective"
+		DefaultViewingMode: 0
+	}
+}
