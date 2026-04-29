@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "641542069724",
+    "firebase_url": "https://dollarsndecisions-cp09-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "dollarsndecisions-cp09",
+    "storage_bucket": "dollarsndecisions-cp09.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641542069724:android:b430e5af59864982a20319",
+        "android_client_info": {
+          "package_name": "com.bankers.dnd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx6D3gu81OpC96SA6r_ctxzkdsA6JLc_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
