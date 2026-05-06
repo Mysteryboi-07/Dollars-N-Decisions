@@ -9,7 +9,7 @@ public class StartingSequenceManager : MonoBehaviour
     [Header("UI Animator")]
     [SerializeField] private Animator uiAnimator;
     [SerializeField] private string uiHideTrigger = "Hide";
-    [SerializeField] private float uiHideDuration = 0.2f;
+    [SerializeField] private float uiHideDuration = 0.28f;
 
     [Header("Starting Camera Animator")]
     [SerializeField] private Animator startingCamAnimator;
