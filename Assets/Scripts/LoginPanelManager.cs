@@ -56,6 +56,8 @@ public class LoginPanelManager : MonoBehaviour
                 HideError();
 
                 Debug.Log("[LOGIN] Success: " + user.UserId);
+
+                StartingSequenceManager.Instance?.PlayCameraPart1ThenShowName();
             });
     }
 

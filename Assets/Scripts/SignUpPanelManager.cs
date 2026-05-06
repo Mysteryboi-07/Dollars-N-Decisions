@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using Firebase.Auth;
 using Firebase.Extensions;
-using Firebase.Database;
 
 public class SignupPanelManager : MonoBehaviour
 {
@@ -64,19 +63,15 @@ public class SignupPanelManager : MonoBehaviour
 
                 FirebaseUser user = task.Result.User;
 
-                FirebaseDatabase.DefaultInstance.RootReference
-                    .Child("Users")
-                    .Child(user.UserId)
-                    .Child("Profile")
-                    .Child("Email")
-                    .SetValueAsync(email);
+                DatabaseManager.Instance.SetCurrentUserId(user.UserId);
+                DatabaseManager.Instance.SaveUserProfile(user.Email);
 
                 ClearFields();
                 HideError();
 
-                UIManager.Instance?.ShowLogin();
-
                 Debug.Log("[SIGNUP] Success: " + user.UserId);
+
+                StartingSequenceManager.Instance?.PlayCameraPart1ThenShowName();
             });
     }
 

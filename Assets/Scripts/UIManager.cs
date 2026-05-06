@@ -20,7 +20,6 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
-
         UnlockCursor();
     }
 
@@ -35,17 +34,6 @@ public class UIManager : MonoBehaviour
         loginPanel.SetActive(false);
         signupPanel.SetActive(false);
         namePanel.SetActive(false);
-        errorMessage.SetActive(false);
-
-        UnlockCursor();
-    }
-
-    public void ShowNamePanel()
-    {
-        startingButtons.SetActive(false);
-        loginPanel.SetActive(false);
-        signupPanel.SetActive(false);
-        namePanel.SetActive(true);
         errorMessage.SetActive(false);
 
         UnlockCursor();
@@ -73,15 +61,29 @@ public class UIManager : MonoBehaviour
         UnlockCursor();
     }
 
+    public void ShowNamePanel()
+    {
+        startingButtons.SetActive(false);
+        loginPanel.SetActive(false);
+        signupPanel.SetActive(false);
+        namePanel.SetActive(true);
+        errorMessage.SetActive(false);
+
+        UnlockCursor();
+    }
+
+    public void HideAllPanels()
+    {
+        startingButtons.SetActive(false);
+        loginPanel.SetActive(false);
+        signupPanel.SetActive(false);
+        namePanel.SetActive(false);
+        errorMessage.SetActive(false);
+    }
+
     public void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-    }
-
-    public void LockCursor()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 }
