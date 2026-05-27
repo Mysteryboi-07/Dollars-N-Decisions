@@ -18,8 +18,11 @@ public class StartingSequenceManager : MonoBehaviour
     [SerializeField] private float camPart1Duration = 0.35f;
     [SerializeField] private float camPart2Duration = 7f;
 
-    [Header("Scene")]
-    [SerializeField] private string gameSceneName = "GameScene";
+    [Header("Testing Scene Objects")]
+    [SerializeField] private GameObject startingSequenceGroup;
+    [SerializeField] private GameObject playerObject;
+    [SerializeField] private GameObject furnitureGroup;
+    [SerializeField] private GameObject mainUI;
 
     private bool isTransitioning;
 
@@ -88,10 +91,10 @@ public class StartingSequenceManager : MonoBehaviour
     {
         if (isTransitioning) return;
 
-        StartCoroutine(CameraPart2ThenLoadGame());
+        StartCoroutine(CameraPart2ThenStartGame());
     }
 
-    private IEnumerator CameraPart2ThenLoadGame()
+    private IEnumerator CameraPart2ThenStartGame()
     {
         isTransitioning = true;
 
@@ -102,6 +105,23 @@ public class StartingSequenceManager : MonoBehaviour
 
         yield return new WaitForSeconds(camPart2Duration);
 
-        SceneManager.LoadScene(gameSceneName);
+        StartGameInCurrentScene();
+    }
+
+    private void StartGameInCurrentScene()
+    {
+        if (playerObject != null)
+            playerObject.SetActive(true);
+
+        if (furnitureGroup != null)
+            furnitureGroup.SetActive(true);
+
+        UIManager.Instance?.LockCursor();
+
+        if (startingSequenceGroup != null)
+            startingSequenceGroup.SetActive(false);
+
+        if (mainUI != null)
+            mainUI.SetActive(true);
     }
 }

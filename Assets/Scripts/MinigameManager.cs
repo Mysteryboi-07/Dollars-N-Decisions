@@ -1,0 +1,268 @@
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class MinigameManager : MonoBehaviour
+{
+    public enum Difficulty
+    {
+        Easy,
+        Medium,
+        Hard
+    }
+
+    [Header("Minigame UI")]
+    [SerializeField] private GameObject difficultyButtonGroup;
+    [SerializeField] private RectTransform levelObject;
+    [SerializeField] private MinigameButtonInteract buttonPrefab;
+    [SerializeField] private TMP_Text progressText;
+    [SerializeField] private TMP_Text resultText;
+
+    [Header("Difficulty Timers")]
+    [SerializeField] private float easyButtonLifetime = 3f;
+    [SerializeField] private float mediumButtonLifetime = 1.5f;
+    [SerializeField] private float hardButtonLifetime = 0.5f;
+
+    [Header("Rewards")]
+    [SerializeField] private int buttonsToClick = 25;
+    [SerializeField] private int easyReward = 10;
+    [SerializeField] private int mediumReward = 20;
+    [SerializeField] private int hardReward = 30;
+    [SerializeField] private float resultDisplayDuration = 5f;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent onMinigameClosed;
+
+    private MinigameButtonInteract activeButton;
+    private Coroutine spawnRoutine;
+    private Coroutine resultRoutine;
+    private float currentButtonLifetime;
+    private int currentReward;
+    private int clickedButtons;
+    private float roundStartTime;
+    private float finalTime;
+    private bool isPlaying;
+
+    private void OnEnable()
+    {
+        OpenMinigame();
+    }
+
+    private void OnDisable()
+    {
+        StopCurrentRound();
+    }
+
+    public void OpenMinigame()
+    {
+        if (difficultyButtonGroup != null)
+            difficultyButtonGroup.SetActive(true);
+
+        if (levelObject != null)
+            levelObject.gameObject.SetActive(false);
+
+        if (resultText != null)
+            resultText.gameObject.SetActive(false);
+
+        if (progressText != null)
+            progressText.gameObject.SetActive(false);
+    }
+
+    public void StartEasy()
+    {
+        StartRound(Difficulty.Easy);
+    }
+
+    public void StartMedium()
+    {
+        StartRound(Difficulty.Medium);
+    }
+
+    public void StartHard()
+    {
+        StartRound(Difficulty.Hard);
+    }
+
+    private void StartRound(Difficulty difficulty)
+    {
+        StopCurrentRound();
+
+        clickedButtons = 0;
+        roundStartTime = Time.time;
+        finalTime = 0f;
+        isPlaying = true;
+
+        if (resultRoutine != null)
+        {
+            StopCoroutine(resultRoutine);
+            resultRoutine = null;
+        }
+
+        switch (difficulty)
+        {
+            case Difficulty.Easy:
+                currentButtonLifetime = easyButtonLifetime;
+                currentReward = easyReward;
+                break;
+
+            case Difficulty.Medium:
+                currentButtonLifetime = mediumButtonLifetime;
+                currentReward = mediumReward;
+                break;
+
+            case Difficulty.Hard:
+                currentButtonLifetime = hardButtonLifetime;
+                currentReward = hardReward;
+                break;
+        }
+
+        if (difficultyButtonGroup != null)
+            difficultyButtonGroup.SetActive(false);
+
+        if (levelObject != null)
+            levelObject.gameObject.SetActive(true);
+
+        if (progressText != null)
+            progressText.gameObject.SetActive(true);
+
+        UpdateProgressText();
+        SpawnButton();
+    }
+
+    public void ClickSpawnedButton(MinigameButtonInteract clickedButton)
+    {
+        if (!isPlaying || clickedButton != activeButton) return;
+
+        clickedButtons++;
+
+        DestroyActiveButton(true);
+
+        if (clickedButtons >= buttonsToClick)
+        {
+            CompleteRound();
+            return;
+        }
+
+        UpdateProgressText();
+        SpawnButton();
+    }
+
+    private void SpawnButton()
+    {
+        if (buttonPrefab == null || levelObject == null) return;
+
+        activeButton = Instantiate(buttonPrefab, levelObject);
+        activeButton.Setup(this);
+
+        RectTransform buttonRect = activeButton.GetComponent<RectTransform>();
+        buttonRect.anchoredPosition = GetRandomPositionInSpawnArea(buttonRect);
+
+        spawnRoutine = StartCoroutine(ButtonLifetimeRoutine());
+    }
+
+    private IEnumerator ButtonLifetimeRoutine()
+    {
+        yield return new WaitForSeconds(currentButtonLifetime);
+
+        if (!isPlaying) yield break;
+
+        DestroyActiveButton(false);
+        SpawnButton();
+    }
+
+    private Vector2 GetRandomPositionInSpawnArea(RectTransform buttonRect)
+    {
+        Vector2 areaSize = levelObject.rect.size;
+        Vector2 buttonSize = buttonRect.rect.size;
+
+        float halfWidth = Mathf.Max(0f, (areaSize.x - buttonSize.x) * 0.5f);
+        float halfHeight = Mathf.Max(0f, (areaSize.y - buttonSize.y) * 0.5f);
+
+        return new Vector2(
+            Random.Range(-halfWidth, halfWidth),
+            Random.Range(-halfHeight, halfHeight)
+        );
+    }
+
+    private void CompleteRound()
+    {
+        finalTime = Time.time - roundStartTime;
+
+        Debug.Log($"You have earned ${currentReward}");
+        Debug.Log($"Total time taken: {FormatTime(finalTime)}");
+
+        StopCurrentRound();
+
+        if (levelObject != null)
+            levelObject.gameObject.SetActive(false);
+
+        if (resultText != null)
+        {
+            resultText.text = $"You earned ${currentReward}\nTime taken: {FormatTime(finalTime)}";
+            resultText.gameObject.SetActive(true);
+        }
+
+        if (progressText != null)
+            progressText.gameObject.SetActive(false);
+
+        resultRoutine = StartCoroutine(CloseAfterResultDelay());
+    }
+
+    private IEnumerator CloseAfterResultDelay()
+    {
+        yield return new WaitForSeconds(resultDisplayDuration);
+
+        resultRoutine = null;
+        gameObject.SetActive(false);
+        onMinigameClosed?.Invoke();
+    }
+
+    private void StopCurrentRound()
+    {
+        isPlaying = false;
+
+        if (spawnRoutine != null)
+        {
+            StopCoroutine(spawnRoutine);
+            spawnRoutine = null;
+        }
+
+        if (resultRoutine != null)
+        {
+            StopCoroutine(resultRoutine);
+            resultRoutine = null;
+        }
+
+        DestroyActiveButton(true);
+    }
+
+    private void DestroyActiveButton(bool stopSpawnRoutine)
+    {
+        if (activeButton != null)
+        {
+            Destroy(activeButton.gameObject);
+            activeButton = null;
+        }
+
+        if (stopSpawnRoutine && spawnRoutine != null)
+        {
+            StopCoroutine(spawnRoutine);
+            spawnRoutine = null;
+        }
+    }
+
+    private void UpdateProgressText()
+    {
+        if (progressText != null)
+            progressText.text = $"{clickedButtons}/{buttonsToClick}";
+    }
+
+    private string FormatTime(float seconds)
+    {
+        int minutes = Mathf.FloorToInt(seconds / 60f);
+        float remainingSeconds = seconds % 60f;
+
+        return $"{minutes:00}:{remainingSeconds:00.00}";
+    }
+}
