@@ -5,7 +5,9 @@ public enum InteractionType
     None,
     Laptop,
     HouseDoor,
+    OfficeDoor,
     Monitor,
+    Bed,
 }
 
 public class InteractableTrigger : MonoBehaviour

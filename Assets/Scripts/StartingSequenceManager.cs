@@ -123,5 +123,7 @@ public class StartingSequenceManager : MonoBehaviour
 
         if (mainUI != null)
             mainUI.SetActive(true);
+
+        GameManager.Instance?.ShowStatsUI();
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,8 +20,17 @@ public class InteractionUIManager : MonoBehaviour
     [SerializeField] private GameObject monitorCamera;
     [SerializeField] private GameObject monitorScreen;
 
+    [Header("Sleep Interaction")]
+    [SerializeField] private CanvasGroup sleepFadeGroup;
+    [SerializeField] private float sleepFadeInDuration = 1f;
+    [SerializeField] private float sleepHoldDuration = 2f;
+    [SerializeField] private float sleepFadeOutDuration = 1f;
+
     private InteractableTrigger currentInteractable;
     private InteractionType openInteractionType = InteractionType.None;
+    private Coroutine sleepRoutine;
+    private Coroutine officeReturnRoutine;
+    private bool isSleeping;
 
     private void Awake()
     {
@@ -45,10 +55,18 @@ public class InteractionUIManager : MonoBehaviour
 
         if (monitorScreen != null)
             monitorScreen.SetActive(false);
+
+        if (sleepFadeGroup != null)
+        {
+            sleepFadeGroup.alpha = 0f;
+            sleepFadeGroup.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
     {
+        if (isSleeping) return;
+
         if (openInteractionType != InteractionType.None)
         {
             if (Keyboard.current != null &&
@@ -72,6 +90,7 @@ public class InteractionUIManager : MonoBehaviour
 
     public void SetCurrentInteractable(InteractableTrigger interactable)
     {
+        if (isSleeping) return;
         if (openInteractionType != InteractionType.None) return;
 
         currentInteractable = interactable;
@@ -105,8 +124,16 @@ public class InteractionUIManager : MonoBehaviour
                 EnterHouseDoor();
                 break;
 
+            case InteractionType.OfficeDoor:
+                EnterOfficeDoor();
+                break;
+
             case InteractionType.Monitor:
                 OpenMonitorScreen();
+                break;
+
+            case InteractionType.Bed:
+                GoToSleep();
                 break;
 
             default:
@@ -119,6 +146,18 @@ public class InteractionUIManager : MonoBehaviour
 
     private void EnterHouseDoor()
     {
+        if (GameManager.Instance != null && !GameManager.Instance.CanEnterOffice)
+        {
+            if (interactionText != null)
+            {
+                interactionText.text = "Office is closed";
+                interactionText.gameObject.SetActive(true);
+            }
+
+            Debug.Log("[DOOR] Office is closed. Come back before 2100.");
+            return;
+        }
+
         HidePrompt();
         currentInteractable = null;
 
@@ -129,6 +168,27 @@ public class InteractionUIManager : MonoBehaviour
             workerObject.SetActive(true);
 
         Debug.Log("[DOOR] Switched from player to worker.");
+    }
+
+    private void EnterOfficeDoor()
+    {
+        HidePrompt();
+        currentInteractable = null;
+
+        if (workerObject != null)
+            workerObject.SetActive(false);
+
+        if (playerObject != null)
+            playerObject.SetActive(true);
+
+        Debug.Log("[DOOR] Switched from worker to player.");
+    }
+
+    public void ReturnHomeFromOfficeWithFade()
+    {
+        if (officeReturnRoutine != null) return;
+
+        officeReturnRoutine = StartCoroutine(ReturnHomeFromOfficeRoutine());
     }
 
     // ---------- Laptop Screen ----------
@@ -148,6 +208,7 @@ public class InteractionUIManager : MonoBehaviour
         if (laptopScreen != null)
             laptopScreen.SetActive(true);
 
+        GameManager.Instance?.HideStatsUI();
         UIManager.Instance?.UnlockCursor();
 
         Debug.Log("[LAPTOP] Opened laptop screen.");
@@ -166,6 +227,7 @@ public class InteractionUIManager : MonoBehaviour
         if (playerObject != null)
             playerObject.SetActive(true);
 
+        GameManager.Instance?.ShowStatsUI();
         UIManager.Instance?.LockCursor();
 
         if (currentInteractable != null &&
@@ -195,6 +257,7 @@ public class InteractionUIManager : MonoBehaviour
         if (monitorScreen != null)
             monitorScreen.SetActive(true);
 
+        GameManager.Instance?.HideStatsUI();
         UIManager.Instance?.UnlockCursor();
 
         Debug.Log("[MONITOR] Opened monitor screen.");
@@ -213,6 +276,7 @@ public class InteractionUIManager : MonoBehaviour
         if (workerObject != null)
             workerObject.SetActive(true);
 
+        GameManager.Instance?.ShowStatsUI();
         UIManager.Instance?.LockCursor();
 
         if (currentInteractable != null &&
@@ -237,6 +301,113 @@ public class InteractionUIManager : MonoBehaviour
                 CloseMonitorScreen();
                 break;
         }
+    }
+
+    // ---------- Sleep Interaction ----------
+
+    private void GoToSleep()
+    {
+        if (sleepRoutine != null) return;
+
+        sleepRoutine = StartCoroutine(SleepRoutine());
+    }
+
+    private IEnumerator SleepRoutine()
+    {
+        isSleeping = true;
+        HidePrompt();
+
+        if (sleepFadeGroup == null)
+        {
+            Debug.LogWarning("[SLEEP] No sleep fade CanvasGroup assigned.");
+            isSleeping = false;
+            sleepRoutine = null;
+            yield break;
+        }
+
+        sleepFadeGroup.gameObject.SetActive(true);
+
+        yield return FadeSleepOverlay(0f, 1f, sleepFadeInDuration);
+        yield return new WaitForSeconds(sleepHoldDuration);
+
+        GameManager.Instance?.WakeUp();
+
+        yield return FadeSleepOverlay(1f, 0f, sleepFadeOutDuration);
+
+        sleepFadeGroup.gameObject.SetActive(false);
+
+        isSleeping = false;
+        sleepRoutine = null;
+
+        if (currentInteractable != null &&
+            interactionText != null)
+        {
+            interactionText.text = currentInteractable.PromptMessage;
+            interactionText.gameObject.SetActive(true);
+        }
+
+        Debug.Log("[SLEEP] Finished sleeping.");
+    }
+
+    private IEnumerator ReturnHomeFromOfficeRoutine()
+    {
+        isSleeping = true;
+        HidePrompt();
+
+        if (sleepFadeGroup == null)
+        {
+            Debug.LogWarning("[OFFICE] No fade CanvasGroup assigned.");
+            EnterOfficeDoor();
+            isSleeping = false;
+            officeReturnRoutine = null;
+            yield break;
+        }
+
+        sleepFadeGroup.gameObject.SetActive(true);
+
+        yield return FadeSleepOverlay(0f, 1f, sleepFadeInDuration);
+        yield return new WaitForSeconds(sleepHoldDuration);
+
+        if (monitorScreen != null)
+            monitorScreen.SetActive(false);
+
+        if (monitorCamera != null)
+            monitorCamera.SetActive(false);
+
+        openInteractionType = InteractionType.None;
+        EnterOfficeDoor();
+
+        yield return FadeSleepOverlay(1f, 0f, sleepFadeOutDuration);
+
+        sleepFadeGroup.gameObject.SetActive(false);
+        GameManager.Instance?.ShowStatsUI();
+        UIManager.Instance?.LockCursor();
+
+        isSleeping = false;
+        officeReturnRoutine = null;
+
+        Debug.Log("[OFFICE] Work day ended. Returned home.");
+    }
+
+    private IEnumerator FadeSleepOverlay(float startAlpha, float endAlpha, float duration)
+    {
+        if (duration <= 0f)
+        {
+            sleepFadeGroup.alpha = endAlpha;
+            yield break;
+        }
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float fadePercent = Mathf.Clamp01(elapsedTime / duration);
+            sleepFadeGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, fadePercent);
+            yield return null;
+        }
+
+        sleepFadeGroup.alpha = endAlpha;
     }
 
     // ---------- Helpers ----------

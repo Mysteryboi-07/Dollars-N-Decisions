@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class MinigameManager : MonoBehaviour
 {
@@ -25,7 +26,8 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private float hardButtonLifetime = 0.5f;
 
     [Header("Rewards")]
-    [SerializeField] private int buttonsToClick = 25;
+    [FormerlySerializedAs("buttonsToClick")]
+    [SerializeField] private int totalTargets = 25;
     [SerializeField] private int easyReward = 10;
     [SerializeField] private int mediumReward = 20;
     [SerializeField] private int hardReward = 30;
@@ -34,15 +36,20 @@ public class MinigameManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent onMinigameClosed;
 
+    [Header("Office Rules")]
+    [SerializeField] private bool returnHomeAtEndOfOfficeDay;
+
     private MinigameButtonInteract activeButton;
     private Coroutine spawnRoutine;
     private Coroutine resultRoutine;
     private float currentButtonLifetime;
-    private int currentReward;
-    private int clickedButtons;
+    private int currentMaxReward;
+    private int hitTargets;
+    private int resolvedTargets;
     private float roundStartTime;
     private float finalTime;
     private bool isPlaying;
+    private bool shouldReturnHomeAfterResult;
 
     private void OnEnable()
     {
@@ -51,7 +58,7 @@ public class MinigameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        StopCurrentRound();
+        StopActiveTargetGameplay();
     }
 
     public void OpenMinigame()
@@ -88,10 +95,12 @@ public class MinigameManager : MonoBehaviour
     {
         StopCurrentRound();
 
-        clickedButtons = 0;
+        hitTargets = 0;
+        resolvedTargets = 0;
         roundStartTime = Time.time;
         finalTime = 0f;
         isPlaying = true;
+        shouldReturnHomeAfterResult = false;
 
         if (resultRoutine != null)
         {
@@ -103,17 +112,17 @@ public class MinigameManager : MonoBehaviour
         {
             case Difficulty.Easy:
                 currentButtonLifetime = easyButtonLifetime;
-                currentReward = easyReward;
+                currentMaxReward = easyReward;
                 break;
 
             case Difficulty.Medium:
                 currentButtonLifetime = mediumButtonLifetime;
-                currentReward = mediumReward;
+                currentMaxReward = mediumReward;
                 break;
 
             case Difficulty.Hard:
                 currentButtonLifetime = hardButtonLifetime;
-                currentReward = hardReward;
+                currentMaxReward = hardReward;
                 break;
         }
 
@@ -134,18 +143,8 @@ public class MinigameManager : MonoBehaviour
     {
         if (!isPlaying || clickedButton != activeButton) return;
 
-        clickedButtons++;
-
         DestroyActiveButton(true);
-
-        if (clickedButtons >= buttonsToClick)
-        {
-            CompleteRound();
-            return;
-        }
-
-        UpdateProgressText();
-        SpawnButton();
+        ResolveTarget(true);
     }
 
     private void SpawnButton()
@@ -168,7 +167,7 @@ public class MinigameManager : MonoBehaviour
         if (!isPlaying) yield break;
 
         DestroyActiveButton(false);
-        SpawnButton();
+        ResolveTarget(false);
     }
 
     private Vector2 GetRandomPositionInSpawnArea(RectTransform buttonRect)
@@ -188,9 +187,20 @@ public class MinigameManager : MonoBehaviour
     private void CompleteRound()
     {
         finalTime = Time.time - roundStartTime;
+        int earnedReward = CalculateEarnedReward();
 
-        Debug.Log($"You have earned ${currentReward}");
+        Debug.Log($"You hit {hitTargets}/{totalTargets} targets.");
+        Debug.Log($"You have earned ${earnedReward}");
         Debug.Log($"Total time taken: {FormatTime(finalTime)}");
+
+        GameManager.Instance?.ChangeMoney(earnedReward);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AdvanceTimePhase();
+            shouldReturnHomeAfterResult = returnHomeAtEndOfOfficeDay &&
+                GameManager.Instance.ShouldReturnHomeFromOffice;
+        }
 
         StopCurrentRound();
 
@@ -199,7 +209,7 @@ public class MinigameManager : MonoBehaviour
 
         if (resultText != null)
         {
-            resultText.text = $"You earned ${currentReward}\nTime taken: {FormatTime(finalTime)}";
+            resultText.text = $"Hits: {hitTargets}/{totalTargets}\nYou earned ${earnedReward}\nTime taken: {FormatTime(finalTime)}";
             resultText.gameObject.SetActive(true);
         }
 
@@ -216,9 +226,23 @@ public class MinigameManager : MonoBehaviour
         resultRoutine = null;
         gameObject.SetActive(false);
         onMinigameClosed?.Invoke();
+
+        if (shouldReturnHomeAfterResult)
+            InteractionUIManager.Instance?.ReturnHomeFromOfficeWithFade();
     }
 
     private void StopCurrentRound()
+    {
+        StopActiveTargetGameplay();
+
+        if (resultRoutine != null)
+        {
+            StopCoroutine(resultRoutine);
+            resultRoutine = null;
+        }
+    }
+
+    private void StopActiveTargetGameplay()
     {
         isPlaying = false;
 
@@ -226,12 +250,6 @@ public class MinigameManager : MonoBehaviour
         {
             StopCoroutine(spawnRoutine);
             spawnRoutine = null;
-        }
-
-        if (resultRoutine != null)
-        {
-            StopCoroutine(resultRoutine);
-            resultRoutine = null;
         }
 
         DestroyActiveButton(true);
@@ -255,7 +273,47 @@ public class MinigameManager : MonoBehaviour
     private void UpdateProgressText()
     {
         if (progressText != null)
-            progressText.text = $"{clickedButtons}/{buttonsToClick}";
+            progressText.text = $"{hitTargets}/{totalTargets}";
+    }
+
+    private void ResolveTarget(bool wasHit)
+    {
+        if (wasHit)
+            hitTargets++;
+
+        resolvedTargets++;
+
+        if (resolvedTargets >= totalTargets)
+        {
+            CompleteRound();
+            return;
+        }
+
+        UpdateProgressText();
+        SpawnButton();
+    }
+
+    private int CalculateEarnedReward()
+    {
+        float rewardMultiplier = GetRewardMultiplier();
+        return Mathf.RoundToInt(currentMaxReward * rewardMultiplier);
+    }
+
+    private float GetRewardMultiplier()
+    {
+        if (hitTargets >= 25)
+            return 1f;
+
+        if (hitTargets >= 20)
+            return 0.8f;
+
+        if (hitTargets >= 15)
+            return 0.6f;
+
+        if (hitTargets >= 10)
+            return 0.2f;
+
+        return 0f;
     }
 
     private string FormatTime(float seconds)
