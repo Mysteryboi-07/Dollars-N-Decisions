@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using StarterAssets;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +15,14 @@ public class GameManager : MonoBehaviour
         public float happinessChange;
         public float hungerChange;
         public bool advancesTime = true;
+    }
+
+    [System.Serializable]
+    public class BagItem
+    {
+        public string itemName;
+        public float hungerRestore;
+        public int quantity;
     }
 
     [Header("Stats UI")]
@@ -38,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Actions")]
     [SerializeField] private StatAction[] statActions;
+    [SerializeField] private string sleepActionName = "Sleep";
 
     [Header("Time")]
     [FormerlySerializedAs("timeUIGroup")]
@@ -57,21 +68,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int startingMoney = 20;
     [SerializeField] private int startingDay;
 
+    [Header("Bag")]
+    [SerializeField] private List<BagItem> bagItems = new List<BagItem>();
+
     private float happiness;
     private float hunger;
-    private int money;
+    private float money;
     private int day;
     private int currentDayPhase;
     private readonly int[] phaseHours = { 6, 9, 12, 15, 18, 21, 0 };
 
     public float Happiness => happiness;
     public float Hunger => hunger;
-    public int Money => money;
+    public float Money => money;
     public int Day => day;
     public int CurrentDayPhase => currentDayPhase;
     public int CurrentHour => phaseHours[currentDayPhase];
-    public bool CanEnterOffice => currentDayPhase < 5;
+    public bool CanEnterOffice => currentDayPhase > 0 && currentDayPhase < 5;
     public bool ShouldReturnHomeFromOffice => currentDayPhase >= 5;
+    public IReadOnlyList<BagItem> BagItems => bagItems;
 
     private void Awake()
     {
@@ -119,6 +134,32 @@ public class GameManager : MonoBehaviour
             infoUIGroup.SetActive(isVisible);
     }
 
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SetPlayerCursorInput(false);
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SetPlayerCursorInput(true);
+    }
+
+    public void FreezePlayerForUI()
+    {
+        UnlockCursor();
+        SetPlayerMovementInput(false);
+    }
+
+    public void UnfreezePlayerFromUI()
+    {
+        SetPlayerMovementInput(true);
+        LockCursor();
+    }
+
     public void ApplyAction(int actionIndex)
     {
         if (statActions == null ||
@@ -141,6 +182,22 @@ public class GameManager : MonoBehaviour
             if (statAction != null && statAction.actionName == actionName)
             {
                 ApplyAction(statAction);
+                return;
+            }
+        }
+
+        Debug.LogWarning($"[GAME] No stat action named {actionName}.");
+    }
+
+    public void ApplyActionStatsByName(string actionName)
+    {
+        if (statActions == null) return;
+
+        foreach (StatAction statAction in statActions)
+        {
+            if (statAction != null && statAction.actionName == actionName)
+            {
+                ApplyActionStats(statAction);
                 return;
             }
         }
@@ -173,17 +230,26 @@ public class GameManager : MonoBehaviour
 
     public void WakeUp()
     {
+        ApplyActionStatsByName(sleepActionName);
         AdvanceDay();
         SetDayPhase(0);
         Debug.Log("[GAME] Woke up at 0600.");
     }
 
-    public void ChangeMoney(int amount)
+    public void WakeUpAtPhase(int phaseIndex)
+    {
+        ApplyActionStatsByName(sleepActionName);
+        AdvanceDay();
+        SetDayPhase(phaseIndex);
+        Debug.Log($"[GAME] Woke up at {CurrentHour:00}00.");
+    }
+
+    public void ChangeMoney(float amount)
     {
         SetMoney(money + amount);
     }
 
-    public bool TrySpendMoney(int amount)
+    public bool TrySpendMoney(float amount)
     {
         if (amount < 0)
         {
@@ -193,7 +259,7 @@ public class GameManager : MonoBehaviour
 
         if (money < amount)
         {
-            Debug.Log($"[GAME] Not enough money. Need ${amount}, but only have ${money}.");
+            Debug.Log($"[GAME] Not enough money. Need {FormatMoney(amount)}, but only have {FormatMoney(money)}.");
             return false;
         }
 
@@ -201,7 +267,65 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    public void SetMoney(int value)
+    public void AddBagItem(string itemName, int quantity, float hungerRestore)
+    {
+        if (string.IsNullOrWhiteSpace(itemName) || quantity <= 0) return;
+
+        BagItem existingItem = bagItems.Find(item => item.itemName == itemName);
+
+        if (existingItem != null)
+        {
+            existingItem.quantity += quantity;
+            existingItem.hungerRestore = hungerRestore;
+            return;
+        }
+
+        bagItems.Add(new BagItem
+        {
+            itemName = itemName,
+            hungerRestore = hungerRestore,
+            quantity = quantity
+        });
+    }
+
+    public void UseBagItem(string itemName)
+    {
+        BagItem existingItem = bagItems.Find(item => item.itemName == itemName);
+
+        if (existingItem == null || existingItem.quantity <= 0)
+        {
+            Debug.Log($"[BAG] No {itemName} available.");
+            return;
+        }
+
+        existingItem.quantity--;
+        ChangeHunger(existingItem.hungerRestore);
+
+        if (existingItem.quantity <= 0)
+            bagItems.Remove(existingItem);
+
+        Debug.Log($"[BAG] Used {itemName}. Hunger +{existingItem.hungerRestore}.");
+    }
+
+    public int GetBagItemQuantity(string itemName)
+    {
+        BagItem existingItem = bagItems.Find(item => item.itemName == itemName);
+        return existingItem != null ? existingItem.quantity : 0;
+    }
+
+    public void DebugLogBag()
+    {
+        if (bagItems.Count == 0)
+        {
+            Debug.Log("[BAG] Bag is empty.");
+            return;
+        }
+
+        foreach (BagItem bagItem in bagItems)
+            Debug.Log($"[BAG] {bagItem.itemName} x{bagItem.quantity} - Hunger +{bagItem.hungerRestore}");
+    }
+
+    public void SetMoney(float value)
     {
         money = value;
         UpdateMoneyText();
@@ -232,12 +356,16 @@ public class GameManager : MonoBehaviour
 
     private void ApplyAction(StatAction statAction)
     {
-        ChangeHappiness(statAction.happinessChange);
-        ChangeHunger(statAction.hungerChange);
+        ApplyActionStats(statAction);
 
         if (statAction.advancesTime)
             AdvanceTimePhase();
+    }
 
+    private void ApplyActionStats(StatAction statAction)
+    {
+        ChangeHappiness(statAction.happinessChange);
+        ChangeHunger(statAction.hungerChange);
         Debug.Log($"[GAME] Applied {statAction.actionName}: happiness {happiness}/100, hunger {hunger}/100");
     }
 
@@ -405,7 +533,7 @@ public class GameManager : MonoBehaviour
     private void UpdateMoneyText()
     {
         if (moneyText != null)
-            moneyText.text = $"${money}";
+            moneyText.text = FormatMoney(money);
     }
 
     private void UpdateDayText()
@@ -413,4 +541,40 @@ public class GameManager : MonoBehaviour
         if (dayText != null)
             dayText.text = $"Day {day}";
     }
+
+    private string FormatMoney(float value)
+    {
+        return Mathf.Approximately(value % 1f, 0f) ? $"${value:0}" : $"${value:0.00}";
+    }
+
+    private void SetPlayerCursorInput(bool isEnabled)
+    {
+        StarterAssetsInputs[] playerInputs = Object.FindObjectsByType<StarterAssetsInputs>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (StarterAssetsInputs playerInput in playerInputs)
+        {
+            playerInput.cursorLocked = isEnabled;
+            playerInput.cursorInputForLook = isEnabled;
+        }
+    }
+
+    private void SetPlayerMovementInput(bool isEnabled)
+    {
+        StarterAssetsInputs[] playerInputs = Object.FindObjectsByType<StarterAssetsInputs>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (StarterAssetsInputs playerInput in playerInputs)
+        {
+            if (!isEnabled)
+            {
+                playerInput.move = Vector2.zero;
+                playerInput.look = Vector2.zero;
+                playerInput.sprint = false;
+            }
+
+            playerInput.enabled = isEnabled;
+        }
+    }
+
 }

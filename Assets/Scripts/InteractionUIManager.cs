@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class InteractionUIManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class InteractionUIManager : MonoBehaviour
 
     [Header("Prompt UI")]
     [SerializeField] private TMP_Text interactionText;
+
+    [Header("Walker")]
+    [SerializeField] private GameObject walkerObject;
 
     [Header("Laptop Interaction")]
     [SerializeField] private GameObject playerObject;
@@ -20,6 +24,10 @@ public class InteractionUIManager : MonoBehaviour
     [SerializeField] private GameObject monitorCamera;
     [SerializeField] private GameObject monitorScreen;
 
+    [Header("Shop Interaction")]
+    [FormerlySerializedAs("ShopperObject")]
+    [SerializeField] private GameObject shopperObject;
+
     [Header("Sleep Interaction")]
     [SerializeField] private CanvasGroup sleepFadeGroup;
     [SerializeField] private float sleepFadeInDuration = 1f;
@@ -30,6 +38,7 @@ public class InteractionUIManager : MonoBehaviour
     private InteractionType openInteractionType = InteractionType.None;
     private Coroutine sleepRoutine;
     private Coroutine officeReturnRoutine;
+    private Coroutine homeWorkSleepRoutine;
     private bool isSleeping;
 
     private void Awake()
@@ -49,6 +58,12 @@ public class InteractionUIManager : MonoBehaviour
 
         if (workerObject != null)
             workerObject.SetActive(false);
+
+        if (walkerObject != null)
+            walkerObject.SetActive(false);
+
+        if (shopperObject != null)
+            shopperObject.SetActive(false);
 
         if (monitorCamera != null)
             monitorCamera.SetActive(false);
@@ -136,52 +151,168 @@ public class InteractionUIManager : MonoBehaviour
                 GoToSleep();
                 break;
 
+            case InteractionType.ShopShelf:
+                OpenShopShelf();
+                break;
+
+            case InteractionType.Cashier:
+                UseCashier();
+                break;
+
+            case InteractionType.MarketDoor:
+                UseMarketDoor();
+                break;
+
+            case InteractionType.MiniFridge:
+                OpenMiniFridge();
+                break;
+
             default:
                 Debug.Log("[INTERACTION] No interaction assigned.");
                 break;
         }
     }
 
+    // ---------- Shop Interaction ----------
+
+    private void OpenShopShelf()
+    {
+        if (currentInteractable == null) return;
+
+        ConvenienceShopManager.Instance?.AddShelfItemToCart(currentInteractable);
+        Debug.Log($"[SHOP] Added shelf item from {currentInteractable.ShopCategory} shelf.");
+    }
+
+    private void OpenMiniFridge()
+    {
+        openInteractionType = InteractionType.MiniFridge;
+        HidePrompt();
+
+        if (MiniFridgeManager.Instance == null)
+        {
+            openInteractionType = InteractionType.None;
+            Debug.LogWarning("[FRIDGE] No MiniFridgeManager found.");
+            return;
+        }
+
+        MiniFridgeManager.Instance.OpenFridge();
+        GameManager.Instance?.HideStatsUI();
+        GameManager.Instance?.FreezePlayerForUI();
+
+        Debug.Log("[FRIDGE] Opened mini fridge.");
+    }
+
+    public void CloseMiniFridge()
+    {
+        openInteractionType = InteractionType.None;
+
+        MiniFridgeManager.Instance?.CloseFridge();
+        GameManager.Instance?.ShowStatsUI();
+        GameManager.Instance?.UnfreezePlayerFromUI();
+
+        if (currentInteractable != null &&
+            interactionText != null)
+        {
+            interactionText.text = currentInteractable.PromptMessage;
+            interactionText.gameObject.SetActive(true);
+        }
+
+        Debug.Log("[FRIDGE] Closed mini fridge.");
+    }
+
+    private void UseCashier()
+    {
+        ConvenienceShopManager.Instance?.BeginCheckout();
+        Debug.Log("[SHOP] Used cashier.");
+    }
+
+    private void UseMarketDoor()
+    {
+        ToggleMarketDoor();
+    }
+
     // ---------- Door Interaction ----------
 
     private void EnterHouseDoor()
     {
+        HidePrompt();
+        currentInteractable = null;
+
+        if (IsActive(playerObject))
+        {
+            SetActivePlayer(playerObject, false);
+            SetActivePlayer(walkerObject, true);
+            Debug.Log("[DOOR] Left room. Switched from player to walker.");
+            return;
+        }
+
+        SetActivePlayer(walkerObject, false);
+        SetActivePlayer(playerObject, true);
+        Debug.Log("[DOOR] Entered room. Switched from walker to player.");
+    }
+
+    private void EnterOfficeDoor()
+    {
         if (GameManager.Instance != null && !GameManager.Instance.CanEnterOffice)
         {
+            if (IsActive(workerObject))
+            {
+                HidePrompt();
+                currentInteractable = null;
+
+                ExitOfficeToWalker();
+                return;
+            }
+
             if (interactionText != null)
             {
-                interactionText.text = "Office is closed";
+                interactionText.text = "Office opens from 0900 to 1800";
                 interactionText.gameObject.SetActive(true);
             }
 
-            Debug.Log("[DOOR] Office is closed. Come back before 2100.");
+            Debug.Log("[DOOR] Office is closed. Come back from 0900 to 1800.");
             return;
         }
 
         HidePrompt();
         currentInteractable = null;
 
-        if (playerObject != null)
-            playerObject.SetActive(false);
+        if (IsActive(workerObject))
+        {
+            ExitOfficeToWalker();
+            return;
+        }
 
-        if (workerObject != null)
-            workerObject.SetActive(true);
+        SetActivePlayer(walkerObject, false);
+        SetActivePlayer(workerObject, true);
 
-        Debug.Log("[DOOR] Switched from player to worker.");
+        Debug.Log("[DOOR] Entered office. Switched from walker to worker.");
     }
 
-    private void EnterOfficeDoor()
+    private void ToggleMarketDoor()
     {
         HidePrompt();
         currentInteractable = null;
 
-        if (workerObject != null)
-            workerObject.SetActive(false);
+        if (IsActive(shopperObject))
+        {
+            SetActivePlayer(shopperObject, false);
+            SetActivePlayer(walkerObject, true);
+            Debug.Log("[DOOR] Left market. Switched from shopper to walker.");
+            return;
+        }
 
-        if (playerObject != null)
-            playerObject.SetActive(true);
+        SetActivePlayer(walkerObject, false);
+        SetActivePlayer(shopperObject, true);
 
-        Debug.Log("[DOOR] Switched from worker to player.");
+        Debug.Log("[DOOR] Entered market. Switched from walker to shopper.");
+    }
+
+    private void ExitOfficeToWalker()
+    {
+        SetActivePlayer(workerObject, false);
+        SetActivePlayer(walkerObject, true);
+        Debug.Log("[DOOR] Left office. Switched from worker to walker.");
     }
 
     public void ReturnHomeFromOfficeWithFade()
@@ -189,6 +320,13 @@ public class InteractionUIManager : MonoBehaviour
         if (officeReturnRoutine != null) return;
 
         officeReturnRoutine = StartCoroutine(ReturnHomeFromOfficeRoutine());
+    }
+
+    public void SleepAfterLateHomeWorkWithFade()
+    {
+        if (homeWorkSleepRoutine != null) return;
+
+        homeWorkSleepRoutine = StartCoroutine(SleepAfterLateHomeWorkRoutine());
     }
 
     // ---------- Laptop Screen ----------
@@ -209,7 +347,7 @@ public class InteractionUIManager : MonoBehaviour
             laptopScreen.SetActive(true);
 
         GameManager.Instance?.HideStatsUI();
-        UIManager.Instance?.UnlockCursor();
+        GameManager.Instance?.UnlockCursor();
 
         Debug.Log("[LAPTOP] Opened laptop screen.");
     }
@@ -228,7 +366,7 @@ public class InteractionUIManager : MonoBehaviour
             playerObject.SetActive(true);
 
         GameManager.Instance?.ShowStatsUI();
-        UIManager.Instance?.LockCursor();
+        GameManager.Instance?.LockCursor();
 
         if (currentInteractable != null &&
             interactionText != null)
@@ -258,7 +396,7 @@ public class InteractionUIManager : MonoBehaviour
             monitorScreen.SetActive(true);
 
         GameManager.Instance?.HideStatsUI();
-        UIManager.Instance?.UnlockCursor();
+        GameManager.Instance?.UnlockCursor();
 
         Debug.Log("[MONITOR] Opened monitor screen.");
     }
@@ -277,7 +415,7 @@ public class InteractionUIManager : MonoBehaviour
             workerObject.SetActive(true);
 
         GameManager.Instance?.ShowStatsUI();
-        UIManager.Instance?.LockCursor();
+        GameManager.Instance?.LockCursor();
 
         if (currentInteractable != null &&
             interactionText != null)
@@ -299,6 +437,10 @@ public class InteractionUIManager : MonoBehaviour
 
             case InteractionType.Monitor:
                 CloseMonitorScreen();
+                break;
+
+            case InteractionType.MiniFridge:
+                CloseMiniFridge();
                 break;
         }
     }
@@ -357,7 +499,17 @@ public class InteractionUIManager : MonoBehaviour
         if (sleepFadeGroup == null)
         {
             Debug.LogWarning("[OFFICE] No fade CanvasGroup assigned.");
-            EnterOfficeDoor();
+            if (monitorScreen != null)
+                monitorScreen.SetActive(false);
+
+            if (monitorCamera != null)
+                monitorCamera.SetActive(false);
+
+            openInteractionType = InteractionType.None;
+            ExitOfficeToWalker();
+            GameManager.Instance?.ShowStatsUI();
+            GameManager.Instance?.LockCursor();
+
             isSleeping = false;
             officeReturnRoutine = null;
             yield break;
@@ -375,18 +527,55 @@ public class InteractionUIManager : MonoBehaviour
             monitorCamera.SetActive(false);
 
         openInteractionType = InteractionType.None;
-        EnterOfficeDoor();
+        ExitOfficeToWalker();
 
         yield return FadeSleepOverlay(1f, 0f, sleepFadeOutDuration);
 
         sleepFadeGroup.gameObject.SetActive(false);
         GameManager.Instance?.ShowStatsUI();
-        UIManager.Instance?.LockCursor();
+        GameManager.Instance?.LockCursor();
 
         isSleeping = false;
         officeReturnRoutine = null;
 
-        Debug.Log("[OFFICE] Work day ended. Returned home.");
+        Debug.Log("[OFFICE] Work day ended. Returned to outside world.");
+    }
+
+    private IEnumerator SleepAfterLateHomeWorkRoutine()
+    {
+        isSleeping = true;
+        HidePrompt();
+
+        if (sleepFadeGroup == null)
+        {
+            Debug.LogWarning("[HOME WORK] No fade CanvasGroup assigned.");
+            CloseLaptopForLateHomeWork();
+            GameManager.Instance?.WakeUpAtPhase(2);
+            GameManager.Instance?.ShowStatsUI();
+            GameManager.Instance?.LockCursor();
+            isSleeping = false;
+            homeWorkSleepRoutine = null;
+            yield break;
+        }
+
+        sleepFadeGroup.gameObject.SetActive(true);
+
+        yield return FadeSleepOverlay(0f, 1f, sleepFadeInDuration);
+        yield return new WaitForSeconds(sleepHoldDuration);
+
+        CloseLaptopForLateHomeWork();
+        GameManager.Instance?.WakeUpAtPhase(2);
+
+        yield return FadeSleepOverlay(1f, 0f, sleepFadeOutDuration);
+
+        sleepFadeGroup.gameObject.SetActive(false);
+        GameManager.Instance?.ShowStatsUI();
+        GameManager.Instance?.LockCursor();
+
+        isSleeping = false;
+        homeWorkSleepRoutine = null;
+
+        Debug.Log("[HOME WORK] Worked past midnight. Woke up at 1200.");
     }
 
     private IEnumerator FadeSleepOverlay(float startAlpha, float endAlpha, float duration)
@@ -416,5 +605,30 @@ public class InteractionUIManager : MonoBehaviour
     {
         if (interactionText != null)
             interactionText.gameObject.SetActive(false);
+    }
+
+    private void CloseLaptopForLateHomeWork()
+    {
+        openInteractionType = InteractionType.None;
+
+        if (laptopScreen != null)
+            laptopScreen.SetActive(false);
+
+        if (laptopCamera != null)
+            laptopCamera.SetActive(false);
+
+        if (playerObject != null)
+            playerObject.SetActive(true);
+    }
+
+    private bool IsActive(GameObject target)
+    {
+        return target != null && target.activeSelf;
+    }
+
+    private void SetActivePlayer(GameObject target, bool isActive)
+    {
+        if (target != null)
+            target.SetActive(isActive);
     }
 }

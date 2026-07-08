@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class MinigameButtonInteract : MonoBehaviour
 {
-    private MinigameManager minigameManager;
+    private BugBashManager bugBashManager;
     private Button button;
 
     private void Awake()
@@ -13,14 +13,14 @@ public class MinigameButtonInteract : MonoBehaviour
         button.onClick.AddListener(ClickButton);
     }
 
-    public void Setup(MinigameManager manager)
+    public void Setup(BugBashManager manager)
     {
-        minigameManager = manager;
+        bugBashManager = manager;
     }
 
     private void ClickButton()
     {
-        minigameManager?.ClickSpawnedButton(this);
+        bugBashManager?.ClickSpawnedButton(this);
     }
 
     private void OnDestroy()

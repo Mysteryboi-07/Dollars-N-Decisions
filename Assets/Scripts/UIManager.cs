@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
-        UnlockCursor();
+        GameManager.Instance?.UnlockCursor();
     }
 
     private void Start()
@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
         namePanel.SetActive(false);
         errorMessage.SetActive(false);
 
-        UnlockCursor();
+        GameManager.Instance?.UnlockCursor();
     }
 
     public void ShowLogin()
@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         namePanel.SetActive(false);
         errorMessage.SetActive(false);
 
-        UnlockCursor();
+        GameManager.Instance?.UnlockCursor();
     }
 
     public void ShowSignup()
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
         namePanel.SetActive(false);
         errorMessage.SetActive(false);
 
-        UnlockCursor();
+        GameManager.Instance?.UnlockCursor();
     }
 
     public void ShowNamePanel()
@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
         namePanel.SetActive(true);
         errorMessage.SetActive(false);
 
-        UnlockCursor();
+        GameManager.Instance?.UnlockCursor();
     }
 
     public void HideAllPanels()
@@ -81,15 +81,4 @@ public class UIManager : MonoBehaviour
         errorMessage.SetActive(false);
     }
 
-    public void UnlockCursor()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    public void LockCursor()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
 }

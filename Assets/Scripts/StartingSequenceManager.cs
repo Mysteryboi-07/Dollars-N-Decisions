@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class StartingSequenceManager : MonoBehaviour
 {
@@ -19,7 +19,8 @@ public class StartingSequenceManager : MonoBehaviour
     [SerializeField] private float camPart2Duration = 7f;
 
     [Header("Testing Scene Objects")]
-    [SerializeField] private GameObject startingSequenceGroup;
+    [FormerlySerializedAs("startingSequenceGroup")]
+    [SerializeField] private GameObject introRootObject;
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject furnitureGroup;
     [SerializeField] private GameObject mainUI;
@@ -113,13 +114,13 @@ public class StartingSequenceManager : MonoBehaviour
         if (playerObject != null)
             playerObject.SetActive(true);
 
+        if (introRootObject != null)
+            introRootObject.SetActive(false);
+
         if (furnitureGroup != null)
             furnitureGroup.SetActive(true);
 
-        UIManager.Instance?.LockCursor();
-
-        if (startingSequenceGroup != null)
-            startingSequenceGroup.SetActive(false);
+        GameManager.Instance?.LockCursor();
 
         if (mainUI != null)
             mainUI.SetActive(true);
