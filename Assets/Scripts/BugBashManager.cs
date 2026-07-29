@@ -246,7 +246,8 @@ public class BugBashManager : MonoBehaviour, IWorkMinigame
     private void CompleteRound()
     {
         finalTime = Time.time - roundStartTime;
-        int earnedReward = CalculateEarnedReward();
+        int baseReward = CalculateEarnedReward();
+        int earnedReward = ApplyRewardLocationMultiplier(baseReward);
 
         Debug.Log($"You hit {hitTargets}/{totalTargets} targets.");
         Debug.Log($"You have earned ${earnedReward}");
@@ -377,6 +378,14 @@ public class BugBashManager : MonoBehaviour, IWorkMinigame
     {
         float rewardMultiplier = GetRewardMultiplier();
         return Mathf.RoundToInt(currentMaxReward * rewardMultiplier);
+    }
+
+    private int ApplyRewardLocationMultiplier(int baseReward)
+    {
+        if (!sleepAfterMidnightHomeWork || GameManager.Instance == null)
+            return baseReward;
+
+        return GameManager.Instance.ApplyHomeWorkRewardMultiplier(baseReward);
     }
 
     private float GetRewardMultiplier()

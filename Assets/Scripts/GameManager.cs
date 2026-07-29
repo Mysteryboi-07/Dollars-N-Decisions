@@ -68,6 +68,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int startingMoney = 20;
     [SerializeField] private int startingDay;
 
+    [Header("Home Work Multiplier")]
+    [SerializeField] private float minimumHomeWorkMultiplier = 0.5f;
+    [SerializeField] private float maximumHomeWorkMultiplier = 2f;
+
+    [Header("Events UI")]
+    [SerializeField] private GameObject houseEventObject;
+    [SerializeField] private TMP_Text houseMultiplierText;
+
     [Header("Bag")]
     [SerializeField] private List<BagItem> bagItems = new List<BagItem>();
 
@@ -76,6 +84,8 @@ public class GameManager : MonoBehaviour
     private float money;
     private int day;
     private int currentDayPhase;
+    private bool clockedOutOfOfficeToday;
+    private float houseUpgradeProgress;
     private readonly int[] phaseHours = { 6, 9, 12, 15, 18, 21, 0 };
 
     public float Happiness => happiness;
@@ -84,8 +94,16 @@ public class GameManager : MonoBehaviour
     public int Day => day;
     public int CurrentDayPhase => currentDayPhase;
     public int CurrentHour => phaseHours[currentDayPhase];
-    public bool CanEnterOffice => currentDayPhase > 0 && currentDayPhase < 5;
+    public bool HasClockedOutOfOfficeToday => clockedOutOfOfficeToday;
+    public bool CanEnterOffice => currentDayPhase > 0 && currentDayPhase < 5 && !clockedOutOfOfficeToday;
+    public string OfficeEntryBlockedMessage => currentDayPhase <= 0 || currentDayPhase >= 5
+        ? "Office is closed"
+        : "Already clocked out for today";
     public bool ShouldReturnHomeFromOffice => currentDayPhase >= 5;
+    public float HomeWorkRewardMultiplier => Mathf.Lerp(
+        minimumHomeWorkMultiplier,
+        maximumHomeWorkMultiplier,
+        Mathf.Clamp01(houseUpgradeProgress));
     public IReadOnlyList<BagItem> BagItems => bagItems;
 
     private void Awake()
@@ -113,6 +131,8 @@ public class GameManager : MonoBehaviour
         SetDay(startingDay);
         SetDayPhase(startingDayPhase);
         SetStatsUIVisible(false);
+        SetHouseEventVisible(false);
+        UpdateHouseMultiplierText();
     }
 
     public void ShowStatsUI()
@@ -249,6 +269,27 @@ public class GameManager : MonoBehaviour
         SetMoney(money + amount);
     }
 
+    public int ApplyHomeWorkRewardMultiplier(int baseReward)
+    {
+        return Mathf.RoundToInt(baseReward * HomeWorkRewardMultiplier);
+    }
+
+    public void SetHouseUpgradeProgress(float progress)
+    {
+        houseUpgradeProgress = Mathf.Clamp01(progress);
+        UpdateHouseMultiplierText();
+        Debug.Log($"[HOME] Work reward multiplier is now {HomeWorkRewardMultiplier:0.##}x.");
+    }
+
+    public void SetHouseEventVisible(bool isVisible)
+    {
+        if (houseEventObject != null)
+            houseEventObject.SetActive(isVisible);
+
+        if (isVisible)
+            UpdateHouseMultiplierText();
+    }
+
     public bool TrySpendMoney(float amount)
     {
         if (amount < 0)
@@ -333,7 +374,19 @@ public class GameManager : MonoBehaviour
 
     public void AdvanceDay()
     {
+        clockedOutOfOfficeToday = false;
         SetDay(day + 1);
+    }
+
+    public void ClockInOffice()
+    {
+        Debug.Log("[OFFICE] Clocked in.");
+    }
+
+    public void ClockOutOffice()
+    {
+        clockedOutOfOfficeToday = true;
+        Debug.Log("[OFFICE] Clocked out for today.");
     }
 
     public void SetDay(int value)
@@ -534,6 +587,12 @@ public class GameManager : MonoBehaviour
     {
         if (moneyText != null)
             moneyText.text = FormatMoney(money);
+    }
+
+    private void UpdateHouseMultiplierText()
+    {
+        if (houseMultiplierText != null)
+            houseMultiplierText.text = $"{HomeWorkRewardMultiplier:0.##}x";
     }
 
     private void UpdateDayText()

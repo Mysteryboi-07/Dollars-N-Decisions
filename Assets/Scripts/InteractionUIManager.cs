@@ -242,12 +242,14 @@ public class InteractionUIManager : MonoBehaviour
         {
             SetActivePlayer(playerObject, false);
             SetActivePlayer(walkerObject, true);
+            GameManager.Instance?.SetHouseEventVisible(false);
             Debug.Log("[DOOR] Left room. Switched from player to walker.");
             return;
         }
 
         SetActivePlayer(walkerObject, false);
         SetActivePlayer(playerObject, true);
+        GameManager.Instance?.SetHouseEventVisible(true);
         Debug.Log("[DOOR] Entered room. Switched from walker to player.");
     }
 
@@ -266,11 +268,11 @@ public class InteractionUIManager : MonoBehaviour
 
             if (interactionText != null)
             {
-                interactionText.text = "Office opens from 0900 to 1800";
+                interactionText.text = GameManager.Instance.OfficeEntryBlockedMessage;
                 interactionText.gameObject.SetActive(true);
             }
 
-            Debug.Log("[DOOR] Office is closed. Come back from 0900 to 1800.");
+            Debug.Log($"[DOOR] {GameManager.Instance.OfficeEntryBlockedMessage}.");
             return;
         }
 
@@ -285,6 +287,7 @@ public class InteractionUIManager : MonoBehaviour
 
         SetActivePlayer(walkerObject, false);
         SetActivePlayer(workerObject, true);
+        GameManager.Instance?.ClockInOffice();
 
         Debug.Log("[DOOR] Entered office. Switched from walker to worker.");
     }
@@ -312,6 +315,7 @@ public class InteractionUIManager : MonoBehaviour
     {
         SetActivePlayer(workerObject, false);
         SetActivePlayer(walkerObject, true);
+        GameManager.Instance?.ClockOutOffice();
         Debug.Log("[DOOR] Left office. Switched from worker to walker.");
     }
 
@@ -340,6 +344,8 @@ public class InteractionUIManager : MonoBehaviour
         if (playerObject != null)
             playerObject.SetActive(false);
 
+        GameManager.Instance?.SetHouseEventVisible(false);
+
         if (laptopCamera != null)
             laptopCamera.SetActive(true);
 
@@ -366,6 +372,7 @@ public class InteractionUIManager : MonoBehaviour
             playerObject.SetActive(true);
 
         GameManager.Instance?.ShowStatsUI();
+        GameManager.Instance?.SetHouseEventVisible(true);
         GameManager.Instance?.LockCursor();
 
         if (currentInteractable != null &&
@@ -619,6 +626,8 @@ public class InteractionUIManager : MonoBehaviour
 
         if (playerObject != null)
             playerObject.SetActive(true);
+
+        GameManager.Instance?.SetHouseEventVisible(true);
     }
 
     private bool IsActive(GameObject target)

@@ -239,7 +239,8 @@ public class InboxTriageManager : MonoBehaviour, IWorkMinigame
             timerRoutine = null;
         }
 
-        int earnedReward = CalculateEarnedReward();
+        int baseReward = CalculateEarnedReward();
+        int earnedReward = ApplyRewardLocationMultiplier(baseReward);
         ApplyWorkConsequences();
 
         SetGameplayGroups(false);
@@ -444,6 +445,14 @@ public class InboxTriageManager : MonoBehaviour, IWorkMinigame
         float scorePercent = Mathf.Clamp01((accuracy * 0.8f) + (completion * 0.2f));
 
         return Mathf.RoundToInt(currentDifficulty.maxReward * scorePercent);
+    }
+
+    private int ApplyRewardLocationMultiplier(int baseReward)
+    {
+        if (!sleepAfterMidnightHomeWork || GameManager.Instance == null)
+            return baseReward;
+
+        return GameManager.Instance.ApplyHomeWorkRewardMultiplier(baseReward);
     }
 
     private void ApplyWorkConsequences()

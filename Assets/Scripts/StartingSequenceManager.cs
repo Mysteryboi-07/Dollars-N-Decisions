@@ -126,5 +126,6 @@ public class StartingSequenceManager : MonoBehaviour
             mainUI.SetActive(true);
 
         GameManager.Instance?.ShowStatsUI();
+        GameManager.Instance?.SetHouseEventVisible(true);
     }
 }

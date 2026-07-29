@@ -23,6 +23,7 @@ public class UpgradeManager : MonoBehaviour
     private void Start()
     {
         RefreshAllUpgradeVisuals();
+        UpdateHomeWorkMultiplier();
     }
 
     public void BuyUpgrade(int upgradeIndex)
@@ -85,6 +86,7 @@ public class UpgradeManager : MonoBehaviour
 
         upgradeLine.currentTier = nextTier;
         RefreshUpgradeLine(upgradeLine);
+        UpdateHomeWorkMultiplier();
 
         Debug.Log($"[UPGRADE] Bought {upgradeLine.upgradeName} tier {upgradeLine.currentTier} for ${upgradeCost}.");
     }
@@ -161,5 +163,28 @@ public class UpgradeManager : MonoBehaviour
         }
 
         return $"{upgradeLine.upgradeName} Tier {tierIndex}";
+    }
+
+    private void UpdateHomeWorkMultiplier()
+    {
+        if (GameManager.Instance == null || upgradeLines == null) return;
+
+        int purchasedTiers = 0;
+        int purchasableTiers = 0;
+
+        foreach (UpgradeLine upgradeLine in upgradeLines)
+        {
+            if (upgradeLine == null || upgradeLine.tierObjects == null) continue;
+
+            int maxPurchasableTier = Mathf.Max(0, upgradeLine.tierObjects.Length - 1);
+            purchasedTiers += Mathf.Clamp(upgradeLine.currentTier, 0, maxPurchasableTier);
+            purchasableTiers += maxPurchasableTier;
+        }
+
+        float progress = purchasableTiers > 0
+            ? (float)purchasedTiers / purchasableTiers
+            : 0f;
+
+        GameManager.Instance.SetHouseUpgradeProgress(progress);
     }
 }
