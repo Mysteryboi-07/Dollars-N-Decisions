@@ -22,6 +22,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void Start()
     {
+        ValidateUpgradeLines();
         RefreshAllUpgradeVisuals();
         UpdateHomeWorkMultiplier();
     }
@@ -36,6 +37,7 @@ public class UpgradeManager : MonoBehaviour
             return;
         }
 
+        Debug.Log($"[UPGRADE] Button requested upgrade index {upgradeIndex}.");
         BuyUpgrade(upgradeLines[upgradeIndex]);
     }
 
@@ -45,8 +47,9 @@ public class UpgradeManager : MonoBehaviour
 
         foreach (UpgradeLine upgradeLine in upgradeLines)
         {
-            if (upgradeLine != null && upgradeLine.upgradeName == upgradeName)
+            if (upgradeLine != null && NamesMatch(upgradeLine.upgradeName, upgradeName))
             {
+                Debug.Log($"[UPGRADE] Button requested upgrade named {upgradeName}.");
                 BuyUpgrade(upgradeLine);
                 return;
             }
@@ -58,6 +61,8 @@ public class UpgradeManager : MonoBehaviour
     private void BuyUpgrade(UpgradeLine upgradeLine)
     {
         if (upgradeLine == null) return;
+
+        ClampCurrentTier(upgradeLine);
 
         int nextTier = upgradeLine.currentTier + 1;
 
@@ -71,7 +76,7 @@ public class UpgradeManager : MonoBehaviour
         if (upgradeLine.upgradeCosts == null ||
             upgradeLine.currentTier >= upgradeLine.upgradeCosts.Length)
         {
-            Debug.LogWarning($"[UPGRADE] Missing cost for {upgradeLine.upgradeName} tier {nextTier}.");
+            Debug.LogWarning($"[UPGRADE] Missing cost for {upgradeLine.upgradeName} tier {nextTier}. Current tier is {upgradeLine.currentTier}, but costs count is {GetArrayLength(upgradeLine.upgradeCosts)}.");
             return;
         }
 
@@ -101,6 +106,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void RefreshUpgradeLine(UpgradeLine upgradeLine)
     {
+        ClampCurrentTier(upgradeLine);
         RefreshUpgradeVisuals(upgradeLine);
         RefreshUpgradeUI(upgradeLine);
     }
@@ -163,6 +169,69 @@ public class UpgradeManager : MonoBehaviour
         }
 
         return $"{upgradeLine.upgradeName} Tier {tierIndex}";
+    }
+
+    private void ValidateUpgradeLines()
+    {
+        if (upgradeLines == null)
+        {
+            Debug.LogWarning("[UPGRADE] No upgrade lines assigned.");
+            return;
+        }
+
+        for (int i = 0; i < upgradeLines.Length; i++)
+        {
+            UpgradeLine upgradeLine = upgradeLines[i];
+
+            if (upgradeLine == null)
+            {
+                Debug.LogWarning($"[UPGRADE] Upgrade line {i} is empty.");
+                continue;
+            }
+
+            ClampCurrentTier(upgradeLine);
+
+            int tierCount = GetArrayLength(upgradeLine.tierObjects);
+            int costCount = GetArrayLength(upgradeLine.upgradeCosts);
+            int neededCostCount = Mathf.Max(0, tierCount - 1);
+
+            if (string.IsNullOrWhiteSpace(upgradeLine.upgradeName))
+                Debug.LogWarning($"[UPGRADE] Upgrade line {i} has no name.");
+
+            if (tierCount <= 1)
+                Debug.LogWarning($"[UPGRADE] {upgradeLine.upgradeName} needs at least 2 tier objects to be buyable. Current tier object count is {tierCount}.");
+
+            if (costCount < neededCostCount)
+                Debug.LogWarning($"[UPGRADE] {upgradeLine.upgradeName} has {costCount} prices, but needs {neededCostCount} for {tierCount} tier objects.");
+
+            Debug.Log($"[UPGRADE] Line {i}: {upgradeLine.upgradeName}, current tier {upgradeLine.currentTier}, tier objects {tierCount}, prices {costCount}.");
+        }
+    }
+
+    private void ClampCurrentTier(UpgradeLine upgradeLine)
+    {
+        if (upgradeLine == null || upgradeLine.tierObjects == null || upgradeLine.tierObjects.Length == 0)
+            return;
+
+        int clampedTier = Mathf.Clamp(upgradeLine.currentTier, 0, upgradeLine.tierObjects.Length - 1);
+
+        if (clampedTier == upgradeLine.currentTier) return;
+
+        Debug.LogWarning($"[UPGRADE] Clamped {upgradeLine.upgradeName} current tier from {upgradeLine.currentTier} to {clampedTier}.");
+        upgradeLine.currentTier = clampedTier;
+    }
+
+    private bool NamesMatch(string firstName, string secondName)
+    {
+        return string.Equals(
+            firstName?.Trim(),
+            secondName?.Trim(),
+            System.StringComparison.OrdinalIgnoreCase);
+    }
+
+    private int GetArrayLength<T>(T[] array)
+    {
+        return array != null ? array.Length : 0;
     }
 
     private void UpdateHomeWorkMultiplier()
