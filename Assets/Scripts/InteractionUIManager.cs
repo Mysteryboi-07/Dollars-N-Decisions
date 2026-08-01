@@ -40,6 +40,7 @@ public class InteractionUIManager : MonoBehaviour
     private Coroutine officeReturnRoutine;
     private Coroutine homeWorkSleepRoutine;
     private bool isSleeping;
+    private bool isReturningFromOffice;
 
     private void Awake()
     {
@@ -418,13 +419,17 @@ public class InteractionUIManager : MonoBehaviour
         if (monitorCamera != null)
             monitorCamera.SetActive(false);
 
-        if (workerObject != null)
+        if (workerObject != null && !isReturningFromOffice)
             workerObject.SetActive(true);
 
-        GameManager.Instance?.ShowStatsUI();
-        GameManager.Instance?.LockCursor();
+        if (!isReturningFromOffice)
+        {
+            GameManager.Instance?.ShowStatsUI();
+            GameManager.Instance?.LockCursor();
+        }
 
-        if (currentInteractable != null &&
+        if (!isReturningFromOffice &&
+            currentInteractable != null &&
             interactionText != null)
         {
             interactionText.text = currentInteractable.PromptMessage;
@@ -501,23 +506,20 @@ public class InteractionUIManager : MonoBehaviour
     private IEnumerator ReturnHomeFromOfficeRoutine()
     {
         isSleeping = true;
+        isReturningFromOffice = true;
         HidePrompt();
+        currentInteractable = null;
 
         if (sleepFadeGroup == null)
         {
             Debug.LogWarning("[OFFICE] No fade CanvasGroup assigned.");
-            if (monitorScreen != null)
-                monitorScreen.SetActive(false);
-
-            if (monitorCamera != null)
-                monitorCamera.SetActive(false);
-
-            openInteractionType = InteractionType.None;
+            CloseMonitorForOfficeReturn();
             ExitOfficeToWalker();
             GameManager.Instance?.ShowStatsUI();
             GameManager.Instance?.LockCursor();
 
             isSleeping = false;
+            isReturningFromOffice = false;
             officeReturnRoutine = null;
             yield break;
         }
@@ -527,14 +529,9 @@ public class InteractionUIManager : MonoBehaviour
         yield return FadeSleepOverlay(0f, 1f, sleepFadeInDuration);
         yield return new WaitForSeconds(sleepHoldDuration);
 
-        if (monitorScreen != null)
-            monitorScreen.SetActive(false);
-
-        if (monitorCamera != null)
-            monitorCamera.SetActive(false);
-
-        openInteractionType = InteractionType.None;
+        CloseMonitorForOfficeReturn();
         ExitOfficeToWalker();
+        SetActivePlayer(workerObject, false);
 
         yield return FadeSleepOverlay(1f, 0f, sleepFadeOutDuration);
 
@@ -543,9 +540,26 @@ public class InteractionUIManager : MonoBehaviour
         GameManager.Instance?.LockCursor();
 
         isSleeping = false;
+        isReturningFromOffice = false;
         officeReturnRoutine = null;
 
         Debug.Log("[OFFICE] Work day ended. Returned to outside world.");
+    }
+
+    private void CloseMonitorForOfficeReturn()
+    {
+        if (monitorScreen != null)
+            monitorScreen.SetActive(false);
+
+        if (monitorCamera != null)
+            monitorCamera.SetActive(false);
+
+        if (workerObject != null)
+            workerObject.SetActive(false);
+
+        openInteractionType = InteractionType.None;
+        currentInteractable = null;
+        HidePrompt();
     }
 
     private IEnumerator SleepAfterLateHomeWorkRoutine()

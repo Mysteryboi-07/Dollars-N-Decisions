@@ -135,6 +135,9 @@ public class DoubleOrNothingManager : MonoBehaviour
     [SerializeField] private float happinessGain = 25f;
     [SerializeField] private bool advancesTime = true;
 
+    [Header("Office Rules")]
+    [SerializeField] private bool returnHomeAtEndOfOfficeDay = true;
+
     [Header("Events")]
     [SerializeField] private UnityEvent onRoundFinished;
 
@@ -156,6 +159,7 @@ public class DoubleOrNothingManager : MonoBehaviour
     private bool canToggleKeptCards;
     private bool awaitingDoubleDecision;
     private bool highLowStarted;
+    private bool shouldReturnHomeAfterRound;
     private bool roundActive;
 
     private void Awake()
@@ -219,6 +223,7 @@ public class DoubleOrNothingManager : MonoBehaviour
         doubleAttempts = 0;
         awaitingDoubleDecision = false;
         highLowStarted = false;
+        shouldReturnHomeAfterRound = false;
         roundActive = true;
         canToggleKeptCards = true;
         DealInitialHand();
@@ -498,6 +503,9 @@ public class DoubleOrNothingManager : MonoBehaviour
         UpdateCashText();
         ShowEndResult(payout);
         onRoundFinished?.Invoke();
+
+        if (shouldReturnHomeAfterRound)
+            InteractionUIManager.Instance?.ReturnHomeFromOfficeWithFade();
     }
 
     private void ApplyGamblingConsequences()
@@ -511,6 +519,9 @@ public class DoubleOrNothingManager : MonoBehaviour
 
         if (advancesTime && GameManager.Instance.CurrentDayPhase == startingDayPhase)
             GameManager.Instance.AdvanceTimePhase();
+
+        shouldReturnHomeAfterRound = returnHomeAtEndOfOfficeDay &&
+            GameManager.Instance.ShouldReturnHomeFromOffice;
     }
 
     private void ShowDrawPanel()
