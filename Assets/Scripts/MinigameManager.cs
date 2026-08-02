@@ -28,7 +28,7 @@ public class MinigameManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent onMinigameFinished;
 
-    private int completedWorkSessions;
+    private static int sharedCompletedWorkSessions;
     private GameObject activeMinigame;
 
     private void OnEnable()
@@ -59,7 +59,7 @@ public class MinigameManager : MonoBehaviour
         ActivateMinigamePath(activeMinigame);
         SetDifficultyButtons(true);
 
-        Debug.Log($"[WORK] Launched {selectedMinigame.minigameName}.");
+        Debug.Log($"[WORK] Launched {selectedMinigame.minigameName}. Shared session {sharedCompletedWorkSessions}.");
     }
 
     public void StartEasy()
@@ -79,7 +79,7 @@ public class MinigameManager : MonoBehaviour
 
     public void NotifyMinigameFinished()
     {
-        completedWorkSessions++;
+        sharedCompletedWorkSessions++;
         SetDifficultyButtons(false);
         HideAllMinigames();
         onMinigameFinished?.Invoke();
@@ -87,7 +87,7 @@ public class MinigameManager : MonoBehaviour
 
     public void ResetWorkSessionOrder()
     {
-        completedWorkSessions = 0;
+        sharedCompletedWorkSessions = 0;
     }
 
     private WorkMinigame GetNextMinigame()
@@ -102,10 +102,10 @@ public class MinigameManager : MonoBehaviour
 
     private WorkMinigame GetGuidedMinigame()
     {
-        if (firstRunOrder == null || completedWorkSessions >= firstRunOrder.Length)
+        if (firstRunOrder == null || sharedCompletedWorkSessions >= firstRunOrder.Length)
             return null;
 
-        WorkMinigame guidedMinigame = firstRunOrder[completedWorkSessions];
+        WorkMinigame guidedMinigame = firstRunOrder[sharedCompletedWorkSessions];
 
         if (IsValidMinigame(guidedMinigame))
             return guidedMinigame;

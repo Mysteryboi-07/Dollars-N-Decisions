@@ -252,8 +252,8 @@ public class GameManager : MonoBehaviour
     {
         ApplyActionStatsByName(sleepActionName);
         AdvanceDay();
-        SetDayPhase(0);
-        Debug.Log("[GAME] Woke up at 0600.");
+        SetDayPhase(1);
+        Debug.Log("[GAME] Woke up at 0900.");
     }
 
     public void WakeUpAtPhase(int phaseIndex)
