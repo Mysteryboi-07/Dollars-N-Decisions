@@ -24,6 +24,7 @@ public class GameSceneUI : MonoBehaviour
     [SerializeField] private GameObject infoUIGroup;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text dayText;
+    [SerializeField] private TMP_Text timeText;
     [SerializeField] private GameObject clock12Image;
     [SerializeField] private GameObject clock3Image;
     [SerializeField] private GameObject clock6Image;
@@ -50,6 +51,7 @@ public class GameSceneUI : MonoBehaviour
     public GameObject InfoUIGroup => infoUIGroup;
     public TMP_Text MoneyText => moneyText;
     public TMP_Text DayText => dayText;
+    public TMP_Text TimeText => timeText;
     public GameObject Clock12Image => clock12Image;
     public GameObject Clock3Image => clock3Image;
     public GameObject Clock6Image => clock6Image;

@@ -12,6 +12,9 @@ public class HouseIntroTutorialManager : MonoBehaviour
     {
         public GameObject sectionGroup;
         public TMP_Text[] textObjects;
+        public TMP_InputField inputFieldToReveal;
+        public int revealInputAfterTextNumber = 0;
+        public bool addInputValueToRentAtEnd;
         public string animationTriggerAfterSection;
         public float animationDurationAfterSection;
     }
@@ -84,6 +87,7 @@ public class HouseIntroTutorialManager : MonoBehaviour
         GameManager.Instance?.SetHouseEventVisible(true);
 
         SetAllSectionsActive(false);
+        SetAllInputFieldsActive(false);
 
         for (int i = 0; i < sections.Length; i++)
         {
@@ -95,6 +99,8 @@ public class HouseIntroTutorialManager : MonoBehaviour
             yield return PlayAnimationAfterSection(section);
         }
 
+        ApplyTutorialInputs();
+
         tutorialRoutine = null;
         onTutorialFinished?.Invoke();
     }
@@ -105,6 +111,7 @@ public class HouseIntroTutorialManager : MonoBehaviour
             section.sectionGroup.SetActive(true);
 
         SetTextsActive(section, false);
+        SetInputFieldActive(section.inputFieldToReveal, false);
 
         if (section.textObjects != null)
         {
@@ -116,6 +123,13 @@ public class HouseIntroTutorialManager : MonoBehaviour
 
                 textObject.gameObject.SetActive(true);
                 yield return TypeText(textObject);
+
+                if (ShouldRevealInputAfterText(section, i))
+                {
+                    SetInputFieldActive(section.inputFieldToReveal, true);
+                    Debug.Log($"[TUTORIAL] Revealed input field after text {i + 1}.");
+                }
+
                 yield return WaitForAdvanceClick();
             }
         }
@@ -198,6 +212,55 @@ public class HouseIntroTutorialManager : MonoBehaviour
         {
             if (textObject != null)
                 textObject.gameObject.SetActive(isActive);
+        }
+    }
+
+    private void SetAllInputFieldsActive(bool isActive)
+    {
+        if (sections == null) return;
+
+        foreach (TutorialSection section in sections)
+        {
+            if (section == null) continue;
+            SetInputFieldActive(section.inputFieldToReveal, isActive);
+        }
+    }
+
+    private void SetInputFieldActive(TMP_InputField inputField, bool isActive)
+    {
+        if (inputField != null)
+            inputField.gameObject.SetActive(isActive);
+    }
+
+    private bool ShouldRevealInputAfterText(TutorialSection section, int textIndex)
+    {
+        if (section.inputFieldToReveal == null) return false;
+
+        int textNumber = textIndex + 1;
+
+        return section.revealInputAfterTextNumber > 0 &&
+               textNumber == section.revealInputAfterTextNumber;
+    }
+
+    private void ApplyTutorialInputs()
+    {
+        if (sections == null) return;
+
+        foreach (TutorialSection section in sections)
+        {
+            if (section == null ||
+                !section.addInputValueToRentAtEnd ||
+                section.inputFieldToReveal == null)
+            {
+                continue;
+            }
+
+            if (!float.TryParse(section.inputFieldToReveal.text, out float rentIncrease))
+                continue;
+
+            if (rentIncrease <= 0f) continue;
+
+            GameManager.Instance?.IncreaseRentAmount(rentIncrease);
         }
     }
 

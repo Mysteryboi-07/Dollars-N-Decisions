@@ -25691,6 +25691,9 @@ MonoBehaviour:
     - {fileID: 324802584}
     - {fileID: 323518456}
     - {fileID: 997168576}
+    inputFieldToReveal: {fileID: 0}
+    revealInputAfterTextNumber: 0
+    addInputValueToRentAtEnd: 0
     animationTriggerAfterSection: 
     animationDurationAfterSection: 0
   - sectionGroup: {fileID: 1308709100}
@@ -25698,6 +25701,9 @@ MonoBehaviour:
     - {fileID: 1234067180}
     - {fileID: 584765247}
     - {fileID: 1265758954}
+    inputFieldToReveal: {fileID: 0}
+    revealInputAfterTextNumber: 0
+    addInputValueToRentAtEnd: 0
     animationTriggerAfterSection: 
     animationDurationAfterSection: 0
   - sectionGroup: {fileID: 164750430}
@@ -25705,6 +25711,9 @@ MonoBehaviour:
     - {fileID: 660148265}
     - {fileID: 8111859}
     - {fileID: 1197963052}
+    inputFieldToReveal: {fileID: 0}
+    revealInputAfterTextNumber: 0
+    addInputValueToRentAtEnd: 0
     animationTriggerAfterSection: 
     animationDurationAfterSection: 0
   - sectionGroup: {fileID: 2045092270}
@@ -25712,12 +25721,18 @@ MonoBehaviour:
     - {fileID: 1526445807}
     - {fileID: 1861476709}
     - {fileID: 949450974}
+    inputFieldToReveal: {fileID: 0}
+    revealInputAfterTextNumber: 0
+    addInputValueToRentAtEnd: 0
     animationTriggerAfterSection: bed
     animationDurationAfterSection: 0.3
   - sectionGroup: {fileID: 1154885656}
     textObjects:
     - {fileID: 743307287}
     - {fileID: 429818462}
+    inputFieldToReveal: {fileID: 0}
+    revealInputAfterTextNumber: 0
+    addInputValueToRentAtEnd: 0
     animationTriggerAfterSection: mini fridge
     animationDurationAfterSection: 0.3
   - sectionGroup: {fileID: 414644358}
@@ -25725,17 +25740,26 @@ MonoBehaviour:
     - {fileID: 1715244043}
     - {fileID: 1800118299}
     - {fileID: 296861714}
+    inputFieldToReveal: {fileID: 0}
+    revealInputAfterTextNumber: 0
+    addInputValueToRentAtEnd: 0
     animationTriggerAfterSection: laptop
     animationDurationAfterSection: 0.3
   - sectionGroup: {fileID: 1909083336}
     textObjects:
     - {fileID: 2013763937}
     - {fileID: 244377014}
+    inputFieldToReveal: {fileID: 0}
+    revealInputAfterTextNumber: 0
+    addInputValueToRentAtEnd: 0
     animationTriggerAfterSection: door
     animationDurationAfterSection: 0.3
   - sectionGroup: {fileID: 1398383689}
     textObjects:
     - {fileID: 900570987}
+    inputFieldToReveal: {fileID: 0}
+    revealInputAfterTextNumber: 0
+    addInputValueToRentAtEnd: 0
     animationTriggerAfterSection: idle
     animationDurationAfterSection: 0.5
   lettersPerSecond: 15
@@ -31218,8 +31242,8 @@ MonoBehaviour:
   noonIcon: {fileID: 0}
   eveningIcon: {fileID: 0}
   startingDayPhase: 5
-  startingMoney: 1000000
-  startingDay: 29
+  startingMoney: 20
+  startingDay: 0
   minimumHomeWorkMultiplier: 0.5
   maximumHomeWorkMultiplier: 2
   houseEventObject: {fileID: 0}
@@ -31230,16 +31254,6 @@ MonoBehaviour:
   debtGraceDays: 2
   loadEndingSceneOnEnding: 1
   endingSceneName: EndingScene
-  endingMessageText: {fileID: 0}
-  onDebtGameOver:
-    m_PersistentCalls:
-      m_Calls: []
-  onRentGameOver:
-    m_PersistentCalls:
-      m_Calls: []
-  onCongratsEnding:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2012991282
 GameObject:
   m_ObjectHideFlags: 0

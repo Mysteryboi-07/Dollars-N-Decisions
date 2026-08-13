@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
 using StarterAssets;
@@ -60,6 +59,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject infoUIGroup;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text dayText;
+    [SerializeField] private TMP_Text timeText;
     [SerializeField] private GameObject clock12Image;
     [SerializeField] private GameObject clock3Image;
     [SerializeField] private GameObject clock6Image;
@@ -90,10 +90,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int debtGraceDays = 2;
     [SerializeField] private bool loadEndingSceneOnEnding = true;
     [SerializeField] private string endingSceneName = "EndingScene";
-    [SerializeField] private TMP_Text endingMessageText;
-    [SerializeField] private UnityEvent onDebtGameOver;
-    [SerializeField] private UnityEvent onRentGameOver;
-    [SerializeField] private UnityEvent onCongratsEnding;
 
     private GameSceneUI sceneUI;
     private float happiness;
@@ -520,6 +516,14 @@ public class GameManager : MonoBehaviour
         ClearCafeteriaFood();
     }
 
+    public void IncreaseRentAmount(float amount)
+    {
+        if (amount <= 0f) return;
+
+        rentAmount += amount;
+        Debug.Log($"[GAME] Rent increased by {FormatMoney(amount)}. New rent: {FormatMoney(rentAmount)}.");
+    }
+
     public void ResetRunProgress()
     {
         endingTriggered = false;
@@ -541,6 +545,7 @@ public class GameManager : MonoBehaviour
         SetDayPhase(startingDayPhase);
         SetHouseEventVisible(false);
         HideStatsUI();
+        HouseSceneStartupManager.ResetTutorialForNewRun();
 
         Debug.Log("[GAME] Run progress reset.");
     }
@@ -562,6 +567,7 @@ public class GameManager : MonoBehaviour
         currentDayPhase = Mathf.Clamp(phaseIndex, 0, phaseHours.Length - 1);
         UpdateClockImage();
         UpdateTimeOfDayIcon();
+        UpdateTimeText();
     }
 
     private void ApplyAction(StatAction statAction)
@@ -763,6 +769,14 @@ public class GameManager : MonoBehaviour
             activeDayText.text = $"Day {day}";
     }
 
+    private void UpdateTimeText()
+    {
+        TMP_Text activeTimeText = sceneUI != null ? sceneUI.TimeText : timeText;
+
+        if (activeTimeText != null)
+            activeTimeText.text = $"{CurrentHour:00}00";
+    }
+
     private void RefreshSceneUI()
     {
         RefreshBarBottomOffset(sceneUI != null ? sceneUI.HappinessFillBar : happinessFillBar,
@@ -776,6 +790,7 @@ public class GameManager : MonoBehaviour
         UpdateTimeOfDayIcon();
         UpdateMoneyText();
         UpdateDayText();
+        UpdateTimeText();
         UpdateHouseMultiplierText();
     }
 
@@ -813,7 +828,7 @@ public class GameManager : MonoBehaviour
 
         TriggerEnding(
             "Game Over: You stayed in debt for too long.",
-            onDebtGameOver);
+            false);
     }
 
     private void CheckRentDeadline()
@@ -825,18 +840,16 @@ public class GameManager : MonoBehaviour
             endingExcessMoney = money - rentAmount;
             TriggerEnding(
                 $"Congratulations! Rent paid. Excess money: {FormatMoney(endingExcessMoney)}.",
-                onCongratsEnding,
                 true);
             return;
         }
 
         TriggerEnding(
             $"Game Over: Rent was due on Day {rentDueDay}. Needed {FormatMoney(rentAmount)}.",
-            onRentGameOver,
             false);
     }
 
-    private void TriggerEnding(string message, UnityEvent endingEvent, bool isWin = false)
+    private void TriggerEnding(string message, bool isWin)
     {
         if (endingTriggered) return;
 
@@ -844,15 +857,11 @@ public class GameManager : MonoBehaviour
         endingWasWin = isWin;
         endingMessage = message;
 
-        if (endingMessageText != null)
-            endingMessageText.text = message;
-
         HideStatsUI();
         UnlockCursor();
         SetPlayerMovementInput(false);
 
         Debug.Log($"[ENDING] {message}");
-        endingEvent?.Invoke();
 
         if (!loadEndingSceneOnEnding || string.IsNullOrWhiteSpace(endingSceneName)) return;
 

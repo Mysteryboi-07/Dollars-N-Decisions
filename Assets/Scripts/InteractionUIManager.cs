@@ -8,6 +8,7 @@ public class InteractionUIManager : MonoBehaviour
 
     [Header("Prompt UI")]
     [SerializeField] private TMP_Text interactionText;
+    [SerializeField] private GameObject interactionBackground;
 
     private InteractableTrigger currentInteractable;
     private InteractionType openInteractionType = InteractionType.None;
@@ -345,6 +346,9 @@ public class InteractionUIManager : MonoBehaviour
 
         interactionText.text = message;
         interactionText.gameObject.SetActive(true);
+
+        if (interactionBackground != null)
+            interactionBackground.SetActive(true);
     }
 
     private string GetPromptMessage(InteractableTrigger interactable)
@@ -373,5 +377,8 @@ public class InteractionUIManager : MonoBehaviour
     {
         if (interactionText != null)
             interactionText.gameObject.SetActive(false);
+
+        if (interactionBackground != null)
+            interactionBackground.SetActive(false);
     }
 }

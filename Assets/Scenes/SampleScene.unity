@@ -13428,7 +13428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &116990177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13438,8 +13438,8 @@ RectTransform:
   m_GameObject: {fileID: 116990176}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.63, y: 0.6232228, z: 0.6232228}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 4.1, y: 0.6232228, z: 0.6232228}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1646359740}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47490,6 +47490,7 @@ MonoBehaviour:
   infoUIGroup: {fileID: 958373796}
   moneyText: {fileID: 764733409}
   dayText: {fileID: 2036549278}
+  timeText: {fileID: 199563490}
   clock12Image: {fileID: 947766349}
   clock3Image: {fileID: 734783126}
   clock6Image: {fileID: 491028531}
@@ -47512,6 +47513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionUIManager
   interactionText: {fileID: 2011991722}
+  interactionBackground: {fileID: 116990176}
 --- !u!114 &466718113
 MonoBehaviour:
   m_ObjectHideFlags: 0
