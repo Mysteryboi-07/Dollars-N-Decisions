@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 public class StartingSequenceManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class StartingSequenceManager : MonoBehaviour
     [SerializeField] private string camPart2Trigger = "Part2";
     [SerializeField] private float camPart1Duration = 0.35f;
     [SerializeField] private float camPart2Duration = 7f;
+
+    [Header("Scene Flow")]
+    [SerializeField] private bool loadSceneAfterIntro = true;
+    [SerializeField] private string sceneToLoadAfterIntro = "HouseScene";
 
     [Header("Testing Scene Objects")]
     [FormerlySerializedAs("startingSequenceGroup")]
@@ -108,7 +113,37 @@ public class StartingSequenceManager : MonoBehaviour
 
         yield return new WaitForSeconds(camPart2Duration);
 
+        StartGameAfterIntro();
+    }
+
+    private void StartGameAfterIntro()
+    {
+        if (loadSceneAfterIntro)
+        {
+            LoadGameScene();
+            return;
+        }
+
         StartGameInCurrentScene();
+    }
+
+    private void LoadGameScene()
+    {
+        if (introRootObject != null)
+            introRootObject.SetActive(false);
+
+        GameManager.Instance?.LockCursor();
+
+        if (SceneTravelManager.Instance != null)
+        {
+            SceneTravelManager.Instance.LoadScene(sceneToLoadAfterIntro);
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(sceneToLoadAfterIntro))
+            SceneManager.LoadScene(sceneToLoadAfterIntro);
+        else
+            Debug.LogWarning("[INTRO] No scene set to load after intro.");
     }
 
     private void StartGameInCurrentScene()

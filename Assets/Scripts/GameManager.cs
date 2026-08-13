@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 using StarterAssets;
 
 public class GameManager : MonoBehaviour
@@ -82,6 +84,17 @@ public class GameManager : MonoBehaviour
     [Header("Bag")]
     [SerializeField] private List<BagItem> bagItems = new List<BagItem>();
 
+    [Header("Ending")]
+    [SerializeField] private int rentDueDay = 30;
+    [SerializeField] private float rentAmount = 10000f;
+    [SerializeField] private int debtGraceDays = 2;
+    [SerializeField] private bool loadEndingSceneOnEnding = true;
+    [SerializeField] private string endingSceneName = "EndingScene";
+    [SerializeField] private TMP_Text endingMessageText;
+    [SerializeField] private UnityEvent onDebtGameOver;
+    [SerializeField] private UnityEvent onRentGameOver;
+    [SerializeField] private UnityEvent onCongratsEnding;
+
     private GameSceneUI sceneUI;
     private float happiness;
     private float hunger;
@@ -95,8 +108,13 @@ public class GameManager : MonoBehaviour
     private int cafeteriaDrinkPurchaseSession = -1;
     private float cafeteriaCarriedHungerRestore;
     private int cafeteriaCarriedFoodCount;
+    private int debtStartedDay = -1;
+    private bool endingTriggered;
+    private bool endingWasWin;
+    private string endingMessage;
     private bool clockedOutOfOfficeToday;
     private float houseUpgradeProgress;
+    private float endingExcessMoney;
     private readonly int[] phaseHours = { 6, 9, 12, 15, 18, 21, 0 };
 
     public float Happiness => happiness;
@@ -107,6 +125,10 @@ public class GameManager : MonoBehaviour
     public int CurrentHour => phaseHours[currentDayPhase];
     public int CurrentOfficeSessionId => currentOfficeSessionId;
     public bool HasCafeteriaFood => cafeteriaCarriedFoodCount > 0 && cafeteriaCarriedHungerRestore > 0f;
+    public bool IsEndingTriggered => endingTriggered;
+    public bool EndingWasWin => endingWasWin;
+    public string EndingMessage => endingMessage;
+    public float EndingExcessMoney => endingExcessMoney;
     public bool HasClockedOutOfOfficeToday => clockedOutOfOfficeToday;
     public bool CanEnterOffice => currentDayPhase > 0 && currentDayPhase < 5 && !clockedOutOfOfficeToday;
     public string OfficeEntryBlockedMessage => currentDayPhase <= 0 || currentDayPhase >= 5
@@ -409,13 +431,19 @@ public class GameManager : MonoBehaviour
     {
         money = value;
         UpdateMoneyText();
+        UpdateDebtTracking();
     }
 
     public void AdvanceDay()
     {
+        CheckDebtDeadlineAtEndOfDay();
+
+        if (endingTriggered) return;
+
         clockedOutOfOfficeToday = false;
         officeClockInPhase = -1;
         SetDay(day + 1);
+        CheckRentDeadline();
     }
 
     public void ClockInOffice()
@@ -492,10 +520,36 @@ public class GameManager : MonoBehaviour
         ClearCafeteriaFood();
     }
 
+    public void ResetRunProgress()
+    {
+        endingTriggered = false;
+        endingWasWin = false;
+        endingMessage = string.Empty;
+        endingExcessMoney = 0f;
+        debtStartedDay = -1;
+        clockedOutOfOfficeToday = false;
+        officeClockInPhase = -1;
+        currentOfficeSessionId = 0;
+        houseUpgradeProgress = 0f;
+        bagItems.Clear();
+        ResetCafeteriaSession();
+
+        SetHappiness(startingHappiness);
+        SetHunger(startingHunger);
+        SetMoney(startingMoney);
+        SetDay(startingDay);
+        SetDayPhase(startingDayPhase);
+        SetHouseEventVisible(false);
+        HideStatsUI();
+
+        Debug.Log("[GAME] Run progress reset.");
+    }
+
     public void SetDay(int value)
     {
         day = Mathf.Max(0, value);
         UpdateDayText();
+        UpdateDebtTracking();
     }
 
     public void AdvanceTimePhase()
@@ -512,6 +566,8 @@ public class GameManager : MonoBehaviour
 
     private void ApplyAction(StatAction statAction)
     {
+        if (endingTriggered) return;
+
         ApplyActionStats(statAction);
 
         if (statAction.advancesTime)
@@ -726,6 +782,84 @@ public class GameManager : MonoBehaviour
     private void RefreshBarBottomOffset(RectTransform fillBar, float emptyBottomOffset, float value)
     {
         UpdateBarBottomOffset(fillBar, emptyBottomOffset, value);
+    }
+
+    private void UpdateDebtTracking()
+    {
+        if (endingTriggered) return;
+
+        if (money < 0f)
+        {
+            if (debtStartedDay < 0)
+            {
+                debtStartedDay = day;
+                Debug.Log($"[ENDING] Debt started on Day {debtStartedDay}.");
+            }
+
+            return;
+        }
+
+        if (debtStartedDay >= 0)
+            Debug.Log("[ENDING] Debt cleared.");
+
+        debtStartedDay = -1;
+    }
+
+    private void CheckDebtDeadlineAtEndOfDay()
+    {
+        if (endingTriggered || debtStartedDay < 0 || money >= 0f) return;
+
+        if (day < debtStartedDay + debtGraceDays) return;
+
+        TriggerEnding(
+            "Game Over: You stayed in debt for too long.",
+            onDebtGameOver);
+    }
+
+    private void CheckRentDeadline()
+    {
+        if (endingTriggered || day < rentDueDay) return;
+
+        if (money >= rentAmount)
+        {
+            endingExcessMoney = money - rentAmount;
+            TriggerEnding(
+                $"Congratulations! Rent paid. Excess money: {FormatMoney(endingExcessMoney)}.",
+                onCongratsEnding,
+                true);
+            return;
+        }
+
+        TriggerEnding(
+            $"Game Over: Rent was due on Day {rentDueDay}. Needed {FormatMoney(rentAmount)}.",
+            onRentGameOver,
+            false);
+    }
+
+    private void TriggerEnding(string message, UnityEvent endingEvent, bool isWin = false)
+    {
+        if (endingTriggered) return;
+
+        endingTriggered = true;
+        endingWasWin = isWin;
+        endingMessage = message;
+
+        if (endingMessageText != null)
+            endingMessageText.text = message;
+
+        HideStatsUI();
+        UnlockCursor();
+        SetPlayerMovementInput(false);
+
+        Debug.Log($"[ENDING] {message}");
+        endingEvent?.Invoke();
+
+        if (!loadEndingSceneOnEnding || string.IsNullOrWhiteSpace(endingSceneName)) return;
+
+        if (SceneTravelManager.Instance != null)
+            SceneTravelManager.Instance.LoadScene(endingSceneName);
+        else
+            SceneManager.LoadScene(endingSceneName);
     }
 
     private int GetCafeteriaStorePurchaseSession(CafeteriaStoreType storeType)

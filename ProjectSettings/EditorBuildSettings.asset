@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SupermarketScene.unity
     guid: f597b02816a4e944bb6f8f91225567ba
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: 73598a6da7ac20d43a70ca893dec7376
+  - enabled: 1
+    path: Assets/Scenes/EndingScene.unity
+    guid: c528ede85cb04e641bec721566d171b1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
