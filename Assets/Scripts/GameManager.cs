@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [Header("Persistence")]
+    [SerializeField] private bool keepAcrossScenes = true;
+
     [System.Serializable]
     public class StatAction
     {
@@ -79,11 +82,19 @@ public class GameManager : MonoBehaviour
     [Header("Bag")]
     [SerializeField] private List<BagItem> bagItems = new List<BagItem>();
 
+    private GameSceneUI sceneUI;
     private float happiness;
     private float hunger;
     private float money;
     private int day;
     private int currentDayPhase;
+    private int officeClockInPhase = -1;
+    private int currentOfficeSessionId;
+    private int cafeteriaSnackPurchaseSession = -1;
+    private int cafeteriaMealPurchaseSession = -1;
+    private int cafeteriaDrinkPurchaseSession = -1;
+    private float cafeteriaCarriedHungerRestore;
+    private int cafeteriaCarriedFoodCount;
     private bool clockedOutOfOfficeToday;
     private float houseUpgradeProgress;
     private readonly int[] phaseHours = { 6, 9, 12, 15, 18, 21, 0 };
@@ -94,6 +105,8 @@ public class GameManager : MonoBehaviour
     public int Day => day;
     public int CurrentDayPhase => currentDayPhase;
     public int CurrentHour => phaseHours[currentDayPhase];
+    public int CurrentOfficeSessionId => currentOfficeSessionId;
+    public bool HasCafeteriaFood => cafeteriaCarriedFoodCount > 0 && cafeteriaCarriedHungerRestore > 0f;
     public bool HasClockedOutOfOfficeToday => clockedOutOfOfficeToday;
     public bool CanEnterOffice => currentDayPhase > 0 && currentDayPhase < 5 && !clockedOutOfOfficeToday;
     public string OfficeEntryBlockedMessage => currentDayPhase <= 0 || currentDayPhase >= 5
@@ -115,6 +128,9 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+
+        if (keepAcrossScenes)
+            DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -135,6 +151,18 @@ public class GameManager : MonoBehaviour
         UpdateHouseMultiplierText();
     }
 
+    public void RegisterSceneUI(GameSceneUI newSceneUI)
+    {
+        sceneUI = newSceneUI;
+        RefreshSceneUI();
+    }
+
+    public void UnregisterSceneUI(GameSceneUI oldSceneUI)
+    {
+        if (sceneUI == oldSceneUI)
+            sceneUI = null;
+    }
+
     public void ShowStatsUI()
     {
         SetStatsUIVisible(true);
@@ -147,11 +175,14 @@ public class GameManager : MonoBehaviour
 
     public void SetStatsUIVisible(bool isVisible)
     {
-        if (statsUIGroup != null)
-            statsUIGroup.SetActive(isVisible);
+        GameObject activeStatsUIGroup = sceneUI != null ? sceneUI.StatsUIGroup : statsUIGroup;
+        GameObject activeInfoUIGroup = sceneUI != null ? sceneUI.InfoUIGroup : infoUIGroup;
 
-        if (infoUIGroup != null)
-            infoUIGroup.SetActive(isVisible);
+        if (activeStatsUIGroup != null)
+            activeStatsUIGroup.SetActive(isVisible);
+
+        if (activeInfoUIGroup != null)
+            activeInfoUIGroup.SetActive(isVisible);
     }
 
     public void UnlockCursor()
@@ -238,14 +269,20 @@ public class GameManager : MonoBehaviour
     public void SetHappiness(float value)
     {
         happiness = Mathf.Clamp(value, 0f, 100f);
-        UpdateBarBottomOffset(happinessFillBar, happinessEmptyBottomOffset, happiness);
+        UpdateBarBottomOffset(
+            sceneUI != null ? sceneUI.HappinessFillBar : happinessFillBar,
+            sceneUI != null ? sceneUI.HappinessEmptyBottomOffset : happinessEmptyBottomOffset,
+            happiness);
         UpdateHappinessIcon();
     }
 
     public void SetHunger(float value)
     {
         hunger = Mathf.Clamp(value, 0f, 100f);
-        UpdateBarBottomOffset(hungerFillBar, hungerEmptyBottomOffset, hunger);
+        UpdateBarBottomOffset(
+            sceneUI != null ? sceneUI.HungerFillBar : hungerFillBar,
+            sceneUI != null ? sceneUI.HungerEmptyBottomOffset : hungerEmptyBottomOffset,
+            hunger);
     }
 
     public void WakeUp()
@@ -283,8 +320,10 @@ public class GameManager : MonoBehaviour
 
     public void SetHouseEventVisible(bool isVisible)
     {
-        if (houseEventObject != null)
-            houseEventObject.SetActive(isVisible);
+        GameObject activeHouseEventObject = sceneUI != null ? sceneUI.HouseEventObject : houseEventObject;
+
+        if (activeHouseEventObject != null)
+            activeHouseEventObject.SetActive(isVisible);
 
         if (isVisible)
             UpdateHouseMultiplierText();
@@ -375,18 +414,82 @@ public class GameManager : MonoBehaviour
     public void AdvanceDay()
     {
         clockedOutOfOfficeToday = false;
+        officeClockInPhase = -1;
         SetDay(day + 1);
     }
 
     public void ClockInOffice()
     {
-        Debug.Log("[OFFICE] Clocked in.");
+        if (officeClockInPhase < 0)
+        {
+            currentOfficeSessionId++;
+            ResetCafeteriaSession();
+        }
+
+        officeClockInPhase = currentDayPhase;
+        Debug.Log($"[OFFICE] Clocked in at {CurrentHour:00}00.");
     }
 
     public void ClockOutOffice()
     {
-        clockedOutOfOfficeToday = true;
-        Debug.Log("[OFFICE] Clocked out for today.");
+        bool spentOfficePhase = officeClockInPhase >= 0 && currentDayPhase > officeClockInPhase;
+
+        if (spentOfficePhase)
+        {
+            clockedOutOfOfficeToday = true;
+            Debug.Log("[OFFICE] Clocked out for today.");
+        }
+        else
+        {
+            Debug.Log("[OFFICE] Left office without clocking out.");
+        }
+
+        officeClockInPhase = -1;
+    }
+
+    public bool CanBuyFromCafeteriaStore(CafeteriaStoreType storeType)
+    {
+        return storeType != CafeteriaStoreType.None &&
+               GetCafeteriaStorePurchaseSession(storeType) != currentOfficeSessionId;
+    }
+
+    public void MarkCafeteriaStoreBought(CafeteriaStoreType storeType)
+    {
+        switch (storeType)
+        {
+            case CafeteriaStoreType.Snacks:
+                cafeteriaSnackPurchaseSession = currentOfficeSessionId;
+                break;
+
+            case CafeteriaStoreType.Meals:
+                cafeteriaMealPurchaseSession = currentOfficeSessionId;
+                break;
+
+            case CafeteriaStoreType.Drinks:
+                cafeteriaDrinkPurchaseSession = currentOfficeSessionId;
+                break;
+        }
+    }
+
+    public void AddCafeteriaFood(float hungerRestore)
+    {
+        if (hungerRestore <= 0f) return;
+
+        cafeteriaCarriedFoodCount++;
+        cafeteriaCarriedHungerRestore += hungerRestore;
+    }
+
+    public void ConsumeCafeteriaFood()
+    {
+        if (!HasCafeteriaFood)
+        {
+            Debug.Log("[CAFETERIA] No cafeteria food to eat.");
+            return;
+        }
+
+        ChangeHunger(cafeteriaCarriedHungerRestore);
+        Debug.Log($"[CAFETERIA] Ate {cafeteriaCarriedFoodCount} item(s). Hunger +{cafeteriaCarriedHungerRestore}.");
+        ClearCafeteriaFood();
     }
 
     public void SetDay(int value)
@@ -434,126 +537,116 @@ public class GameManager : MonoBehaviour
 
     private void UpdateClockImage()
     {
-        SetClockImagesActive(false, false, false, false);
-
         switch (CurrentHour)
         {
             case 0:
             case 12:
-                if (clock12Image != null)
-                    clock12Image.SetActive(true);
+                SetClockImagesActive(true, false, false, false);
                 break;
 
             case 3:
             case 15:
-                if (clock3Image != null)
-                    clock3Image.SetActive(true);
+                SetClockImagesActive(false, true, false, false);
                 break;
 
             case 6:
             case 18:
-                if (clock6Image != null)
-                    clock6Image.SetActive(true);
+                SetClockImagesActive(false, false, true, false);
                 break;
 
             case 9:
             case 21:
-                if (clock9Image != null)
-                    clock9Image.SetActive(true);
+                SetClockImagesActive(false, false, false, true);
                 break;
         }
     }
 
     private void SetClockImagesActive(bool show12, bool show3, bool show6, bool show9)
     {
-        if (clock12Image != null)
-            clock12Image.SetActive(show12);
+        GameObject activeClock12Image = sceneUI != null ? sceneUI.Clock12Image : clock12Image;
+        GameObject activeClock3Image = sceneUI != null ? sceneUI.Clock3Image : clock3Image;
+        GameObject activeClock6Image = sceneUI != null ? sceneUI.Clock6Image : clock6Image;
+        GameObject activeClock9Image = sceneUI != null ? sceneUI.Clock9Image : clock9Image;
 
-        if (clock3Image != null)
-            clock3Image.SetActive(show3);
+        if (activeClock12Image != null)
+            activeClock12Image.SetActive(show12);
 
-        if (clock6Image != null)
-            clock6Image.SetActive(show6);
+        if (activeClock3Image != null)
+            activeClock3Image.SetActive(show3);
 
-        if (clock9Image != null)
-            clock9Image.SetActive(show9);
+        if (activeClock6Image != null)
+            activeClock6Image.SetActive(show6);
+
+        if (activeClock9Image != null)
+            activeClock9Image.SetActive(show9);
     }
 
     private void UpdateTimeOfDayIcon()
     {
-        SetTimeOfDayIconsActive(false, false, false);
-
         if (currentDayPhase <= 1)
         {
-            if (morningIcon != null)
-                morningIcon.SetActive(true);
+            SetTimeOfDayIconsActive(true, false, false);
             return;
         }
 
         if (currentDayPhase <= 4)
         {
-            if (noonIcon != null)
-                noonIcon.SetActive(true);
+            SetTimeOfDayIconsActive(false, true, false);
             return;
         }
 
-        if (eveningIcon != null)
-            eveningIcon.SetActive(true);
+        SetTimeOfDayIconsActive(false, false, true);
     }
 
     private void SetTimeOfDayIconsActive(bool showMorning, bool showNoon, bool showEvening)
     {
-        if (morningIcon != null)
-            morningIcon.SetActive(showMorning);
+        GameObject activeMorningIcon = sceneUI != null ? sceneUI.MorningIcon : morningIcon;
+        GameObject activeNoonIcon = sceneUI != null ? sceneUI.NoonIcon : noonIcon;
+        GameObject activeEveningIcon = sceneUI != null ? sceneUI.EveningIcon : eveningIcon;
 
-        if (noonIcon != null)
-            noonIcon.SetActive(showNoon);
+        if (activeMorningIcon != null)
+            activeMorningIcon.SetActive(showMorning);
 
-        if (eveningIcon != null)
-            eveningIcon.SetActive(showEvening);
+        if (activeNoonIcon != null)
+            activeNoonIcon.SetActive(showNoon);
+
+        if (activeEveningIcon != null)
+            activeEveningIcon.SetActive(showEvening);
     }
 
     private void UpdateHappinessIcon()
     {
-        SetHappinessIconsActive(false, false, false, false, false, false);
-
         if (happiness >= 100f)
         {
-            if (happiness100Icon != null)
-                happiness100Icon.SetActive(true);
+            SetHappinessIconsActive(true, false, false, false, false, false);
             return;
         }
 
         if (happiness >= 80f)
         {
-            if (happiness80Icon != null)
-                happiness80Icon.SetActive(true);
+            SetHappinessIconsActive(false, true, false, false, false, false);
             return;
         }
 
         if (happiness >= 60f)
         {
-            if (happiness60Icon != null)
-                happiness60Icon.SetActive(true);
+            SetHappinessIconsActive(false, false, true, false, false, false);
             return;
         }
 
         if (happiness >= 40f)
         {
-            if (happiness40Icon != null)
-                happiness40Icon.SetActive(true);
+            SetHappinessIconsActive(false, false, false, true, false, false);
             return;
         }
 
         if (happiness >= 20f)
         {
-            if (happiness20Icon != null)
-                happiness20Icon.SetActive(true);
+            SetHappinessIconsActive(false, false, false, false, true, false);
             return;
         }
 
-        if (happiness0Icon != null)
-            happiness0Icon.SetActive(true);
+        SetHappinessIconsActive(false, false, false, false, false, true);
     }
 
     private void SetHappinessIconsActive(
@@ -564,41 +657,107 @@ public class GameManager : MonoBehaviour
         bool show20,
         bool show0)
     {
-        if (happiness100Icon != null)
-            happiness100Icon.SetActive(show100);
+        GameObject activeHappiness100Icon = sceneUI != null ? sceneUI.Happiness100Icon : happiness100Icon;
+        GameObject activeHappiness80Icon = sceneUI != null ? sceneUI.Happiness80Icon : happiness80Icon;
+        GameObject activeHappiness60Icon = sceneUI != null ? sceneUI.Happiness60Icon : happiness60Icon;
+        GameObject activeHappiness40Icon = sceneUI != null ? sceneUI.Happiness40Icon : happiness40Icon;
+        GameObject activeHappiness20Icon = sceneUI != null ? sceneUI.Happiness20Icon : happiness20Icon;
+        GameObject activeHappiness0Icon = sceneUI != null ? sceneUI.Happiness0Icon : happiness0Icon;
 
-        if (happiness80Icon != null)
-            happiness80Icon.SetActive(show80);
+        if (activeHappiness100Icon != null)
+            activeHappiness100Icon.SetActive(show100);
 
-        if (happiness60Icon != null)
-            happiness60Icon.SetActive(show60);
+        if (activeHappiness80Icon != null)
+            activeHappiness80Icon.SetActive(show80);
 
-        if (happiness40Icon != null)
-            happiness40Icon.SetActive(show40);
+        if (activeHappiness60Icon != null)
+            activeHappiness60Icon.SetActive(show60);
 
-        if (happiness20Icon != null)
-            happiness20Icon.SetActive(show20);
+        if (activeHappiness40Icon != null)
+            activeHappiness40Icon.SetActive(show40);
 
-        if (happiness0Icon != null)
-            happiness0Icon.SetActive(show0);
+        if (activeHappiness20Icon != null)
+            activeHappiness20Icon.SetActive(show20);
+
+        if (activeHappiness0Icon != null)
+            activeHappiness0Icon.SetActive(show0);
     }
 
     private void UpdateMoneyText()
     {
-        if (moneyText != null)
-            moneyText.text = FormatMoney(money);
+        TMP_Text activeMoneyText = sceneUI != null ? sceneUI.MoneyText : moneyText;
+
+        if (activeMoneyText != null)
+            activeMoneyText.text = FormatMoney(money);
     }
 
     private void UpdateHouseMultiplierText()
     {
-        if (houseMultiplierText != null)
-            houseMultiplierText.text = $"{HomeWorkRewardMultiplier:0.##}x";
+        TMP_Text activeHouseMultiplierText = sceneUI != null ? sceneUI.HouseMultiplierText : houseMultiplierText;
+
+        if (activeHouseMultiplierText != null)
+            activeHouseMultiplierText.text = $"{HomeWorkRewardMultiplier:0.##}x";
     }
 
     private void UpdateDayText()
     {
-        if (dayText != null)
-            dayText.text = $"Day {day}";
+        TMP_Text activeDayText = sceneUI != null ? sceneUI.DayText : dayText;
+
+        if (activeDayText != null)
+            activeDayText.text = $"Day {day}";
+    }
+
+    private void RefreshSceneUI()
+    {
+        RefreshBarBottomOffset(sceneUI != null ? sceneUI.HappinessFillBar : happinessFillBar,
+            sceneUI != null ? sceneUI.HappinessEmptyBottomOffset : happinessEmptyBottomOffset,
+            happiness);
+        RefreshBarBottomOffset(sceneUI != null ? sceneUI.HungerFillBar : hungerFillBar,
+            sceneUI != null ? sceneUI.HungerEmptyBottomOffset : hungerEmptyBottomOffset,
+            hunger);
+        UpdateHappinessIcon();
+        UpdateClockImage();
+        UpdateTimeOfDayIcon();
+        UpdateMoneyText();
+        UpdateDayText();
+        UpdateHouseMultiplierText();
+    }
+
+    private void RefreshBarBottomOffset(RectTransform fillBar, float emptyBottomOffset, float value)
+    {
+        UpdateBarBottomOffset(fillBar, emptyBottomOffset, value);
+    }
+
+    private int GetCafeteriaStorePurchaseSession(CafeteriaStoreType storeType)
+    {
+        switch (storeType)
+        {
+            case CafeteriaStoreType.Snacks:
+                return cafeteriaSnackPurchaseSession;
+
+            case CafeteriaStoreType.Meals:
+                return cafeteriaMealPurchaseSession;
+
+            case CafeteriaStoreType.Drinks:
+                return cafeteriaDrinkPurchaseSession;
+
+            default:
+                return -1;
+        }
+    }
+
+    private void ResetCafeteriaSession()
+    {
+        cafeteriaSnackPurchaseSession = -1;
+        cafeteriaMealPurchaseSession = -1;
+        cafeteriaDrinkPurchaseSession = -1;
+        ClearCafeteriaFood();
+    }
+
+    private void ClearCafeteriaFood()
+    {
+        cafeteriaCarriedFoodCount = 0;
+        cafeteriaCarriedHungerRestore = 0f;
     }
 
     private string FormatMoney(float value)

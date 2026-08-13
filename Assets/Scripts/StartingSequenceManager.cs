@@ -24,6 +24,8 @@ public class StartingSequenceManager : MonoBehaviour
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject furnitureGroup;
     [SerializeField] private GameObject mainUI;
+    [SerializeField] private GameObject houseTutorialCamera;
+    [SerializeField] private HouseIntroTutorialManager houseIntroTutorial;
 
     private bool isTransitioning;
 
@@ -111,19 +113,36 @@ public class StartingSequenceManager : MonoBehaviour
 
     private void StartGameInCurrentScene()
     {
-        if (playerObject != null)
-            playerObject.SetActive(true);
-
         if (introRootObject != null)
             introRootObject.SetActive(false);
 
         if (furnitureGroup != null)
             furnitureGroup.SetActive(true);
 
-        GameManager.Instance?.LockCursor();
-
         if (mainUI != null)
             mainUI.SetActive(true);
+
+        if (houseIntroTutorial != null)
+        {
+            if (houseTutorialCamera != null)
+                houseTutorialCamera.SetActive(true);
+
+            houseIntroTutorial.BeginTutorial(FinishHouseTutorial);
+            return;
+        }
+
+        FinishHouseTutorial();
+    }
+
+    private void FinishHouseTutorial()
+    {
+        if (houseTutorialCamera != null)
+            houseTutorialCamera.SetActive(false);
+
+        if (playerObject != null)
+            playerObject.SetActive(true);
+
+        GameManager.Instance?.LockCursor();
 
         GameManager.Instance?.ShowStatsUI();
         GameManager.Instance?.SetHouseEventVisible(true);

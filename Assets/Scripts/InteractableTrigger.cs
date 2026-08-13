@@ -12,6 +12,10 @@ public enum InteractionType
     Cashier = 7,
     MiniFridge = 9,
     MarketDoor = 10,
+    SceneDoor = 11,
+    BusStop = 12,
+    CafeteriaStore = 13,
+    CafeteriaTable = 14,
 }
 
 public enum ShopCategory
@@ -24,11 +28,39 @@ public enum ShopCategory
     Fruits,
 }
 
+public enum WaypointLocation
+{
+    None,
+    Home,
+    Office,
+    Market,
+}
+
+public enum CafeteriaStoreType
+{
+    None,
+    Snacks,
+    Meals,
+    Drinks,
+}
+
 public class InteractableTrigger : MonoBehaviour
 {
     [Header("Interaction Info")]
     [SerializeField] private InteractionType interactionType = InteractionType.None;
     [SerializeField] private string promptMessage = "[E] Interact";
+
+    [Header("Scene Travel")]
+    [SerializeField] private string targetSceneName;
+    [SerializeField] private bool requireOfficeEntryAllowed;
+    [SerializeField] private bool clockInBeforeTravel;
+    [SerializeField] private bool clockOutBeforeTravel;
+
+    [Header("Bus Stop")]
+    [SerializeField] private WaypointLocation currentWaypoint = WaypointLocation.None;
+
+    [Header("Cafeteria")]
+    [SerializeField] private CafeteriaStoreType cafeteriaStoreType = CafeteriaStoreType.None;
 
     [Header("Shop Info")]
     [SerializeField] private ShopCategory shopCategory = ShopCategory.None;
@@ -38,6 +70,12 @@ public class InteractableTrigger : MonoBehaviour
 
     public InteractionType InteractionType => interactionType;
     public string PromptMessage => promptMessage;
+    public string TargetSceneName => targetSceneName;
+    public bool RequireOfficeEntryAllowed => requireOfficeEntryAllowed;
+    public bool ClockInBeforeTravel => clockInBeforeTravel;
+    public bool ClockOutBeforeTravel => clockOutBeforeTravel;
+    public WaypointLocation CurrentWaypoint => currentWaypoint;
+    public CafeteriaStoreType CafeteriaStoreType => cafeteriaStoreType;
     public ShopCategory ShopCategory => shopCategory;
     public string ShopItemName => shopItemName;
     public float ShopItemPrice => shopItemPrice;

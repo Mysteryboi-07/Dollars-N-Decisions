@@ -1,8 +1,6 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class InteractionUIManager : MonoBehaviour
 {
@@ -11,36 +9,8 @@ public class InteractionUIManager : MonoBehaviour
     [Header("Prompt UI")]
     [SerializeField] private TMP_Text interactionText;
 
-    [Header("Walker")]
-    [SerializeField] private GameObject walkerObject;
-
-    [Header("Laptop Interaction")]
-    [SerializeField] private GameObject playerObject;
-    [SerializeField] private GameObject laptopCamera;
-    [SerializeField] private GameObject laptopScreen;
-
-    [Header("Monitor Interaction")]
-    [SerializeField] private GameObject workerObject;
-    [SerializeField] private GameObject monitorCamera;
-    [SerializeField] private GameObject monitorScreen;
-
-    [Header("Shop Interaction")]
-    [FormerlySerializedAs("ShopperObject")]
-    [SerializeField] private GameObject shopperObject;
-
-    [Header("Sleep Interaction")]
-    [SerializeField] private CanvasGroup sleepFadeGroup;
-    [SerializeField] private float sleepFadeInDuration = 1f;
-    [SerializeField] private float sleepHoldDuration = 2f;
-    [SerializeField] private float sleepFadeOutDuration = 1f;
-
     private InteractableTrigger currentInteractable;
     private InteractionType openInteractionType = InteractionType.None;
-    private Coroutine sleepRoutine;
-    private Coroutine officeReturnRoutine;
-    private Coroutine homeWorkSleepRoutine;
-    private bool isSleeping;
-    private bool isReturningFromOffice;
 
     private void Awake()
     {
@@ -50,38 +20,12 @@ public class InteractionUIManager : MonoBehaviour
     private void Start()
     {
         HidePrompt();
-
-        if (laptopCamera != null)
-            laptopCamera.SetActive(false);
-
-        if (laptopScreen != null)
-            laptopScreen.SetActive(false);
-
-        if (workerObject != null)
-            workerObject.SetActive(false);
-
-        if (walkerObject != null)
-            walkerObject.SetActive(false);
-
-        if (shopperObject != null)
-            shopperObject.SetActive(false);
-
-        if (monitorCamera != null)
-            monitorCamera.SetActive(false);
-
-        if (monitorScreen != null)
-            monitorScreen.SetActive(false);
-
-        if (sleepFadeGroup != null)
-        {
-            sleepFadeGroup.alpha = 0f;
-            sleepFadeGroup.gameObject.SetActive(false);
-        }
     }
 
     private void Update()
     {
-        if (isSleeping) return;
+        if (SleepManager.Instance != null && SleepManager.Instance.IsBusy)
+            return;
 
         if (openInteractionType != InteractionType.None)
         {
@@ -102,20 +46,16 @@ public class InteractionUIManager : MonoBehaviour
         }
     }
 
-    // ---------- Trigger Handling ----------
-
     public void SetCurrentInteractable(InteractableTrigger interactable)
     {
-        if (isSleeping) return;
-        if (openInteractionType != InteractionType.None) return;
+        if (SleepManager.Instance != null && SleepManager.Instance.IsBusy)
+            return;
+
+        if (openInteractionType != InteractionType.None)
+            return;
 
         currentInteractable = interactable;
-
-        if (interactionText != null)
-        {
-            interactionText.text = interactable.PromptMessage;
-            interactionText.gameObject.SetActive(true);
-        }
+        RefreshPrompt();
     }
 
     public void ClearCurrentInteractable(InteractableTrigger interactable)
@@ -126,7 +66,57 @@ public class InteractionUIManager : MonoBehaviour
         HidePrompt();
     }
 
-    // ---------- Interaction Handling ----------
+    public void RefreshPrompt()
+    {
+        if (currentInteractable == null || openInteractionType != InteractionType.None)
+            return;
+
+        string promptMessage = GetPromptMessage(currentInteractable);
+
+        if (string.IsNullOrWhiteSpace(promptMessage))
+            HidePrompt();
+        else
+            ShowPrompt(promptMessage);
+    }
+
+    public void CloseMiniFridge()
+    {
+        openInteractionType = InteractionType.None;
+
+        MiniFridgeManager.Instance?.CloseFridge();
+        GameManager.Instance?.ShowStatsUI();
+        GameManager.Instance?.UnfreezePlayerFromUI();
+        RefreshPrompt();
+
+        Debug.Log("[FRIDGE] Closed mini fridge.");
+    }
+
+    public void CloseLaptopScreen()
+    {
+        openInteractionType = InteractionType.None;
+        FocusViewManager.Instance?.CloseLaptop();
+        RefreshPrompt();
+    }
+
+    public void CloseMonitorScreen()
+    {
+        openInteractionType = InteractionType.None;
+        FocusViewManager.Instance?.CloseMonitor();
+        RefreshPrompt();
+    }
+
+    public void ReturnHomeFromOfficeWithFade()
+    {
+        HidePrompt();
+        currentInteractable = null;
+        SleepManager.Instance?.ReturnHomeFromOffice();
+    }
+
+    public void SleepAfterLateHomeWorkWithFade()
+    {
+        HidePrompt();
+        SleepManager.Instance?.SleepAfterLateHomeWork();
+    }
 
     private void HandleInteraction(InteractionType interactionType)
     {
@@ -134,14 +124,6 @@ public class InteractionUIManager : MonoBehaviour
         {
             case InteractionType.Laptop:
                 OpenLaptopScreen();
-                break;
-
-            case InteractionType.HouseDoor:
-                EnterHouseDoor();
-                break;
-
-            case InteractionType.OfficeDoor:
-                EnterOfficeDoor();
                 break;
 
             case InteractionType.Monitor:
@@ -160,12 +142,24 @@ public class InteractionUIManager : MonoBehaviour
                 UseCashier();
                 break;
 
-            case InteractionType.MarketDoor:
-                UseMarketDoor();
-                break;
-
             case InteractionType.MiniFridge:
                 OpenMiniFridge();
+                break;
+
+            case InteractionType.SceneDoor:
+                UseSceneDoor();
+                break;
+
+            case InteractionType.BusStop:
+                OpenBusStopOptions();
+                break;
+
+            case InteractionType.CafeteriaStore:
+                OpenCafeteriaStore();
+                break;
+
+            case InteractionType.CafeteriaTable:
+                UseCafeteriaTable();
                 break;
 
             default:
@@ -174,14 +168,18 @@ public class InteractionUIManager : MonoBehaviour
         }
     }
 
-    // ---------- Shop Interaction ----------
-
-    private void OpenShopShelf()
+    private void OpenLaptopScreen()
     {
-        if (currentInteractable == null) return;
+        openInteractionType = InteractionType.Laptop;
+        HidePrompt();
+        FocusViewManager.Instance?.OpenLaptop();
+    }
 
-        ConvenienceShopManager.Instance?.AddShelfItemToCart(currentInteractable);
-        Debug.Log($"[SHOP] Added shelf item from {currentInteractable.ShopCategory} shelf.");
+    private void OpenMonitorScreen()
+    {
+        openInteractionType = InteractionType.Monitor;
+        HidePrompt();
+        FocusViewManager.Instance?.OpenMonitor();
     }
 
     private void OpenMiniFridge()
@@ -203,22 +201,18 @@ public class InteractionUIManager : MonoBehaviour
         Debug.Log("[FRIDGE] Opened mini fridge.");
     }
 
-    public void CloseMiniFridge()
+    private void GoToSleep()
     {
-        openInteractionType = InteractionType.None;
+        HidePrompt();
+        SleepManager.Instance?.GoToSleep();
+    }
 
-        MiniFridgeManager.Instance?.CloseFridge();
-        GameManager.Instance?.ShowStatsUI();
-        GameManager.Instance?.UnfreezePlayerFromUI();
+    private void OpenShopShelf()
+    {
+        if (currentInteractable == null) return;
 
-        if (currentInteractable != null &&
-            interactionText != null)
-        {
-            interactionText.text = currentInteractable.PromptMessage;
-            interactionText.gameObject.SetActive(true);
-        }
-
-        Debug.Log("[FRIDGE] Closed mini fridge.");
+        ConvenienceShopManager.Instance?.AddShelfItemToCart(currentInteractable);
+        Debug.Log($"[SHOP] Added shelf item from {currentInteractable.ShopCategory} shelf.");
     }
 
     private void UseCashier()
@@ -227,216 +221,96 @@ public class InteractionUIManager : MonoBehaviour
         Debug.Log("[SHOP] Used cashier.");
     }
 
-    private void UseMarketDoor()
+    private void UseSceneDoor()
     {
-        ToggleMarketDoor();
-    }
+        if (SceneDoorManager.Instance == null)
+        {
+            Debug.LogWarning("[SCENE] No SceneDoorManager found.");
+            return;
+        }
 
-    // ---------- Door Interaction ----------
+        bool didTravel = SceneDoorManager.Instance.TryUseSceneDoor(currentInteractable, interactionText);
 
-    private void EnterHouseDoor()
-    {
-        HidePrompt();
+        if (!didTravel) return;
+
         currentInteractable = null;
-
-        if (IsActive(playerObject))
-        {
-            SetActivePlayer(playerObject, false);
-            SetActivePlayer(walkerObject, true);
-            GameManager.Instance?.SetHouseEventVisible(false);
-            Debug.Log("[DOOR] Left room. Switched from player to walker.");
-            return;
-        }
-
-        SetActivePlayer(walkerObject, false);
-        SetActivePlayer(playerObject, true);
-        GameManager.Instance?.SetHouseEventVisible(true);
-        Debug.Log("[DOOR] Entered room. Switched from walker to player.");
-    }
-
-    private void EnterOfficeDoor()
-    {
-        if (GameManager.Instance != null && !GameManager.Instance.CanEnterOffice)
-        {
-            if (IsActive(workerObject))
-            {
-                HidePrompt();
-                currentInteractable = null;
-
-                ExitOfficeToWalker();
-                return;
-            }
-
-            if (interactionText != null)
-            {
-                interactionText.text = GameManager.Instance.OfficeEntryBlockedMessage;
-                interactionText.gameObject.SetActive(true);
-            }
-
-            Debug.Log($"[DOOR] {GameManager.Instance.OfficeEntryBlockedMessage}.");
-            return;
-        }
-
         HidePrompt();
-        currentInteractable = null;
+    }
 
-        if (IsActive(workerObject))
+    private void OpenBusStopOptions()
+    {
+        if (currentInteractable == null) return;
+
+        if (WaypointTravelManager.Instance == null)
         {
-            ExitOfficeToWalker();
+            Debug.LogWarning("[WAYPOINT] No WaypointTravelManager found.");
             return;
         }
 
-        SetActivePlayer(walkerObject, false);
-        SetActivePlayer(workerObject, true);
-        GameManager.Instance?.ClockInOffice();
-
-        Debug.Log("[DOOR] Entered office. Switched from walker to worker.");
-    }
-
-    private void ToggleMarketDoor()
-    {
+        openInteractionType = InteractionType.BusStop;
         HidePrompt();
-        currentInteractable = null;
-
-        if (IsActive(shopperObject))
-        {
-            SetActivePlayer(shopperObject, false);
-            SetActivePlayer(walkerObject, true);
-            Debug.Log("[DOOR] Left market. Switched from shopper to walker.");
-            return;
-        }
-
-        SetActivePlayer(walkerObject, false);
-        SetActivePlayer(shopperObject, true);
-
-        Debug.Log("[DOOR] Entered market. Switched from walker to shopper.");
+        WaypointTravelManager.Instance.OpenOptions(currentInteractable.CurrentWaypoint);
     }
 
-    private void ExitOfficeToWalker()
-    {
-        SetActivePlayer(workerObject, false);
-        SetActivePlayer(walkerObject, true);
-        GameManager.Instance?.ClockOutOffice();
-        Debug.Log("[DOOR] Left office. Switched from worker to walker.");
-    }
-
-    public void ReturnHomeFromOfficeWithFade()
-    {
-        if (officeReturnRoutine != null) return;
-
-        officeReturnRoutine = StartCoroutine(ReturnHomeFromOfficeRoutine());
-    }
-
-    public void SleepAfterLateHomeWorkWithFade()
-    {
-        if (homeWorkSleepRoutine != null) return;
-
-        homeWorkSleepRoutine = StartCoroutine(SleepAfterLateHomeWorkRoutine());
-    }
-
-    // ---------- Laptop Screen ----------
-
-    private void OpenLaptopScreen()
-    {
-        openInteractionType = InteractionType.Laptop;
-
-        HidePrompt();
-
-        if (playerObject != null)
-            playerObject.SetActive(false);
-
-        GameManager.Instance?.SetHouseEventVisible(false);
-
-        if (laptopCamera != null)
-            laptopCamera.SetActive(true);
-
-        if (laptopScreen != null)
-            laptopScreen.SetActive(true);
-
-        GameManager.Instance?.HideStatsUI();
-        GameManager.Instance?.UnlockCursor();
-
-        Debug.Log("[LAPTOP] Opened laptop screen.");
-    }
-
-    public void CloseLaptopScreen()
+    public void FinishBusStopInteraction(bool shouldRefreshPrompt)
     {
         openInteractionType = InteractionType.None;
 
-        if (laptopScreen != null)
-            laptopScreen.SetActive(false);
-
-        if (laptopCamera != null)
-            laptopCamera.SetActive(false);
-
-        if (playerObject != null)
-            playerObject.SetActive(true);
-
-        GameManager.Instance?.ShowStatsUI();
-        GameManager.Instance?.SetHouseEventVisible(true);
-        GameManager.Instance?.LockCursor();
-
-        if (currentInteractable != null &&
-            interactionText != null)
+        if (shouldRefreshPrompt)
         {
-            interactionText.text = currentInteractable.PromptMessage;
-            interactionText.gameObject.SetActive(true);
+            RefreshPrompt();
+        }
+        else
+        {
+            currentInteractable = null;
+            HidePrompt();
+        }
+    }
+
+    private void OpenCafeteriaStore()
+    {
+        if (currentInteractable == null) return;
+
+        if (CafeteriaManager.Instance == null)
+        {
+            Debug.LogWarning("[CAFETERIA] No CafeteriaManager found.");
+            return;
         }
 
-        Debug.Log("[LAPTOP] Closed laptop screen.");
-    }
+        if (!CafeteriaManager.Instance.CanBuyFromStore(currentInteractable.CafeteriaStoreType))
+        {
+            RefreshPrompt();
+            return;
+        }
 
-    // ---------- Monitor Screen ----------
-
-    private void OpenMonitorScreen()
-    {
-        openInteractionType = InteractionType.Monitor;
-
+        openInteractionType = InteractionType.CafeteriaStore;
         HidePrompt();
 
-        if (workerObject != null)
-            workerObject.SetActive(false);
+        bool didOpen = CafeteriaManager.Instance.OpenStore(currentInteractable.CafeteriaStoreType);
 
-        if (monitorCamera != null)
-            monitorCamera.SetActive(true);
+        if (didOpen) return;
 
-        if (monitorScreen != null)
-            monitorScreen.SetActive(true);
-
-        GameManager.Instance?.HideStatsUI();
-        GameManager.Instance?.UnlockCursor();
-
-        Debug.Log("[MONITOR] Opened monitor screen.");
+        openInteractionType = InteractionType.None;
+        RefreshPrompt();
     }
 
-    public void CloseMonitorScreen()
+    private void UseCafeteriaTable()
+    {
+        if (CafeteriaManager.Instance == null || !CafeteriaManager.Instance.HasCarriedFood)
+            return;
+
+        CafeteriaManager.Instance.ConsumeCarriedFood();
+        RefreshPrompt();
+    }
+
+    public void FinishCafeteriaStoreInteraction(bool shouldRefreshPrompt)
     {
         openInteractionType = InteractionType.None;
 
-        if (monitorScreen != null)
-            monitorScreen.SetActive(false);
-
-        if (monitorCamera != null)
-            monitorCamera.SetActive(false);
-
-        if (workerObject != null && !isReturningFromOffice)
-            workerObject.SetActive(true);
-
-        if (!isReturningFromOffice)
-        {
-            GameManager.Instance?.ShowStatsUI();
-            GameManager.Instance?.LockCursor();
-        }
-
-        if (!isReturningFromOffice &&
-            currentInteractable != null &&
-            interactionText != null)
-        {
-            interactionText.text = currentInteractable.PromptMessage;
-            interactionText.gameObject.SetActive(true);
-        }
-
-        Debug.Log("[MONITOR] Closed monitor screen.");
+        if (shouldRefreshPrompt)
+            RefreshPrompt();
+        else
+            HidePrompt();
     }
 
     private void CloseCurrentFocusView()
@@ -454,204 +328,50 @@ public class InteractionUIManager : MonoBehaviour
             case InteractionType.MiniFridge:
                 CloseMiniFridge();
                 break;
+
+            case InteractionType.BusStop:
+                WaypointTravelManager.Instance?.CloseOptions();
+                break;
+
+            case InteractionType.CafeteriaStore:
+                CafeteriaManager.Instance?.CloseStore();
+                break;
         }
     }
 
-    // ---------- Sleep Interaction ----------
-
-    private void GoToSleep()
+    private void ShowPrompt(string message)
     {
-        if (sleepRoutine != null) return;
+        if (interactionText == null) return;
 
-        sleepRoutine = StartCoroutine(SleepRoutine());
+        interactionText.text = message;
+        interactionText.gameObject.SetActive(true);
     }
 
-    private IEnumerator SleepRoutine()
+    private string GetPromptMessage(InteractableTrigger interactable)
     {
-        isSleeping = true;
-        HidePrompt();
+        if (interactable == null) return string.Empty;
 
-        if (sleepFadeGroup == null)
+        switch (interactable.InteractionType)
         {
-            Debug.LogWarning("[SLEEP] No sleep fade CanvasGroup assigned.");
-            isSleeping = false;
-            sleepRoutine = null;
-            yield break;
+            case InteractionType.CafeteriaTable:
+                return CafeteriaManager.Instance != null && CafeteriaManager.Instance.HasCarriedFood
+                    ? interactable.PromptMessage
+                    : string.Empty;
+
+            case InteractionType.CafeteriaStore:
+                return CafeteriaManager.Instance != null &&
+                       !CafeteriaManager.Instance.CanBuyFromStore(interactable.CafeteriaStoreType)
+                    ? "Unavailable"
+                    : interactable.PromptMessage;
+
+            default:
+                return interactable.PromptMessage;
         }
-
-        sleepFadeGroup.gameObject.SetActive(true);
-
-        yield return FadeSleepOverlay(0f, 1f, sleepFadeInDuration);
-        yield return new WaitForSeconds(sleepHoldDuration);
-
-        GameManager.Instance?.WakeUp();
-
-        yield return FadeSleepOverlay(1f, 0f, sleepFadeOutDuration);
-
-        sleepFadeGroup.gameObject.SetActive(false);
-
-        isSleeping = false;
-        sleepRoutine = null;
-
-        if (currentInteractable != null &&
-            interactionText != null)
-        {
-            interactionText.text = currentInteractable.PromptMessage;
-            interactionText.gameObject.SetActive(true);
-        }
-
-        Debug.Log("[SLEEP] Finished sleeping.");
     }
-
-    private IEnumerator ReturnHomeFromOfficeRoutine()
-    {
-        isSleeping = true;
-        isReturningFromOffice = true;
-        HidePrompt();
-        currentInteractable = null;
-
-        if (sleepFadeGroup == null)
-        {
-            Debug.LogWarning("[OFFICE] No fade CanvasGroup assigned.");
-            CloseMonitorForOfficeReturn();
-            ExitOfficeToWalker();
-            GameManager.Instance?.ShowStatsUI();
-            GameManager.Instance?.LockCursor();
-
-            isSleeping = false;
-            isReturningFromOffice = false;
-            officeReturnRoutine = null;
-            yield break;
-        }
-
-        sleepFadeGroup.gameObject.SetActive(true);
-
-        yield return FadeSleepOverlay(0f, 1f, sleepFadeInDuration);
-        yield return new WaitForSeconds(sleepHoldDuration);
-
-        CloseMonitorForOfficeReturn();
-        ExitOfficeToWalker();
-        SetActivePlayer(workerObject, false);
-
-        yield return FadeSleepOverlay(1f, 0f, sleepFadeOutDuration);
-
-        sleepFadeGroup.gameObject.SetActive(false);
-        GameManager.Instance?.ShowStatsUI();
-        GameManager.Instance?.LockCursor();
-
-        isSleeping = false;
-        isReturningFromOffice = false;
-        officeReturnRoutine = null;
-
-        Debug.Log("[OFFICE] Work day ended. Returned to outside world.");
-    }
-
-    private void CloseMonitorForOfficeReturn()
-    {
-        if (monitorScreen != null)
-            monitorScreen.SetActive(false);
-
-        if (monitorCamera != null)
-            monitorCamera.SetActive(false);
-
-        if (workerObject != null)
-            workerObject.SetActive(false);
-
-        openInteractionType = InteractionType.None;
-        currentInteractable = null;
-        HidePrompt();
-    }
-
-    private IEnumerator SleepAfterLateHomeWorkRoutine()
-    {
-        isSleeping = true;
-        HidePrompt();
-
-        if (sleepFadeGroup == null)
-        {
-            Debug.LogWarning("[HOME WORK] No fade CanvasGroup assigned.");
-            CloseLaptopForLateHomeWork();
-            GameManager.Instance?.WakeUpAtPhase(2);
-            GameManager.Instance?.ShowStatsUI();
-            GameManager.Instance?.LockCursor();
-            isSleeping = false;
-            homeWorkSleepRoutine = null;
-            yield break;
-        }
-
-        sleepFadeGroup.gameObject.SetActive(true);
-
-        yield return FadeSleepOverlay(0f, 1f, sleepFadeInDuration);
-        yield return new WaitForSeconds(sleepHoldDuration);
-
-        CloseLaptopForLateHomeWork();
-        GameManager.Instance?.WakeUpAtPhase(2);
-
-        yield return FadeSleepOverlay(1f, 0f, sleepFadeOutDuration);
-
-        sleepFadeGroup.gameObject.SetActive(false);
-        GameManager.Instance?.ShowStatsUI();
-        GameManager.Instance?.LockCursor();
-
-        isSleeping = false;
-        homeWorkSleepRoutine = null;
-
-        Debug.Log("[HOME WORK] Worked past midnight. Woke up at 1200.");
-    }
-
-    private IEnumerator FadeSleepOverlay(float startAlpha, float endAlpha, float duration)
-    {
-        if (duration <= 0f)
-        {
-            sleepFadeGroup.alpha = endAlpha;
-            yield break;
-        }
-
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float fadePercent = Mathf.Clamp01(elapsedTime / duration);
-            sleepFadeGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, fadePercent);
-            yield return null;
-        }
-
-        sleepFadeGroup.alpha = endAlpha;
-    }
-
-    // ---------- Helpers ----------
 
     private void HidePrompt()
     {
         if (interactionText != null)
             interactionText.gameObject.SetActive(false);
-    }
-
-    private void CloseLaptopForLateHomeWork()
-    {
-        openInteractionType = InteractionType.None;
-
-        if (laptopScreen != null)
-            laptopScreen.SetActive(false);
-
-        if (laptopCamera != null)
-            laptopCamera.SetActive(false);
-
-        if (playerObject != null)
-            playerObject.SetActive(true);
-
-        GameManager.Instance?.SetHouseEventVisible(true);
-    }
-
-    private bool IsActive(GameObject target)
-    {
-        return target != null && target.activeSelf;
-    }
-
-    private void SetActivePlayer(GameObject target, bool isActive)
-    {
-        if (target != null)
-            target.SetActive(isActive);
     }
 }

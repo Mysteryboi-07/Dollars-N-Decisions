@@ -21,7 +21,6 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private GameObject difficultyButtonGroup;
 
     [Header("Selection Rules")]
-    [SerializeField] private bool launchOnEnable = true;
     [SerializeField] private WorkMinigame[] firstRunOrder;
     [SerializeField] private WorkMinigame[] randomPool;
 
@@ -30,12 +29,6 @@ public class MinigameManager : MonoBehaviour
 
     private static int sharedCompletedWorkSessions;
     private GameObject activeMinigame;
-
-    private void OnEnable()
-    {
-        if (launchOnEnable)
-            LaunchNextMinigame();
-    }
 
     private void OnDisable()
     {

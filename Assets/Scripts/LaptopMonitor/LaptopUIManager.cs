@@ -28,6 +28,11 @@ public class LaptopUIManager : MonoBehaviour
         currentApp = appObject;
         currentApp.SetActive(true);
 
+        MinigameManager minigameManager = currentApp.GetComponentInChildren<MinigameManager>(true);
+
+        if (minigameManager != null)
+            minigameManager.LaunchNextMinigame();
+
         if (appButtonGroup != null)
             appButtonGroup.SetActive(false);
     }

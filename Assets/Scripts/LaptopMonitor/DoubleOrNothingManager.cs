@@ -100,6 +100,8 @@ public class DoubleOrNothingManager : MonoBehaviour
     [SerializeField] private TMP_Text rewardText;
     [SerializeField] private Button highButton;
     [SerializeField] private Button lowButton;
+    [Range(0f, 1f)]
+    [SerializeField] private float highLowCorrectChance = 0.2f;
     [SerializeField] private float highLowRevealDuration = 3f;
     [SerializeField] private int maxDoubleAttempts = 4;
 
@@ -433,11 +435,8 @@ public class DoubleOrNothingManager : MonoBehaviour
         if (!roundActive || currentWinnings <= 0 || awaitingDoubleDecision) return;
 
         StopHighLowRevealRoutine();
-        PlayingCard revealedCard = DrawDifferentRankCard(currentHighLowCard);
+        PlayingCard revealedCard = DrawRiggedHighLowCard(currentHighLowCard, guessedHigher, out bool isCorrect);
         revealedHighLowCard = revealedCard;
-        bool isCorrect = guessedHigher
-            ? revealedCard.rank > currentHighLowCard.rank
-            : revealedCard.rank < currentHighLowCard.rank;
 
         if (randomCard != null)
             randomCard.Show(revealedCard, false, false, GetCardSprite(revealedCard));
@@ -486,6 +485,51 @@ public class DoubleOrNothingManager : MonoBehaviour
         }
 
         return revealedCard;
+    }
+
+    private PlayingCard DrawRiggedHighLowCard(PlayingCard currentCard, bool guessedHigher, out bool isCorrect)
+    {
+        List<PlayingCard> correctCards = BuildHighLowDeck(currentCard, guessedHigher);
+        List<PlayingCard> wrongCards = BuildHighLowDeck(currentCard, !guessedHigher);
+        bool shouldBeCorrect = Random.value < highLowCorrectChance;
+
+        if (shouldBeCorrect && correctCards.Count > 0)
+        {
+            isCorrect = true;
+            return correctCards[Random.Range(0, correctCards.Count)];
+        }
+
+        if (wrongCards.Count > 0)
+        {
+            isCorrect = false;
+            return wrongCards[Random.Range(0, wrongCards.Count)];
+        }
+
+        if (correctCards.Count > 0)
+        {
+            isCorrect = true;
+            return correctCards[Random.Range(0, correctCards.Count)];
+        }
+
+        isCorrect = false;
+        return DrawDifferentRankCard(currentCard);
+    }
+
+    private List<PlayingCard> BuildHighLowDeck(PlayingCard currentCard, bool wantsHigher)
+    {
+        List<PlayingCard> availableCards = BuildNormalDeck();
+        int currentRank = (int)currentCard.rank;
+
+        for (int i = availableCards.Count - 1; i >= 0; i--)
+        {
+            int cardRank = (int)availableCards[i].rank;
+            bool isValidCard = wantsHigher ? cardRank > currentRank : cardRank < currentRank;
+
+            if (!isValidCard)
+                availableCards.RemoveAt(i);
+        }
+
+        return availableCards;
     }
 
     private void EndRound(int payout, string message)
