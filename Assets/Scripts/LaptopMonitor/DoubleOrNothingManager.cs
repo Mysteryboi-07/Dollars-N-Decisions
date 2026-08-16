@@ -453,7 +453,7 @@ public class DoubleOrNothingManager : MonoBehaviour
 
         if (!isCorrect)
         {
-            EndRound(0, "Too bad...");
+            EndRound(-currentWinnings, "Too bad...");
             yield break;
         }
 
@@ -540,7 +540,7 @@ public class DoubleOrNothingManager : MonoBehaviour
         canToggleKeptCards = false;
         awaitingDoubleDecision = false;
 
-        if (payout > 0)
+        if (payout != 0)
             GameManager.Instance?.ChangeMoney(payout);
 
         ApplyGamblingConsequences();
@@ -556,13 +556,15 @@ public class DoubleOrNothingManager : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
+        int phaseCost = GameManager.Instance.GetActionPhaseCost();
+
         if (useStatAction)
             GameManager.Instance.ApplyActionStatsByName(gamblingActionName);
         else
             GameManager.Instance.ChangeHappiness(happinessGain);
 
         if (advancesTime && GameManager.Instance.CurrentDayPhase == startingDayPhase)
-            GameManager.Instance.AdvanceTimePhase();
+            GameManager.Instance.AdvanceTimePhases(phaseCost);
 
         shouldReturnHomeAfterRound = returnHomeAtEndOfOfficeDay &&
             GameManager.Instance.ShouldReturnHomeFromOffice;
@@ -801,7 +803,7 @@ public class DoubleOrNothingManager : MonoBehaviour
         if (cashText == null || GameManager.Instance == null) return;
 
         float money = GameManager.Instance.Money;
-        cashText.text = Mathf.Approximately(money % 1f, 0f) ? $"${money:0}" : $"${money:0.00}";
+        cashText.text = Mathf.Approximately(money % 1f, 0f) ? $"{money:0}" : $"{money:0.00}";
     }
 
     private Sprite GetCardSprite(PlayingCard card)

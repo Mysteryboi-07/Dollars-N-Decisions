@@ -258,11 +258,12 @@ public class BugBashManager : MonoBehaviour, IWorkMinigame
         if (GameManager.Instance != null)
         {
             bool startedAtMidnight = startingDayPhase == 6;
+            int phaseCost = GameManager.Instance.GetActionPhaseCost();
 
             GameManager.Instance.ApplyActionStatsByName(workActionName);
 
             if (GameManager.Instance.CurrentDayPhase == startingDayPhase)
-                GameManager.Instance.AdvanceTimePhase();
+                GameManager.Instance.AdvanceTimePhases(phaseCost);
             else
                 Debug.Log("[MINIGAME] Time already advanced before minigame completion.");
 
@@ -382,10 +383,10 @@ public class BugBashManager : MonoBehaviour, IWorkMinigame
 
     private int ApplyRewardLocationMultiplier(int baseReward)
     {
-        if (!sleepAfterMidnightHomeWork || GameManager.Instance == null)
+        if (GameManager.Instance == null)
             return baseReward;
 
-        return GameManager.Instance.ApplyHomeWorkRewardMultiplier(baseReward);
+        return GameManager.Instance.ApplyIncomeModifiers(baseReward, sleepAfterMidnightHomeWork);
     }
 
     private float GetRewardMultiplier()

@@ -86,11 +86,12 @@ public class SleepManager : MonoBehaviour
     {
         yield return FadeOutThenIn(() =>
         {
-            FocusViewManager.Instance?.CloseLaptop();
-            GameManager.Instance?.WakeUpAtPhase(2);
+            InteractionUIManager.Instance?.CloseLaptopScreen();
+            GameManager.Instance?.WakeUpAtPhaseAfterOvernightWork(2);
         });
 
         activeRoutine = null;
+        InteractionUIManager.Instance?.RefreshPrompt();
         Debug.Log("[HOME WORK] Worked past midnight. Woke up at 1200.");
     }
 
