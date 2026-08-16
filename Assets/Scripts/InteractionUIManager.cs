@@ -205,6 +205,13 @@ public class InteractionUIManager : MonoBehaviour
     private void GoToSleep()
     {
         HidePrompt();
+
+        if (BedOptionsManager.Instance != null)
+        {
+            BedOptionsManager.Instance.OpenOptions();
+            return;
+        }
+
         SleepManager.Instance?.GoToSleep();
     }
 

@@ -39,6 +39,13 @@ public class SleepManager : MonoBehaviour
         activeRoutine = StartCoroutine(SleepRoutine());
     }
 
+    public void TakeNap()
+    {
+        if (activeRoutine != null) return;
+
+        activeRoutine = StartCoroutine(NapRoutine());
+    }
+
     public void ReturnHomeFromOffice()
     {
         if (activeRoutine != null) return;
@@ -53,12 +60,27 @@ public class SleepManager : MonoBehaviour
         activeRoutine = StartCoroutine(SleepAfterLateHomeWorkRoutine());
     }
 
+    public void PlayTimePassageFade()
+    {
+        if (activeRoutine != null) return;
+
+        activeRoutine = StartCoroutine(TimePassageFadeRoutine());
+    }
+
     private IEnumerator SleepRoutine()
     {
         yield return FadeOutThenIn(() => GameManager.Instance?.WakeUp());
         activeRoutine = null;
         InteractionUIManager.Instance?.RefreshPrompt();
         Debug.Log("[SLEEP] Finished sleeping.");
+    }
+
+    private IEnumerator NapRoutine()
+    {
+        yield return FadeOutThenIn(() => GameManager.Instance?.TakeNap());
+        activeRoutine = null;
+        InteractionUIManager.Instance?.RefreshPrompt();
+        Debug.Log("[SLEEP] Finished nap.");
     }
 
     private IEnumerator ReturnHomeFromOfficeRoutine()
@@ -93,6 +115,13 @@ public class SleepManager : MonoBehaviour
         activeRoutine = null;
         InteractionUIManager.Instance?.RefreshPrompt();
         Debug.Log("[HOME WORK] Worked past midnight. Woke up at 1200.");
+    }
+
+    private IEnumerator TimePassageFadeRoutine()
+    {
+        yield return FadeOutThenIn(null);
+        activeRoutine = null;
+        Debug.Log("[TIME] Low hunger caused extra time to pass.");
     }
 
     private IEnumerator FadeOutThenIn(System.Action middleAction)

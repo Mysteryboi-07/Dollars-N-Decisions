@@ -37,6 +37,7 @@ public class FocusViewManager : MonoBehaviour
         GameManager.Instance?.SetHouseEventVisible(false);
         GameManager.Instance?.HideStatsUI();
         GameManager.Instance?.UnlockCursor();
+        MinigameTutorialManager.ShowIfNeeded();
         Debug.Log("[LAPTOP] Opened laptop screen.");
     }
 
@@ -59,6 +60,7 @@ public class FocusViewManager : MonoBehaviour
         SetActive(monitorScreen, true);
         GameManager.Instance?.HideStatsUI();
         GameManager.Instance?.UnlockCursor();
+        MinigameTutorialManager.ShowIfNeeded();
         Debug.Log("[MONITOR] Opened monitor screen.");
     }
 

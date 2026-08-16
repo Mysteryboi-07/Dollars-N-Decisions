@@ -129,9 +129,6 @@ public class StartingSequenceManager : MonoBehaviour
 
     private void LoadGameScene()
     {
-        if (introRootObject != null)
-            introRootObject.SetActive(false);
-
         GameManager.Instance?.LockCursor();
 
         if (SceneTravelManager.Instance != null)

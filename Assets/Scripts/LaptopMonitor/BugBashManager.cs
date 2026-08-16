@@ -62,6 +62,7 @@ public class BugBashManager : MonoBehaviour, IWorkMinigame
     private bool isWaitingToStart;
     private bool shouldReturnHomeAfterResult;
     private bool shouldSleepAfterResult;
+    private bool shouldShowLowHungerFade;
 
     private void OnEnable()
     {
@@ -117,6 +118,7 @@ public class BugBashManager : MonoBehaviour, IWorkMinigame
         isWaitingToStart = true;
         shouldReturnHomeAfterResult = false;
         shouldSleepAfterResult = false;
+        shouldShowLowHungerFade = false;
 
         if (resultRoutine != null)
         {
@@ -270,6 +272,9 @@ public class BugBashManager : MonoBehaviour, IWorkMinigame
             shouldReturnHomeAfterResult = returnHomeAtEndOfOfficeDay &&
                 GameManager.Instance.ShouldReturnHomeFromOffice;
             shouldSleepAfterResult = sleepAfterMidnightHomeWork && startedAtMidnight;
+            shouldShowLowHungerFade = GameManager.Instance.LastActionTookExtraPhase &&
+                !shouldReturnHomeAfterResult &&
+                !shouldSleepAfterResult;
         }
 
         StopCurrentRound();
@@ -307,6 +312,8 @@ public class BugBashManager : MonoBehaviour, IWorkMinigame
             InteractionUIManager.Instance?.ReturnHomeFromOfficeWithFade();
         else if (shouldSleepAfterResult)
             InteractionUIManager.Instance?.SleepAfterLateHomeWorkWithFade();
+        else if (shouldShowLowHungerFade)
+            SleepManager.Instance?.PlayTimePassageFade();
     }
 
     private void StopCurrentRound()

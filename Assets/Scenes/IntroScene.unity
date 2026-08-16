@@ -25997,7 +25997,14 @@ MonoBehaviour:
     happinessChange: -50
     hungerChange: -5
     advancesTime: 1
+  - actionName: Nap
+    happinessChange: 10
+    hungerChange: -5
+    advancesTime: 1
   sleepActionName: Sleep
+  napActionName: Nap
+  napHappinessChange: 10
+  napHungerChange: -5
   overnightWorkActionName: Overnight Work
   overnightWorkHappinessChange: -50
   overnightWorkHungerChange: -5

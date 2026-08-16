@@ -117,6 +117,7 @@ public class DeadlineDashManager : MonoBehaviour, IWorkMinigame
     private bool isPlaying;
     private bool shouldReturnHomeAfterResult;
     private bool shouldSleepAfterResult;
+    private bool shouldShowLowHungerFade;
 
     private void OnEnable()
     {
@@ -221,6 +222,7 @@ public class DeadlineDashManager : MonoBehaviour, IWorkMinigame
         totalInputsRequired = 0;
         shouldReturnHomeAfterResult = false;
         shouldSleepAfterResult = false;
+        shouldShowLowHungerFade = false;
         startingDayPhase = GameManager.Instance != null ? GameManager.Instance.CurrentDayPhase : -1;
         isPlaying = true;
 
@@ -310,6 +312,8 @@ public class DeadlineDashManager : MonoBehaviour, IWorkMinigame
             InteractionUIManager.Instance?.ReturnHomeFromOfficeWithFade();
         else if (shouldSleepAfterResult)
             InteractionUIManager.Instance?.SleepAfterLateHomeWorkWithFade();
+        else if (shouldShowLowHungerFade)
+            SleepManager.Instance?.PlayTimePassageFade();
     }
 
     private void BuildTaskList()
@@ -569,6 +573,9 @@ public class DeadlineDashManager : MonoBehaviour, IWorkMinigame
         shouldReturnHomeAfterResult = returnHomeAtEndOfOfficeDay &&
             GameManager.Instance.ShouldReturnHomeFromOffice;
         shouldSleepAfterResult = sleepAfterMidnightHomeWork && startedAtMidnight;
+        shouldShowLowHungerFade = GameManager.Instance.LastActionTookExtraPhase &&
+            !shouldReturnHomeAfterResult &&
+            !shouldSleepAfterResult;
     }
 
     private void StopRound()

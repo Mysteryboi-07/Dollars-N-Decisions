@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
     [Header("Actions")]
     [SerializeField] private StatAction[] statActions;
     [SerializeField] private string sleepActionName = "Sleep";
+    [SerializeField] private string napActionName = "Nap";
+    [SerializeField] private float napHappinessChange = 10f;
+    [SerializeField] private float napHungerChange = -5f;
     [SerializeField] private string overnightWorkActionName = "Overnight Work";
     [SerializeField] private float overnightWorkHappinessChange = -50f;
     [SerializeField] private float overnightWorkHungerChange = -5f;
@@ -154,6 +157,7 @@ public class GameManager : MonoBehaviour
     public string EndingMessage => endingMessage;
     public float EndingExcessMoney => endingExcessMoney;
     public bool HasClockedOutOfOfficeToday => clockedOutOfOfficeToday;
+    public bool LastActionTookExtraPhase { get; private set; }
     public bool CanEnterOffice => currentDayPhase > 0 && currentDayPhase < 5 && !clockedOutOfOfficeToday;
     public string OfficeEntryBlockedMessage => currentDayPhase <= 0 || currentDayPhase >= 5
         ? "Office is closed"
@@ -333,8 +337,8 @@ public class GameManager : MonoBehaviour
     {
         ApplyActionStatsByName(sleepActionName);
         AdvanceDay();
-        SetDayPhase(1);
-        Debug.Log("[GAME] Woke up at 0900.");
+        SetDayPhase(0);
+        Debug.Log("[GAME] Woke up at 0600.");
     }
 
     public void WakeUpAtPhase(int phaseIndex)
@@ -351,6 +355,13 @@ public class GameManager : MonoBehaviour
         AdvanceDay();
         SetDayPhase(phaseIndex);
         Debug.Log($"[GAME] Woke up after overnight work at {CurrentHour:00}00.");
+    }
+
+    public void TakeNap()
+    {
+        ApplyNapStats();
+        AdvanceTimePhase();
+        Debug.Log($"[GAME] Took a nap. Time is now {CurrentHour:00}:00.");
     }
 
     public void ChangeMoney(float amount)
@@ -378,13 +389,18 @@ public class GameManager : MonoBehaviour
 
     public int GetActionPhaseCost()
     {
+        LastActionTookExtraPhase = false;
+
         if (hunger >= lowHungerThreshold) return 1;
 
         bool takesExtraPhase = Random.value < lowHungerExtraPhaseChance;
         int phaseCost = takesExtraPhase ? 2 : 1;
 
         if (takesExtraPhase)
+        {
+            LastActionTookExtraPhase = true;
             Debug.Log("[GAME] Low hunger caused this action to take 2 phases.");
+        }
 
         return phaseCost;
     }
@@ -620,6 +636,7 @@ public class GameManager : MonoBehaviour
         SetHouseEventVisible(false);
         HideStatsUI();
         HouseSceneStartupManager.ResetTutorialForNewRun();
+        MinigameTutorialManager.ResetTutorialForNewRun();
 
         Debug.Log("[GAME] Run progress reset.");
     }
@@ -684,6 +701,31 @@ public class GameManager : MonoBehaviour
         ChangeHappiness(overnightWorkHappinessChange);
         ChangeHunger(overnightWorkHungerChange);
         Debug.Log($"[GAME] Applied {overnightWorkActionName}: happiness {happiness}/{CurrentMaxHappiness}, hunger {hunger}/100");
+    }
+
+    private void ApplyNapStats()
+    {
+        if (TryApplyActionStatsByName(napActionName)) return;
+
+        ChangeHappiness(napHappinessChange);
+        ChangeHunger(napHungerChange);
+        Debug.Log($"[GAME] Applied {napActionName}: happiness {happiness}/{CurrentMaxHappiness}, hunger {hunger}/100");
+    }
+
+    private bool TryApplyActionStatsByName(string actionName)
+    {
+        if (statActions == null) return false;
+
+        foreach (StatAction statAction in statActions)
+        {
+            if (statAction != null && statAction.actionName == actionName)
+            {
+                ApplyActionStats(statAction);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void UpdateBarBottomOffset(RectTransform fillBar, float emptyBottomOffset, float value, float maxValue = 100f)
