@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
     [Header("Happiness")]
     [SerializeField] private RectTransform happinessFillBar;
     [SerializeField] private float startingHappiness = 100f;
+    [SerializeField] private float baseMaxHappiness = 100f;
+    [SerializeField] private float fullyUpgradedMaxHappiness = 200f;
     [FormerlySerializedAs("happinessMaxHeight")]
     [SerializeField] private float happinessEmptyBottomOffset;
     [SerializeField] private GameObject happiness100Icon;
@@ -53,6 +56,9 @@ public class GameManager : MonoBehaviour
     [Header("Actions")]
     [SerializeField] private StatAction[] statActions;
     [SerializeField] private string sleepActionName = "Sleep";
+    [SerializeField] private string overnightWorkActionName = "Overnight Work";
+    [SerializeField] private float overnightWorkHappinessChange = -50f;
+    [SerializeField] private float overnightWorkHungerChange = -5f;
 
     [Header("Time")]
     [FormerlySerializedAs("timeUIGroup")]
@@ -77,9 +83,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float minimumHomeWorkMultiplier = 0.5f;
     [SerializeField] private float maximumHomeWorkMultiplier = 2f;
 
+    [Header("Happiness Income Penalty")]
+    [SerializeField] private float happinessPenaltyStep = 20f;
+    [SerializeField] private float incomePenaltyPerStep = 0.05f;
+
+    [Header("Low Hunger Penalty")]
+    [SerializeField] private float lowHungerThreshold = 25f;
+    [SerializeField] private float lowHungerExtraPhaseChance = 0.6f;
+    [SerializeField] private int lowHungerGraceDays = 2;
+
     [Header("Events UI")]
     [SerializeField] private GameObject houseEventObject;
     [SerializeField] private TMP_Text houseMultiplierText;
+
+    [Header("QoL Feedback")]
+    [SerializeField] private Animator qolAnimator;
+    [SerializeField] private TMP_Text moneyFeedbackBalanceText;
+    [SerializeField] private TMP_Text moneyFeedbackChangeText;
+    [SerializeField] private string addMoneyStateName = "Addmoney";
+    [SerializeField] private string loseMoneyStateName = "Minusmoney";
+    [SerializeField] private float moneyFeedbackBalanceUpdateDelay = 1f;
+    [SerializeField] private TMP_Text itemFeedbackText;
+    [SerializeField] private string addItemStateName = "Additem";
 
     [Header("Bag")]
     [SerializeField] private List<BagItem> bagItems = new List<BagItem>();
@@ -105,15 +130,18 @@ public class GameManager : MonoBehaviour
     private float cafeteriaCarriedHungerRestore;
     private int cafeteriaCarriedFoodCount;
     private int debtStartedDay = -1;
+    private int lowHungerStartedDay = -1;
     private bool endingTriggered;
     private bool endingWasWin;
     private string endingMessage;
     private bool clockedOutOfOfficeToday;
     private float houseUpgradeProgress;
     private float endingExcessMoney;
+    private Coroutine moneyFeedbackRoutine;
     private readonly int[] phaseHours = { 6, 9, 12, 15, 18, 21, 0 };
 
     public float Happiness => happiness;
+    public float MaxHappiness => CurrentMaxHappiness;
     public float Hunger => hunger;
     public float Money => money;
     public int Day => day;
@@ -135,6 +163,7 @@ public class GameManager : MonoBehaviour
         minimumHomeWorkMultiplier,
         maximumHomeWorkMultiplier,
         Mathf.Clamp01(houseUpgradeProgress));
+    public float HappinessIncomeMultiplier => 1f - GetHappinessIncomePenalty();
     public IReadOnlyList<BagItem> BagItems => bagItems;
 
     private void Awake()
@@ -286,12 +315,8 @@ public class GameManager : MonoBehaviour
 
     public void SetHappiness(float value)
     {
-        happiness = Mathf.Clamp(value, 0f, 100f);
-        UpdateBarBottomOffset(
-            sceneUI != null ? sceneUI.HappinessFillBar : happinessFillBar,
-            sceneUI != null ? sceneUI.HappinessEmptyBottomOffset : happinessEmptyBottomOffset,
-            happiness);
-        UpdateHappinessIcon();
+        happiness = Mathf.Clamp(value, 0f, CurrentMaxHappiness);
+        RefreshHappinessUI();
     }
 
     public void SetHunger(float value)
@@ -301,6 +326,7 @@ public class GameManager : MonoBehaviour
             sceneUI != null ? sceneUI.HungerFillBar : hungerFillBar,
             sceneUI != null ? sceneUI.HungerEmptyBottomOffset : hungerEmptyBottomOffset,
             hunger);
+        UpdateLowHungerTracking();
     }
 
     public void WakeUp()
@@ -319,9 +345,19 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[GAME] Woke up at {CurrentHour:00}00.");
     }
 
+    public void WakeUpAtPhaseAfterOvernightWork(int phaseIndex)
+    {
+        ApplyOvernightWorkStats();
+        AdvanceDay();
+        SetDayPhase(phaseIndex);
+        Debug.Log($"[GAME] Woke up after overnight work at {CurrentHour:00}00.");
+    }
+
     public void ChangeMoney(float amount)
     {
+        float previousMoney = money;
         SetMoney(money + amount);
+        PlayMoneyFeedback(previousMoney, money, amount);
     }
 
     public int ApplyHomeWorkRewardMultiplier(int baseReward)
@@ -329,11 +365,36 @@ public class GameManager : MonoBehaviour
         return Mathf.RoundToInt(baseReward * HomeWorkRewardMultiplier);
     }
 
+    public int ApplyIncomeModifiers(int baseIncome, bool includeHomeWorkMultiplier)
+    {
+        float income = baseIncome;
+
+        if (includeHomeWorkMultiplier)
+            income *= HomeWorkRewardMultiplier;
+
+        income *= HappinessIncomeMultiplier;
+        return Mathf.RoundToInt(income);
+    }
+
+    public int GetActionPhaseCost()
+    {
+        if (hunger >= lowHungerThreshold) return 1;
+
+        bool takesExtraPhase = Random.value < lowHungerExtraPhaseChance;
+        int phaseCost = takesExtraPhase ? 2 : 1;
+
+        if (takesExtraPhase)
+            Debug.Log("[GAME] Low hunger caused this action to take 2 phases.");
+
+        return phaseCost;
+    }
+
     public void SetHouseUpgradeProgress(float progress)
     {
         houseUpgradeProgress = Mathf.Clamp01(progress);
+        SetHappiness(happiness);
         UpdateHouseMultiplierText();
-        Debug.Log($"[HOME] Work reward multiplier is now {HomeWorkRewardMultiplier:0.##}x.");
+        Debug.Log($"[HOME] Work reward multiplier is now {HomeWorkRewardMultiplier:0.##}x. Max happiness is now {CurrentMaxHappiness:0.#}.");
     }
 
     public void SetHouseEventVisible(bool isVisible)
@@ -430,9 +491,21 @@ public class GameManager : MonoBehaviour
         UpdateDebtTracking();
     }
 
+    public void PlayItemAddedFeedback(string itemName)
+    {
+        if (ActiveQolAnimator == null && ActiveItemFeedbackText == null)
+            return;
+
+        if (ActiveItemFeedbackText != null)
+            ActiveItemFeedbackText.text = $"+ {itemName}";
+
+        PlayQolState(addItemStateName);
+    }
+
     public void AdvanceDay()
     {
         CheckDebtDeadlineAtEndOfDay();
+        CheckLowHungerDeadlineAtEndOfDay();
 
         if (endingTriggered) return;
 
@@ -531,6 +604,7 @@ public class GameManager : MonoBehaviour
         endingMessage = string.Empty;
         endingExcessMoney = 0f;
         debtStartedDay = -1;
+        lowHungerStartedDay = -1;
         clockedOutOfOfficeToday = false;
         officeClockInPhase = -1;
         currentOfficeSessionId = 0;
@@ -559,7 +633,12 @@ public class GameManager : MonoBehaviour
 
     public void AdvanceTimePhase()
     {
-        SetDayPhase(currentDayPhase + 1);
+        AdvanceTimePhases(1);
+    }
+
+    public void AdvanceTimePhases(int phaseCount)
+    {
+        SetDayPhase(currentDayPhase + Mathf.Max(1, phaseCount));
     }
 
     public void SetDayPhase(int phaseIndex)
@@ -574,27 +653,71 @@ public class GameManager : MonoBehaviour
     {
         if (endingTriggered) return;
 
+        int phaseCost = GetActionPhaseCost();
         ApplyActionStats(statAction);
 
         if (statAction.advancesTime)
-            AdvanceTimePhase();
+            AdvanceTimePhases(phaseCost);
     }
 
     private void ApplyActionStats(StatAction statAction)
     {
         ChangeHappiness(statAction.happinessChange);
         ChangeHunger(statAction.hungerChange);
-        Debug.Log($"[GAME] Applied {statAction.actionName}: happiness {happiness}/100, hunger {hunger}/100");
+        Debug.Log($"[GAME] Applied {statAction.actionName}: happiness {happiness}/{CurrentMaxHappiness}, hunger {hunger}/100");
     }
 
-    private void UpdateBarBottomOffset(RectTransform fillBar, float emptyBottomOffset, float value)
+    private void ApplyOvernightWorkStats()
+    {
+        if (statActions != null)
+        {
+            foreach (StatAction statAction in statActions)
+            {
+                if (statAction != null && statAction.actionName == overnightWorkActionName)
+                {
+                    ApplyActionStats(statAction);
+                    return;
+                }
+            }
+        }
+
+        ChangeHappiness(overnightWorkHappinessChange);
+        ChangeHunger(overnightWorkHungerChange);
+        Debug.Log($"[GAME] Applied {overnightWorkActionName}: happiness {happiness}/{CurrentMaxHappiness}, hunger {hunger}/100");
+    }
+
+    private void UpdateBarBottomOffset(RectTransform fillBar, float emptyBottomOffset, float value, float maxValue = 100f)
     {
         if (fillBar == null || emptyBottomOffset <= 0f) return;
 
-        float fillPercent = value / 100f;
+        float fillPercent = maxValue > 0f ? Mathf.Clamp01(value / maxValue) : 0f;
         Vector2 offsetMin = fillBar.offsetMin;
         offsetMin.y = emptyBottomOffset * (1f - fillPercent);
         fillBar.offsetMin = offsetMin;
+    }
+
+    private float CurrentMaxHappiness => Mathf.Lerp(
+        baseMaxHappiness,
+        fullyUpgradedMaxHappiness,
+        Mathf.Clamp01(houseUpgradeProgress));
+
+    private float GetHappinessIncomePenalty()
+    {
+        if (happinessPenaltyStep <= 0f) return 0f;
+
+        float missingHappiness = Mathf.Max(0f, CurrentMaxHappiness - happiness);
+        int penaltySteps = Mathf.FloorToInt(missingHappiness / happinessPenaltyStep);
+        return Mathf.Clamp01(penaltySteps * incomePenaltyPerStep);
+    }
+
+    private void RefreshHappinessUI()
+    {
+        UpdateBarBottomOffset(
+            sceneUI != null ? sceneUI.HappinessFillBar : happinessFillBar,
+            sceneUI != null ? sceneUI.HappinessEmptyBottomOffset : happinessEmptyBottomOffset,
+            happiness,
+            CurrentMaxHappiness);
+        UpdateHappinessIcon();
     }
 
     private void UpdateClockImage()
@@ -678,31 +801,35 @@ public class GameManager : MonoBehaviour
 
     private void UpdateHappinessIcon()
     {
-        if (happiness >= 100f)
+        float happinessPercent = CurrentMaxHappiness > 0f
+            ? Mathf.Clamp01(happiness / CurrentMaxHappiness) * 100f
+            : 0f;
+
+        if (happinessPercent >= 100f)
         {
             SetHappinessIconsActive(true, false, false, false, false, false);
             return;
         }
 
-        if (happiness >= 80f)
+        if (happinessPercent >= 80f)
         {
             SetHappinessIconsActive(false, true, false, false, false, false);
             return;
         }
 
-        if (happiness >= 60f)
+        if (happinessPercent >= 60f)
         {
             SetHappinessIconsActive(false, false, true, false, false, false);
             return;
         }
 
-        if (happiness >= 40f)
+        if (happinessPercent >= 40f)
         {
             SetHappinessIconsActive(false, false, false, true, false, false);
             return;
         }
 
-        if (happiness >= 20f)
+        if (happinessPercent >= 20f)
         {
             SetHappinessIconsActive(false, false, false, false, true, false);
             return;
@@ -750,7 +877,7 @@ public class GameManager : MonoBehaviour
         TMP_Text activeMoneyText = sceneUI != null ? sceneUI.MoneyText : moneyText;
 
         if (activeMoneyText != null)
-            activeMoneyText.text = FormatMoney(money);
+            activeMoneyText.text = FormatMoneyAmount(money);
     }
 
     private void UpdateHouseMultiplierText()
@@ -774,14 +901,12 @@ public class GameManager : MonoBehaviour
         TMP_Text activeTimeText = sceneUI != null ? sceneUI.TimeText : timeText;
 
         if (activeTimeText != null)
-            activeTimeText.text = $"{CurrentHour:00}00";
+            activeTimeText.text = $"{CurrentHour:00}:00";
     }
 
     private void RefreshSceneUI()
     {
-        RefreshBarBottomOffset(sceneUI != null ? sceneUI.HappinessFillBar : happinessFillBar,
-            sceneUI != null ? sceneUI.HappinessEmptyBottomOffset : happinessEmptyBottomOffset,
-            happiness);
+        RefreshHappinessUI();
         RefreshBarBottomOffset(sceneUI != null ? sceneUI.HungerFillBar : hungerFillBar,
             sceneUI != null ? sceneUI.HungerEmptyBottomOffset : hungerEmptyBottomOffset,
             hunger);
@@ -828,6 +953,38 @@ public class GameManager : MonoBehaviour
 
         TriggerEnding(
             "Game Over: You stayed in debt for too long.",
+            false);
+    }
+
+    private void UpdateLowHungerTracking()
+    {
+        if (endingTriggered) return;
+
+        if (hunger < lowHungerThreshold)
+        {
+            if (lowHungerStartedDay < 0)
+            {
+                lowHungerStartedDay = day;
+                Debug.Log($"[ENDING] Low hunger started on Day {lowHungerStartedDay}.");
+            }
+
+            return;
+        }
+
+        if (lowHungerStartedDay >= 0)
+            Debug.Log("[ENDING] Low hunger cleared.");
+
+        lowHungerStartedDay = -1;
+    }
+
+    private void CheckLowHungerDeadlineAtEndOfDay()
+    {
+        if (endingTriggered || lowHungerStartedDay < 0 || hunger >= lowHungerThreshold) return;
+
+        if (day < lowHungerStartedDay + lowHungerGraceDays) return;
+
+        TriggerEnding(
+            "Game Over: You stayed hungry for too long.",
             false);
     }
 
@@ -906,6 +1063,81 @@ public class GameManager : MonoBehaviour
     private string FormatMoney(float value)
     {
         return Mathf.Approximately(value % 1f, 0f) ? $"${value:0}" : $"${value:0.00}";
+    }
+
+    private string FormatMoneyAmount(float value)
+    {
+        return Mathf.Approximately(value % 1f, 0f) ? $"{value:0}" : $"{value:0.00}";
+    }
+
+    private void PlayMoneyFeedback(float previousMoney, float newMoney, float changeAmount)
+    {
+        if (Mathf.Approximately(changeAmount, 0f)) return;
+
+        if (ActiveQolAnimator == null && ActiveMoneyFeedbackBalanceText == null && ActiveMoneyFeedbackChangeText == null)
+            return;
+
+        if (moneyFeedbackRoutine != null)
+            StopCoroutine(moneyFeedbackRoutine);
+
+        moneyFeedbackRoutine = StartCoroutine(PlayMoneyFeedbackRoutine(
+            previousMoney,
+            newMoney,
+            changeAmount));
+    }
+
+    private IEnumerator PlayMoneyFeedbackRoutine(
+        float previousMoney,
+        float newMoney,
+        float changeAmount)
+    {
+        TMP_Text balanceText = ActiveMoneyFeedbackBalanceText;
+        TMP_Text changeText = ActiveMoneyFeedbackChangeText;
+
+        if (balanceText != null)
+            balanceText.text = FormatMoney(previousMoney);
+
+        if (changeText != null)
+        {
+            string sign = changeAmount > 0f ? "+" : "-";
+            changeText.text = $"{sign}{FormatMoney(Mathf.Abs(changeAmount))}";
+        }
+
+        string stateName = changeAmount > 0f ? addMoneyStateName : loseMoneyStateName;
+        PlayQolState(stateName);
+
+        if (moneyFeedbackBalanceUpdateDelay > 0f)
+            yield return new WaitForSecondsRealtime(moneyFeedbackBalanceUpdateDelay);
+
+        if (balanceText != null)
+            balanceText.text = FormatMoney(newMoney);
+
+        moneyFeedbackRoutine = null;
+    }
+
+    private Animator ActiveQolAnimator => sceneUI != null && sceneUI.QolAnimator != null
+        ? sceneUI.QolAnimator
+        : qolAnimator;
+
+    private TMP_Text ActiveMoneyFeedbackBalanceText => sceneUI != null && sceneUI.MoneyFeedbackBalanceText != null
+        ? sceneUI.MoneyFeedbackBalanceText
+        : moneyFeedbackBalanceText;
+
+    private TMP_Text ActiveMoneyFeedbackChangeText => sceneUI != null && sceneUI.MoneyFeedbackChangeText != null
+        ? sceneUI.MoneyFeedbackChangeText
+        : moneyFeedbackChangeText;
+
+    private TMP_Text ActiveItemFeedbackText => sceneUI != null && sceneUI.ItemFeedbackText != null
+        ? sceneUI.ItemFeedbackText
+        : itemFeedbackText;
+
+    private void PlayQolState(string stateName)
+    {
+        if (ActiveQolAnimator == null || string.IsNullOrWhiteSpace(stateName)) return;
+
+        ActiveQolAnimator.enabled = true;
+        ActiveQolAnimator.Play(stateName, 0, 0f);
+        ActiveQolAnimator.Update(0f);
     }
 
     private void SetPlayerCursorInput(bool isEnabled)

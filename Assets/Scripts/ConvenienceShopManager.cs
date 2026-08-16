@@ -92,6 +92,7 @@ public class ConvenienceShopManager : MonoBehaviour
             shelf.ShopItemPrice,
             shelf.ShopItemHungerRestore
         );
+        GameManager.Instance?.PlayItemAddedFeedback(shelf.ShopItemName);
     }
 
     public void AddItemToCartByName(string itemName)

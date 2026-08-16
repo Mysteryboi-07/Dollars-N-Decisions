@@ -546,10 +546,10 @@ public class DeadlineDashManager : MonoBehaviour, IWorkMinigame
 
     private int ApplyRewardLocationMultiplier(int baseReward)
     {
-        if (!sleepAfterMidnightHomeWork || GameManager.Instance == null)
+        if (GameManager.Instance == null)
             return baseReward;
 
-        return GameManager.Instance.ApplyHomeWorkRewardMultiplier(baseReward);
+        return GameManager.Instance.ApplyIncomeModifiers(baseReward, sleepAfterMidnightHomeWork);
     }
 
     private void ApplyWorkConsequences()
@@ -557,11 +557,12 @@ public class DeadlineDashManager : MonoBehaviour, IWorkMinigame
         if (GameManager.Instance == null) return;
 
         bool startedAtMidnight = startingDayPhase == 6;
+        int phaseCost = GameManager.Instance.GetActionPhaseCost();
 
         GameManager.Instance.ApplyActionStatsByName(workActionName);
 
         if (GameManager.Instance.CurrentDayPhase == startingDayPhase)
-            GameManager.Instance.AdvanceTimePhase();
+            GameManager.Instance.AdvanceTimePhases(phaseCost);
         else
             Debug.Log("[DEADLINE DASH] Time already advanced before minigame completion.");
 

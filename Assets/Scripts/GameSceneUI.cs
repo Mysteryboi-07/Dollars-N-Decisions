@@ -37,6 +37,12 @@ public class GameSceneUI : MonoBehaviour
     [SerializeField] private GameObject houseEventObject;
     [SerializeField] private TMP_Text houseMultiplierText;
 
+    [Header("QoL Feedback")]
+    [SerializeField] private Animator qolAnimator;
+    [SerializeField] private TMP_Text moneyFeedbackBalanceText;
+    [SerializeField] private TMP_Text moneyFeedbackChangeText;
+    [SerializeField] private TMP_Text itemFeedbackText;
+
     public GameObject StatsUIGroup => statsUIGroup;
     public RectTransform HappinessFillBar => happinessFillBar;
     public float HappinessEmptyBottomOffset => happinessEmptyBottomOffset;
@@ -61,6 +67,10 @@ public class GameSceneUI : MonoBehaviour
     public GameObject EveningIcon => eveningIcon;
     public GameObject HouseEventObject => houseEventObject;
     public TMP_Text HouseMultiplierText => houseMultiplierText;
+    public Animator QolAnimator => qolAnimator;
+    public TMP_Text MoneyFeedbackBalanceText => moneyFeedbackBalanceText;
+    public TMP_Text MoneyFeedbackChangeText => moneyFeedbackChangeText;
+    public TMP_Text ItemFeedbackText => itemFeedbackText;
 
     private void OnEnable()
     {

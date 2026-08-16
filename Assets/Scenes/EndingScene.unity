@@ -1141,7 +1141,7 @@ MonoBehaviour:
     exitButton: {fileID: 2141189405}
     extraRevealGroup: {fileID: 0}
   charactersPerSecond: 15
-  introSceneName: TestingScene
+  introSceneName: IntroScene
 --- !u!4 &531879721
 Transform:
   m_ObjectHideFlags: 0
